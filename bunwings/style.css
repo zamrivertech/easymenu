@@ -13,13 +13,13 @@ body {
     font-size: 1.2rem;
     font-family: 'Oswald','sans-serif'; 
     background-color: var(--background-color);
+    color: var(--text-color);
  }
 
 section {
+    height: 100vh;
     display: flex;
     flex-direction: column; 
-    background-color: var(--background-color);
-    color: var(--text-color);
 }
 
 ul {
@@ -46,9 +46,27 @@ img {
 
 /* Home Start */
 
-section .home {
+.home {
+    background-image: url('./img/home.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.dark {
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
     display: flex;
     flex-direction: column;
+}
+
+.home-text {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
 }
 
 /* Nav Start */
