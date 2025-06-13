@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iluminar, Materiais Elétricos, E.I</title>
+    <title>Bun&Wings - Restaurante</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="icon" type="image/png" href="./img/favicon.png"/>
     <meta name="author" content="Mohamad Tarik Suleman">
-    <meta name="description" content="Loja Digital Da Iluminar, Materiais Eléctricos, E.I">
+    <meta name="description" content="Menu Digital Da Bun&Wings - Restaurante">
     <meta name="copyright" content="©2025, Mohamad Tarik Suleman.">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2NV25ZVPXW"></script>
     <script>
@@ -18,7 +18,7 @@
     </script>
 </head>
 <body>
-    <section class="product-page">
+    <section>
 
     <nav>
         <div class="logo">
@@ -33,14 +33,10 @@
         </div>
     </nav>
 
-    <!--
-    <div class="category">
-        <a class="category-button">Todos</a>
-    </div>
 
-    <div class="product-list" id="product">
+    <div class="menu-nav" id="category">
+
     </div>
-    -->
 
     <div class="menu">
         <div class="menu-section" id="plate" >
@@ -57,11 +53,23 @@
     .then(res => res.json())
     .then(data => {
       const grouped = groupBy(data, 'category');
-      let output = "";
 
+      let output = "";
+      let outputcategory = "";
+
+      // Generate category navigation links
+      for (const category in grouped) {
+        outputcategory += `
+          <div class="menu-nav">
+            <a href="#${category}" class="button">${category}</a>
+          </div>
+        `;
+      }
+
+      // Generate the actual menu items
       for (const category in grouped) {
         output += `
-          <div class="menu-category"  style="margin-top:1rem;">
+          <div class="menu-category" id="${category}" style="margin-top:1rem;">
             ${category}
             <div class="border"></div>
           </div>
@@ -83,6 +91,7 @@
       }
 
       document.getElementById("plate").innerHTML = output;
+      document.getElementById("category").innerHTML = outputcategory;
     })
     .catch(err => console.error("Failed to load data", err));
 
@@ -97,13 +106,7 @@
 </script>
 
 
+
       
 </body>
 </html>
-
-<!--
-  Project: Iluminar
-  Author: Mohamad Tarik Suleman
-  Date: 2025-05-30
-  Description: Digital Project for Iluminar - Materiais Elétricos
--->

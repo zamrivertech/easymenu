@@ -5,6 +5,7 @@
     --secondary-color: rgb(77, 156, 40);    
     --background-color: black;
     --text-color: white;
+    --footer-text-color: #605E61;
 }
 
 body {
@@ -100,7 +101,7 @@ nav {
     padding: 1rem;
 }
 
-.logo {
+nav .logo {
     font-weight: bold;
     display: flex;
     align-items: center;
@@ -170,6 +171,7 @@ nav ul li a:hover {
 /* Card Start */
 
 .cards {
+    color: var(--footer-text-color);
     display: flex;
     flex-wrap: wrap;
     gap: 32px;
@@ -179,6 +181,7 @@ nav ul li a:hover {
 .card {
     flex: auto;
     border-radius: 16px;
+    text-align: center;
 }
 
 .cards .card .top {
@@ -202,6 +205,24 @@ nav ul li a:hover {
 /* Card End */
 
 /* Home End */
+
+
+/* Menu Nav Start */
+
+.menu-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0px 8px;
+}
+
+.menu-nav .button {
+    font-size: .8rem;
+    padding: 6px 14px;
+    width: auto;
+}
+
+/* Menu Nav End */
 
 /* Menu Start */
 
