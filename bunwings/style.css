@@ -44,6 +44,24 @@ img {
     max-inline-size: 100%;
 }
 
+.button {
+    display: inline-block;
+    border: 2px var(--primary-color) solid;
+    border-radius: 30px;
+    background: rgba(77, 156, 40, 0.35) ;
+    color: var(--primary-color);
+    padding: 10px;
+    padding-bottom: 14px;
+    width: 148px;
+    text-align: center;
+}
+
+.button:hover {
+    background-color: var(--secondary-color);
+    transition: .4s ease;
+    border-color: transparent;
+}
+
 /* Home Start */
 
 .home {
@@ -55,7 +73,7 @@ img {
 
 .dark {
     height: 100%;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.65);
     display: flex;
     flex-direction: column;
 }
@@ -67,6 +85,11 @@ img {
     justify-content: center;
     align-items: center;
     gap: 1rem;
+    padding: 0px 1rem;
+}
+
+.home-paragraph {
+    text-align: center;
 }
 
 /* Nav Start */
@@ -103,51 +126,38 @@ nav ul li a:hover {
 
 /* Nav End */
 
-/* Hero Start */
+/* Plate Start */
 
-.hero {
+.plate {
    display: flex;
-   justify-content: space-between;
-   flex-wrap: wrap;
+   flex-direction: column;
+   align-items: center;
+   gap: 1rem;
    padding: 2rem;
+
 }
 
-.hero .text {
-    align-self: center;
+.plate .text {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
 }
 
-.hero .text .title {
-    font-size: 2rem;
-}
-
-.hero .text .title span {
-    color: var(--primary-color);
-}
-
-.hero .text .paragraph {
-    color: var(--secondary-color);
-}
-
-.button {
-    display: inline-block;
-    border: 2px var(--primary-color) solid;
+.border {
+    background-color: var(--secondary-color);
+    display: flex;
+    justify-content: center;
+    width: 100%;
     border-radius: 6px;
-    background: transparent;
-    color: var(--primary-color);
-    padding: 6px;
+    height: 6px;
 }
 
-.button:hover {
-    background-color: var(--primary-color);
-    color: var(--background-color);
-    transition: .4s ease;
-}
-
-.hero .image {
+.plate .image img {
     margin-top: 32px;
+    border-radius: 32px;
 }
 
 .hero .image img {
@@ -193,58 +203,35 @@ nav ul li a:hover {
 
 /* Home End */
 
-/* Product Start */
+/* Menu Start */
 
-.category {
+.menu {
     padding: 1rem;
-}
-
-.category-button {
-    border: 2px solid var(--primary-color);
-    border-radius: 16px;
-    padding: 6px;
-    color: var(--primary-color);
-    background: transparent;
-}
-
-.category-button:hover {
-    color: var(--background-color);
-    background: var(--primary-color);
-    transition: 0.4s ease-in-out;
-}
-
-.product-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 32px;
-    padding: 1rem;
-}
-
-.product-card {
-    flex: 1 0 120px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
 }
 
-.product-card p {
-    flex: 1;
-}
-
-.product-card img {
-    border-radius: 16px;
-   
-}
-
-.product-card .footer {
-    width: 100%;
+.menu-section {
+    height: auto;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
 }
 
-.product-card .footer svg {
-    width: 26px;
+.menu-section .menu-category {
+    align-self: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
 }
+
+.menu-section .menu-plate {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+
 
 
 
