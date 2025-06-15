@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bun&Wings - Restaurante</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" type="image/png" href="./img/favicon.png"/>
+    <meta name="author" content="Mohamad Tarik Suleman">
+    <meta name="description" content="Menu Digital Da Bun&Wings - Restaurante">
+    <meta name="copyright" content="©2025, Mohamad Tarik Suleman.">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2NV25ZVPXW"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2NV25ZVPXW');
+    </script>
+</head>
+<body>
+    <section>
+
+    <nav style="position: static;">
+        <div class="logo">
+            BUN<span>&</span>WINGS
+        </div>
+        <div class="links">
+            <ul>
+                <li><a href="index.html" >Inicial</a></li>
+                <li><a href="" class="current">Menu</a></li>
+         <!--   <li><a href="">Mais Sobre Nós</a></li> --> 
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="menu-nav" id="category" style="position: fixed; top: 80px;">
+
+    </div>
+
+    <div class="menu">
+        <div class="menu-section" id="plate" >
+        </div>
+    </div>
+
+
+    </section>
+
+<script>
+  const url = `https://opensheet.elk.sh/1wcwU9Q5OoJv3xOhGeLi1l9C5gUNFIIRk6yAQJ4VVzU0/menu`;
+
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      const grouped = groupBy(data, 'category');
+
+      let output = "";
+      let outputcategory = "";
+
+      // Generate category navigation links
+      for (const category in grouped) {
+        outputcategory += `
+          <div class="menu-nav">
+            <a href="#${category}" class="button">${category}</a>
+          </div>
+        `;
+      }
+
+      // Generate the actual menu items
+      for (const category in grouped) {
+        output += `
+          <div class="menu-category" id="${category}" style="margin-top:1rem;">
+            ${category}
+            <div class="border"></div>
+          </div>
+        `;
+
+        grouped[category].forEach(item => {
+          output += `
+            <div class="menu-plate">
+              <div style="display: flex; justify-content: space-between; margin-top: 6px;">
+                <div class="name">${item.name}</div> 
+                <div class="price">${item.price}</div> 
+              </div>    
+              <div class="description" style="font-size: 0.8rem;">
+                ${item.description ? item.description : ""}
+              </div> 
+            </div>
+          `;
+        });
+      }
+
+      document.getElementById("plate").innerHTML = output;
+      document.getElementById("category").innerHTML = outputcategory;
+    })
+    .catch(err => console.error("Failed to load data", err));
+
+  function groupBy(arr, key) {
+    return arr.reduce((acc, item) => {
+      const group = item[key] || "Uncategorized";
+      acc[group] = acc[group] || [];
+      acc[group].push(item);
+      return acc;
+    }, {});
+  }
+</script>
+
+
+
+      
+</body>
+</html>
