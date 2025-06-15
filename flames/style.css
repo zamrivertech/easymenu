@@ -126,7 +126,7 @@ nav ul li a:hover {
 /* -------------------- FOOTER -------------------- */
 
 .footer-info {
-  padding: 100px;
+  padding: 50px;
   text-align: center;
   line-height: 30px;
   color: var(--footer-text-color);
