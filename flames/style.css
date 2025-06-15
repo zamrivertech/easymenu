@@ -1,275 +1,138 @@
 @import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=Cinzel:wght@400..900&display=swap');
 
 :root {
-    --primary-color: white;
-    --secondary-color: rgb(77, 156, 40);    
-    --background-color: black;
-    --text-color: white;
-    --footer-text-color: #605E61;
-    --logo-color: #c81815;
+  --primary-color: white;
+  --secondary-color: rgb(77, 156, 40);
+  --background-color: black;
+  --text-color: white;
+  --footer-text-color: #605E61;
+  --logo-color: #c81815;
 }
 
 * {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    font-size: 1.2rem;
-    font-family: 'Cinzel'; 
-    background-color: var(--background-color);
-    color: var(--text-color);
- }
-
-section {
-    height: 100vh;
-    display: flex;
-    flex-direction: column; 
-}
-
-ul {
-    padding: 0;
-}
-
-li {
-    list-style-type: none;
-}
-
-a {
-    text-decoration: none;
-    color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  font-size: 1.2rem;
+  font-family: 'Cinzel', serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 h1, h2, h3, p {
-    margin: 0;
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-color);
 }
 
 img {
-    display: block;
-    max-inline-size: 100%;
+  display: block;
+  max-width: 100%;
 }
 
-.button {
-    display: inline-block;
-    border: 2px var(--primary-color) solid;
-    background: rgba(255, 19, 19, 0.4) ;
-    color: var(--primary-color);
-    padding: 4px;
-    min-width: 360px;
-    text-align: center;
-}
-
-.button:hover {
-    background-color: var(--logo-color);
-    transition: .4s ease;
-    border-color: transparent;
-}
-
-/* Home Start */
-
-.home {
-    display: flex;
-    flex-direction: column;
-}
-
-.dark {
-    height: 100%;
-    background-color: rgba(0,0,0,0.65);
-    display: flex;
-    flex-direction: column;
-}
-
-.home-text {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    padding: 0px 1rem;
-}
-
-.home-title img {
-    width: 120px;
-}
-
-.home-title h3 {
-    margin-top: -65px;
-}
-
-.home-paragraph {
-    text-align: center;
-}
-
-/* Nav Start */
+/* -------------------- NAV -------------------- */
 
 nav {
-    position: fixed;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background: transparent;
 }
 
 nav .logo {
-    display: flex;
-    align-items: center;
-    font-size: 32px;
-    font-weight: bolder;
-    color: var(--logo-color);
+  display: flex;
+  align-items: center;
+  font-size: 32px;
+  font-weight: bolder;
+  color: var(--logo-color);
 }
 
 nav ul {
-    display: flex;
-    gap: 1rem;
-    margin-right: 2rem;
-}
-
-.current {
-    color: var(--primary-color);   
+  display: flex;
+  gap: 1rem;
+  margin-right: 2rem;
 }
 
 nav ul li a {
-    color: #b4120f;
+  color: #b4120f;
+  transition: 0.4s ease-in-out;
 }
 
 nav ul li a:hover {
-    font-weight: bold;
-    transition: 0.4s ease-in-out;
+  font-weight: bold;
 }
 
-/* Nav End */
+/* -------------------- HOME -------------------- */
 
-/* Plate Start */
-
-.plate {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   gap: 1rem;
-   padding: 2rem;
-
+.home {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
-.plate .text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    gap: 1rem;
+.dark {
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  flex-wrap: wrap;
 }
 
-.border {
-    background-color: var(--secondary-color);
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    border-radius: 6px;
-    height: 6px;
+.home-text {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
 }
 
-.plate .image img {
-    margin-top: 32px;
-    border-radius: 32px;
+/* -------------------- BUTTON -------------------- */
+
+.button {
+  display: inline-block;
+  border: 2px solid var(--primary-color);
+  background: rgba(255, 19, 19, 0.4);
+  color: var(--primary-color);
+  padding: 4px;
+  min-width: 360px;
+  text-align: center;
+  transition: 0.4s ease;
 }
 
-.hero .image img {
-    border-radius: 16px;
-    filter: drop-shadow(0 0 0.65rem var(--primary-color));
+.button:hover {
+  background-color: var(--logo-color);
+  border-color: transparent;
 }
 
-/* Hero End */
+/* -------------------- FOOTER -------------------- */
 
-/* Card Start */
-
-.cards {
-    color: var(--footer-text-color);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 32px;
-    padding: 2rem;
+.footer-info {
+  padding: 100px;
+  text-align: center;
+  line-height: 30px;
+  color: var(--footer-text-color);
 }
 
-.card {
-    flex: auto;
-    border-radius: 16px;
-    text-align: center;
+.footer-info a:hover {
+  color: var(--logo-color);
+  transition: 0.4s ease;
 }
-
-.cards .card .top {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-}
-
-.cards .card .top p {
-    font-size: 1.7rem;
-}
-
-.cards .card .top svg {
-    width: 50px;
-}
-
-.cards .card .bottom {
-    text-align: center;
-}
-
-/* Card End */
-
-/* Home End */
-
-
-/* Menu Nav Start */
-
-.menu-nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    padding: 0px 8px;
-}
-
-.menu-nav .button {
-    font-size: .8rem;
-    padding: 6px 14px;
-    width: auto;
-}
-
-/* Menu Nav End */
-
-/* Menu Start */
-
-.menu {
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-}
-
-.menu-section {
-    height: auto;
-    display: flex;
-    flex-direction: column;
-}
-
-.menu-section .menu-category {
-    align-self: center;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-.menu-section .menu-plate {
-    display: flex;
-    flex-direction: column;
-}
-
-
-
-
-
-
-
-
-/* Product End */
-
-/* Author: Mohamad Tarik Suleman | Iluminar */
