@@ -44,7 +44,7 @@ async function fetchData() {
             // Create Menu Section
             const categorySection = document.createElement("div");
             categorySection.classList.add("card");
-            categorySection.id = category.replace(/\s+/g, "").toLowerCase();
+            categorySection.id = category.replace(/\s+/g, "-").toLowerCase();
             categorySection.innerHTML = `<div class="title">${category}</div>` + categories[category].join("");
             menuContainer.appendChild(categorySection);
         });
