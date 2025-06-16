@@ -21,7 +21,7 @@
   -webkit-backdrop-filter: blur(8px);  /* for Safari */
   border-radius: 12px;
   z-index: 9999;
-  width: 100%;
+  width: 95%;
 }
 
 body {
