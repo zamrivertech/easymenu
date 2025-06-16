@@ -210,8 +210,6 @@ nav ul li a:hover {
   display: flex;
   flex-direction: column;
   gap: 7px;
-  margin: 1rem;
- 
 }
 
 .menu .card .title {
