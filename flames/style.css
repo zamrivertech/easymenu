@@ -7,10 +7,21 @@
   --text-color: white;
   --footer-text-color: #605E61;
   --logo-color: #c81815;
+    --light-logo-color: #f87b78;
 }
 
 * {
   scroll-behavior: smooth;
+}
+
+.blur-box {
+  position: fixed;
+  padding: 1rem 2rem;
+  backdrop-filter: blur(8px);          /* main blur */
+  -webkit-backdrop-filter: blur(8px);  /* for Safari */
+  border-radius: 12px;
+  z-index: 9999;
+  width: 100%;
 }
 
 body {
@@ -136,3 +147,98 @@ nav ul li a:hover {
   color: var(--logo-color);
   transition: 0.4s ease;
 }
+
+/* -------------------- NAVPILLS -------------------- */
+
+
+.navpills .pill {
+  background-color: rgba(255, 19, 19, 0.4);
+  border: 2px solid var(--text-color);
+  padding: 4px 12px;
+  margin: 20px;
+}
+
+.navpills .pill:hover {
+  background-color: var(--logo-color);
+  border: 2px solid var(--logo-color);
+  padding: 4px 12px;
+  margin: 20px;
+  transition: 0.4s ease;
+}
+
+.navpills {
+  font-family: 'Cabin Sketch';
+  position: fixed;
+  top: 50px;
+  font-size: 14px;
+  padding: 8px;
+  margin-top: 0px;
+  display: flex;
+  overflow-x: auto;
+  width: 100%;
+  white-space: nowrap;
+  gap: 0.5rem;
+  scrollbar-width: none;        
+  -ms-overflow-style: none;     
+  width: 100%;
+
+}
+
+.navpills .menu-nav {
+  display: inline-block;
+  min-width: 150px; 
+}
+.navpills::-webkit-scrollbar {
+  display: none;               
+}
+
+/* -------------------- MENU -------------------- */
+
+.menu {
+  font-family: 'Cabin Sketch';
+  margin: 140px 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  border: dashed 2px var(--logo-color);
+  padding: 1rem;
+
+}
+
+.menu .card {
+  scroll-margin-top: 150px;
+  flex: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin: 1rem;
+ 
+}
+
+.menu .card .title {
+  align-self: center;
+  margin-top: 2rem;
+}
+
+.menu .card .plate {
+  display: flex;
+
+}
+
+.menu .card .plate .dots {
+  flex-grow: 1;
+  width: 100px;
+  border-bottom: dashed;
+  margin-bottom: 5px;
+}
+
+.menu .card .description {
+  font-size: 1rem;
+  color: var(--light-logo-color);
+}
+
+.title {
+  text-align: center;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
