@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EasyMenu by Masul</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #000;
+      color: #fff;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #111;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 1.5rem;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ccc;
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      background: linear-gradient(to bottom, #111, #000);
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      animation: fadeInDown 1s ease forwards;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin: 1rem 0;
+      max-width: 600px;
+      animation: fadeInUp 1.5s ease forwards;
+    }
+
+    .cta {
+      padding: 0.8rem 1.5rem;
+      background-color: white;
+      color: black;
+      border: none;
+      font-weight: bold;
+      border-radius: 4px;
+      margin-top: 1.5rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .cta:hover {
+      background-color: #ddd;
+    }
+
+    footer {
+      padding: 1rem 2rem;
+      background-color: #111;
+      text-align: center;
+    }
+
+    .clients {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .client-link {
+      color: white;
+      border: 1px solid white;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .client-link:hover {
+      background-color: white;
+      color: black;
+    }
+
+    @keyframes fadeInDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">masul</div>
+    <nav>
+      <a href="#">Início</a>
+      <a href="#clientes">Clientes</a>
+      <a href="tel:+258871838719">Contacto</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>EasyMenu - Menus Digitais Profissionais</h1>
+    <p>
+      Criação de menus digitais personalizados, atualizáveis por Excel/Google Sheets, com código QR personalizado e visual moderno baseado no menu físico do restaurante.
+    </p>
+    <p><strong>Apenas por 1500MT!</strong></p>
+    <a href="https://wa.me/258871838719" class="cta">Fale comigo no WhatsApp</a>
+
+    <div class="clients" id="clientes">
+      <a href="./flames/index.html" class="client-link">FLAMES</a>
+      <!-- Adicione mais clientes abaixo -->
+      <!-- <a href="./clients/nomedocliente/index.html" class="client-link">Nome do Cliente</a> -->
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Masul | Desenvolvido por Mohamad Tarik Suleman</p>
+    <p>Contacto: <a href="tel:+258871838719" style="color: white; text-decoration: underline;">+258 871 838 719</a></p>
+  </footer>
+
+</body>
+
+</html>
