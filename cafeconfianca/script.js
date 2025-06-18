@@ -1,5 +1,5 @@
 async function fetchData() {
-    const sheetUrl = "https://docs.google.com/spreadsheets/d/1hLQqPbEG-AKG8PpNkghQUhR_CFnhLbXU1XAZlgiWb30/gviz/tq?tqx=out:json";
+    const sheetUrl = "https://docs.google.com/spreadsheets/d/1Fbw0TL6H3JmQ3pLM-fbITeH2zUBdHIZsrp8hGDg5nQI/gviz/tq?tqx=out:json";
 
     try {
         const response = await fetch(sheetUrl);
