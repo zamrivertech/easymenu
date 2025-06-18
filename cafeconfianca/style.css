@@ -55,6 +55,10 @@ section {
   height: 100vh;
 }
 
+.underline {
+  text-decoration: underline;
+}
+
 /* -------------------- NAV -------------------- */
 
 nav {
@@ -86,9 +90,14 @@ nav ul li a {
   transition: 0.4s ease-in-out;
 }
 
-nav ul li a:hover {
-  font-weight: bolder;
+nav.scrolled a {
+  color: var(--color2); /* white, or pick another high contrast color */
 }
+
+nav.scrolled .logo {
+  color: var(--color2);
+}
+
 
 /* -------------------- HOME -------------------- */
 

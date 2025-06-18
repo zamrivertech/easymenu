@@ -33,7 +33,7 @@
         <img src="./img/coffee.gif" alt="Café Quente" width="160" >
         <h1>Onde cada chávena vem <br>
             com sabor e confiança!</h1>
-        <p>Desfrute de cafés artesanais, bolos fresquinhos <br> e momentos acolhedores num ambiente feito para si.</p>
+        <p>Desfrute de cafés artesanais, bolos fresquinhos <br> e momentos acolhedores num ambiente <br> feito para si.</p>
         <a href="./menu.html" class="button">Ver Menu</a>
       </div>
   </section>
@@ -41,18 +41,41 @@
   <section id="footer" class="footer">
       <img src="./img/bag.png" id="banner" alt="Imagem do restaurante" style="margin-top: -250px;">
       <div class="footer-info">
-        <p><strong>Endereço:</strong> Av. Julius Nyerere, Tete, Moçambique.</p>
-        <p><strong>Redes Sociais:</strong>
-          <a href="https://www.instagram.com/flames_mz/?hl=pt" target="_blank">Instagram</a> |
-          <a href="https://www.facebook.com/people/Flames_mz/100092700290977/" target="_blank">Facebook</a> |
-          <a href="https://chat.whatsapp.com/KhtNKA6TACH4i1qY8BuYUf" target="_blank">WhatsApp</a>
+        <p><span class="underline">Endereço:</span> Av. da Independencia, Tete, Moçambique.</p>
+        <p><span class="underline">Redes Sociais:</span>
+          <a href="https://www.instagram.com/cafeconfianca/" target="_blank">Instagram</a> |
+          <a href="https://www.facebook.com/cafeconfianca/?locale=pt_BR" target="_blank">Facebook</a> |
         </p>
-        <p><strong>Horário:</strong> Aberto todos os dias, das 6h00 às 22h00</p>
-        <p><strong>Contato:</strong> 85 597 9819 | 87 887 9819 | 84 519 4813</p>
-        <p>&copy; 2025 FLAMES - Todos os direitos reservados.</p>
+        <p><span class="underline">Horário:</span> Aberto todos os dias, das 7h00 às 21h00</p>
+        <p><span class="underline">Contato:</span>  84 105 6999 </p>
+        <p>&copy; 2025 Café Confiança - Todos os direitos reservados.</p>
       </div>
-      <img src="./img/logo.png" alt="Logo de CaféConfiança">
     </section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const footer = document.querySelector("#footer");
+    const nav = document.querySelector("nav");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            nav.classList.add("scrolled");
+          } else {
+            nav.classList.remove("scrolled");
+          }
+        });
+      },
+      {
+        threshold: 0.9 // Trigger when 30% of the footer is visible
+      }
+    );
+
+    observer.observe(footer);
+  });
+</script>
+    
 
 </body>
 </html>
