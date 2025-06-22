@@ -21,13 +21,16 @@
       color: #fff;
     }
 
+    a {
+      display: block;
+    }
+
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 2rem;
+      padding: 0.8rem 0.8rem;
       background-color: #111;
-      position: fixed;
       top: 0;
       width: 100%;
       z-index: 10;
@@ -50,26 +53,27 @@
     }
 
     .hero {
+      padding: 0.8rem;
       height: 100vh;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
       text-align: center;
-      padding: 2rem;
       background: linear-gradient(to bottom, #111, #000);
     }
 
     .hero h1 {
-      font-size: 3rem;
+      font-size: 2rem;
       animation: fadeInDown 1s ease forwards;
     }
 
     .hero p {
-      font-size: 1.2rem;
+      line-height: 1.4rem;
+      font-size: 1.1rem;
       margin: 1rem 0;
       max-width: 600px;
-      animation: fadeInUp 1.5s ease forwards;
+      animation: fadeInDown 1s ease forwards;
     }
 
     .cta {
@@ -79,27 +83,22 @@
       border: none;
       font-weight: bold;
       border-radius: 4px;
-      margin-top: 1.5rem;
       cursor: pointer;
       transition: background-color 0.3s;
+      animation: fadeInUp 1.5s ease forwards;
     }
 
     .cta:hover {
       background-color: #ddd;
     }
 
-    footer {
-      padding: 1rem 2rem;
-      background-color: #111;
-      text-align: center;
-    }
-
     .clients {
-      margin-top: 2rem;
+      padding: 1.5rem;
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       gap: 1rem;
+      animation: fadeInUp 1.5s ease forwards;
     }
 
     .client-link {
@@ -141,20 +140,21 @@
 </head>
 
 <body>
-  <header>
-    <div class="logo">masul</div>
-    <nav>
-      <a href="tel:+258871838719">87 183 8719</a>
-    </nav>
-  </header>
 
   <section class="hero">
-    <h1>EasyMenu - Personalizado e Atualizável </h1>
+    <header>
+      <div class="logo">masul</div>
+      <nav>
+        <a href="tel:+258871838719">87 183 8719</a>
+      </nav>
+    </header>
+
+    <h1>EasyMenu</h1>
     <p>
-      Criação de menus digitais personalizados, atualizáveis por Excel/Google Sheets, com código QR personalizado e visual moderno baseado no menu físico do restaurante.
+      Menus digitais personalizados, atualizáveis por Excel/Google Sheets, com código QR personalizado e visual moderno baseado no menu físico do restaurante.
     </p>
-    <p><strong>Aproveite Agora Por Apenas 1500MT!</strong></p>
-    <a href="https://wa.me/258871838719" class="cta">Fale comigo no WhatsApp</a>
+
+    <a href="https://wa.me/258871838719" class="cta">Apenas 1500!</a>
 
     <div class="clients">
       <a href="./flames/index.html" class="client-link">Flames🔥</a>
@@ -162,12 +162,10 @@
       <!-- Adicione mais clientes abaixo -->
       <!-- <a href="./clients/nomedocliente/index.html" class="client-link">Nome do Cliente</a> -->
     </div>
+
   </section>
 
-  <footer>
-    <p>&copy; 2025 Masul | Desenvolvido por Mohamad Tarik Suleman</p>
-    <p>Contacto: <a href="tel:+258871838719" style="color: white; text-decoration: underline;">+258 871 838 719</a></p>
-  </footer>
+
 
 </body>
 
