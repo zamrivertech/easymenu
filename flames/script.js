@@ -22,14 +22,12 @@ async function fetchData() {
             }
 
             categories[category].push(`
-                <div class="card">
                     <div class="plate">
                         <p>${name}</p>
                         <div class="dots"></div>
-                        <p>${price} MT</p>
+                        <p>${price}MT</p>
                     </div>
                     <div class="description">${description}</div>
-                </div>
             `);
         });
 

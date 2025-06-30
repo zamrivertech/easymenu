@@ -154,6 +154,7 @@ nav ul li a:hover {
 .navpills .pill {
   background-color: rgba(255, 19, 19, 0.4);
   border: 2px solid var(--text-color);
+  font-size: 1rem;
   padding: 4px 12px;
   margin: 20px;
 }
@@ -198,15 +199,19 @@ nav ul li a:hover {
   font-family: 'Cabin Sketch';
   margin: 140px 1rem;
   display: flex;
-  flex-wrap: wrap;
-  border: dashed 2px var(--logo-color);
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
   padding: 1rem;
-
+  gap: 2rem;
 }
 
 .menu .card {
+  width: 90%;
+  flex-grow: 1;
+  padding: 1rem;
+  border: dashed 2px var(--logo-color);
   scroll-margin-top: 150px;
-  flex: auto;
   display: flex;
   flex-direction: column;
   gap: 7px;
@@ -214,12 +219,11 @@ nav ul li a:hover {
 
 .menu .card .title {
   align-self: center;
-  margin-top: 2rem;
 }
 
 .menu .card .plate {
   display: flex;
-
+  gap: 4px;
 }
 
 .menu .card .plate .dots {
