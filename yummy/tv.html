@@ -1,12 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap');
-
-:root {
-  --color1: white;
-  --color2: rgb(156, 23, 23);
-  --color3: black;
-  --color4: rgb(155, 132, 1);
-}
-
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yummy - EasyMenu</title>
+  <link rel="icon" type="image/png" href="./img/favicon.jpg">
+  <meta name="author" content="Mohamad Tarik Suleman">
+  <meta name="description" content="Menu Digital da Yummy - TakeAway">
+  <meta name="copyright" content="©2025, Mohamad Tarik Suleman.">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap');
 
 /* Global Reset & Font */
 * {
@@ -17,10 +20,10 @@
 body {
   margin: 0;
   padding: 0;
-  font-size: 1.2rem;
+  font-size: 1.6rem; /* Increased font size */
   font-family: "Delicious Handrawn", cursive;
-  background-color: var(--color3);
-  color: var(--color1);
+  background-color: black;
+  color: white;
 }
 
 h1, h2, h3, p, ul {
@@ -34,7 +37,7 @@ li {
 
 a {
   text-decoration: none;
-  color: var(--text-color);
+  color: yellow; /* fallback value */
 }
 
 img {
@@ -70,7 +73,7 @@ nav .logo {
   align-items: center;
   font-size: 32px;
   font-weight: bold;
-  color: var(--color4);
+  color: rgb(155, 132, 1);
 }
 
 nav ul {
@@ -80,7 +83,7 @@ nav ul {
 }
 
 nav ul li a {
-  color: var(--color4);
+  color: rgb(155, 132, 1);
   transition: 0.4s ease-in-out;
 }
 
@@ -116,8 +119,8 @@ nav ul li a:hover {
 .button {
   display: inline-block;
   border-radius: 22px;
-  background: var(--color4);
-  color: var(--primary-color);
+  background: rgb(155, 132, 1);
+  color: black;
   padding: 6px;
   min-width: 160px;
   text-align: center;
@@ -125,9 +128,9 @@ nav ul li a:hover {
 }
 
 .button:hover {
-  border: 3px solid var(--color4);
+  border: 3px solid rgb(155, 132, 1);
   background: transparent;
-  color: var(--color4);
+  color: rgb(155, 132, 1);
 }
 
 /* -------------------- FOOTER -------------------- */
@@ -135,11 +138,11 @@ nav ul li a:hover {
   padding: 50px;
   text-align: center;
   line-height: 30px;
-  color: var(--footer-text-color);
+  color: white;
 }
 
 .footer-info a:hover {
-  color: var(--logo-color);
+  color: rgb(155, 132, 1);
   transition: 0.4s ease;
 }
 
@@ -151,7 +154,7 @@ nav ul li a:hover {
   gap: 0.5rem;
   padding: 8px;
   margin-top: 0;
-  font-size: 14px;
+  font-size: 1.1rem;
   overflow-x: auto;
   white-space: nowrap;
   width: 100%;
@@ -165,18 +168,18 @@ nav ul li a:hover {
 
 .navpills .pill {
   border-radius: 18px;
-  background-color: var(--color4);
-  border: 2px solid var(--color1);
+  background-color: rgb(155, 132, 1);
+  border: 2px solid white;
   font-size: 1rem;
   padding: 6px 18px;
   margin: 20px;
   transition: 0.4s ease;
 }
 
-.navpills .pill:hover {
-  background-color: var(--color2);
-  border: 2px solid var(--color4);
-  color: var(--color4);
+.navpills .pill.active, .navpills .pill:hover {
+  background-color: rgb(156, 23, 23);
+  border: 2px solid rgb(155, 132, 1);
+  color: rgb(155, 132, 1);
 }
 
 .navpills .menu-nav {
@@ -200,7 +203,7 @@ nav ul li a:hover {
   flex-grow: 1;
   padding: 1rem;
   border-radius: 22px;
-  border: 3px solid var(--color2);
+  border: 3px solid rgb(156, 23, 23);
   display: flex;
   flex-direction: column;
   gap: 7px;
@@ -224,8 +227,8 @@ nav ul li a:hover {
 }
 
 .menu .card .description {
-  font-size: 1rem;
-  color: var(--color4);
+  font-size: 1.2rem;
+  color: rgb(155, 132, 1);
 }
 
 .title {
@@ -238,7 +241,7 @@ nav ul li a:hover {
   width: 100%;
   margin: 6px;
   padding: 6px;
-  border-bottom: 3px solid var(--color4);
+  border-bottom: 3px solid rgb(155, 132, 1);
 }
 
 /* -------------------- TV Layout -------------------- */
@@ -331,7 +334,6 @@ nav ul li a:hover {
   }
 }
 
-/* Apply Animations */
 .menu .card {
   animation: fadeInUp 0.8s ease-in-out both;
 }
@@ -348,9 +350,132 @@ nav ul li a:hover {
   animation: slideIn 1s ease-out both;
 }
 
-/* Optional: Uncomment to add pulse effect to logo */
-/*
 nav .logo {
   animation: pulse 3s infinite ease-in-out;
 }
-*/
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav style="justify-content: center;" class="blur-box">
+    <a href="" class="logo">YUMMY | MENU</a>
+  </nav>
+
+  <!-- Categorias -->
+  <div class="blur-box navpills" id="category">
+    <a class="pill" href="#burgers">Hambúrgueres</a>
+    <a class="pill" href="#pizzas">Pizzas</a>
+    <!-- adicione mais categorias aqui -->
+  </div>
+
+  <!-- Seções do Menu -->
+  <div class="menu">
+
+  <!-- Hambúrgueres -->
+  <div class="card" id="burgers" style="scroll-margin-top: 220px;">
+    <div class="title border">Hambúrgueres</div>
+
+    <div class="plate">
+      <p>Nhungwe Boss</p>
+      <div class="dots"></div>
+      <p>150mt</p>
+    </div>
+    <div class="description">Maningue nhama + molho especial Nhungwe.</div>
+
+    <div class="plate">
+      <p>Mozzaburguer</p>
+      <div class="dots"></div>
+      <p>275mt</p>
+    </div>
+    <div class="description">130g de nhama + queijo mozzarella + molhos.</div>
+
+    <div class="plate">
+      <p>Cafrial</p>
+      <div class="dots"></div>
+      <p>360mt</p>
+    </div>
+    <div class="description">2 hambúrgueres de 130g + queijo + molhos.</div>
+
+    <div class="plate">
+      <p>Pro Max</p>
+      <div class="dots"></div>
+      <p>245mt</p>
+    </div>
+    <div class="description">Filete de galinha panado + molhos.</div>
+  </div>
+
+  <!-- Pizzas -->
+  <div class="card" id="pizzas">
+    <div class="title border">Pizzas</div>
+
+    <div class="plate">
+      <p>Frango & Cogumelos</p>
+      <div class="dots"></div>
+      <p>700mt</p>
+    </div>
+    <div class="description">Deliciosa combinação de frango suculento e cogumelos frescos.</div>
+
+    <div class="plate">
+      <p>Margarita</p>
+      <div class="dots"></div>
+      <p>700mt</p>
+    </div>
+    <div class="description">Tomate, mozzarella e manjericão frescos para um clássico italiano.</div>
+
+    <div class="plate">
+      <p>Atum</p>
+      <div class="dots"></div>
+      <p>700mt</p>
+    </div>
+    <div class="description">Pizza leve com atum, ideal para amantes de frutos do mar.</div>
+
+    <div class="plate">
+      <p>Mexicana</p>
+      <div class="dots"></div>
+      <p>700mt</p>
+    </div>
+    <div class="description">Sabor picante com pimentos, cebola e carne temperada.</div>
+
+    <div class="plate">
+      <p>4 Estações</p>
+      <div class="dots"></div>
+      <p>700mt</p>
+    </div>
+    <div class="description">Uma pizza com quatro sabores tradicionais em uma só.</div>
+  </div>
+
+</div>
+
+
+  <!-- Rodapé -->
+  <p style="text-align: center; padding: 2rem;">&copy; 2025 YUMMY - Todos os direitos reservados.</p>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const pills = document.querySelectorAll(".pill");
+    let index = 0;
+
+    if (pills.length === 0) return;
+
+    function activatePill() {
+      // Remove active de todas
+      pills.forEach(pill => pill.classList.remove("active"));
+      // Adiciona active na atual
+      pills[index].classList.add("active");
+      // Simula clique para scroll
+      pills[index].click();
+
+      index = (index + 1) % pills.length;
+    }
+
+    activatePill(); // inicia mostrando a primeira
+    setInterval(activatePill, 10000);
+  });
+</script>
+
+
+</body>
+</html>
