@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yummy- EasyMenu</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="icon" type="image/png" href="./img/favicon.jpg">
+  <meta name="author" content="Mohamad Tarik Suleman">
+  <meta name="description" content="Menu Digital da Yummy - TakeAway">
+  <meta name="copyright" content="©2025, Mohamad Tarik Suleman.">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2NV25ZVPXW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-2NV25ZVPXW');
+  </script>
+</head>
+<body>
+
+  
+  <nav style="justify-content: center;" class="blur-box">
+    <a href="./index.html" class="logo">YUMMY | MENU</a>
+  </nav>
+  
+  <div class="blur-box navpills" id="category">
+  </div>
+
+
+  <div class="menu">
+     
+  </div>
+
+
+  <p style="text-align: center; padding: 2rem;">&copy; 2025 YUMMY - Todos os direitos reservados.</p>
+
+<script>
+  async function fetchData() {
+    const sheetUrl = "https://docs.google.com/spreadsheets/d/1BKeftPH2l4IXdD0XAcO3g9H7TIwROWdb-E1A21sR6Fg/gviz/tq?tqx=out:json";
+
+    try {
+        const response = await fetch(sheetUrl);
+        const text = await response.text();
+        const jsonData = JSON.parse(text.substring(47, text.length - 2));
+        const rows = jsonData.table.rows;
+
+        const menuContainer = document.querySelector(".menu");
+        const navpillsContainer = document.getElementById("category");
+        const categories = {};
+
+        rows.forEach(row => {
+            let category = row.c[0]?.v;
+            let name = row.c[1]?.v;
+            let price = row.c[2]?.v;
+            let description = (row.c[3]?.v) ? row.c[3]?.v : "";;
+
+            if (!categories[category]) {
+                categories[category] = [];
+            }
+
+            categories[category].push(`
+                    <div class="plate">
+                        <p>${name}</p>
+                        <div class="dots"></div>
+                        <p>${price}mt</p>
+                    </div>
+                    <div class="description">${description}</div>
+            `);
+        });
+
+        Object.keys(categories).forEach(category => {
+            // Create Navpill Item
+            const pill = document.createElement("a");
+            pill.classList.add("pill");
+            pill.href = `#${category.replace(/\s+/g, "-").toLowerCase()}`;
+            pill.textContent = category;
+            navpillsContainer.appendChild(pill);
+
+            // Create Menu Section
+            const categorySection = document.createElement("div");
+            categorySection.classList.add("card");
+            categorySection.id = category.replace(/\s+/g, "-").toLowerCase();
+            categorySection.innerHTML = `<div class="title border">${category}</div>` + categories[category].join("");
+            menuContainer.appendChild(categorySection);
+        });
+
+    } catch (error) {
+        console.error("Error fetching data:", error);
+    }
+}
+
+fetchData();
+
+</script>
+</body>
+</html>
