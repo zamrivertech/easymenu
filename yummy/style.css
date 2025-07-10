@@ -1,216 +1,134 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
-
-/* Universal Selector Start */
-
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-size: 16px;
-    text-decoration: none;
-    list-style-type: none;
-    font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-section {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+html, body {
+  height: 100%;
+  font-size: 1.5vw;
+  font-family: 'Chewy', cursive;
+  background-color: #b31313;
+  color: white;
+  overflow: hidden;
 }
 
-h1, h2 {
-    text-align: center;
+body {
+  display: flex;
+  flex-direction: column;
+  padding: 2vw;
+  position: relative;
 }
 
-h1 {
-   font-size: 2rem;
+/* Header Section */
+header {
+  text-align: center;
+  margin-bottom: 2vh;
+  flex-shrink: 0;
 }
 
-h2 {
-    font-size: 1.8rem;
+header h1 {
+  font-size: 3.5vw;
+  color: #ffcc00;
 }
 
-/* Universal Selector End */
-
-/* Universal Class Start */
-
-.title {
-    font-size: 2.6rem;
+.animated-pedido {
+  font-size: 2.5vw;
+  margin-top: 0.5vw;
+  animation: floatY 2s ease-in-out infinite;
 }
 
-/* Universal Class End */
-
-/* Hero Start */
-
-.hero {
-    position: relative;
-}
-
-.hero #background {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    object-fit: fill;
-}
-
-.hero .content {
-    position: absolute;
-    top: 0;
-    background: rgba(0, 0, 0, 0.5);
-    color: #f1f1f1;
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-
-/* Hero End */
-
-/* Hero Navigation Start */
-
-nav {
-    position: fixed;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 16px;
-}
-
-nav ul li {
-   display: inline-block;
-   margin: 8px 8px;
-}
-
-nav ul li a {
-    color: white;
-}
-
-nav .logo img {
-    width: 60px;
-}
-
-/* Hero Navigation End */
-
-/* Hero Text Start */
-
-.hero .content .text {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    gap: 12px;
-}
-
-/* Hero Text End */
-
-
-/* About Start */
-
-.about {
-    background-image: url('./img/water_fun.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.about .content {
-  
-    background: rgba(0, 0, 0, 0.5);
-    height: 100vh; 
-    display: flex; 
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 32px;
-    
-}
-
-.about .content h2 {
-    color: white;
-}
-
-.cards {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    flex-wrap: wrap;
-}
-
-.cards .card {
-    color: white;
-    flex-basis: 300px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin: 0px 22px;
-}
-
-.cards .card .body {
-    text-align: justify;
-}
-
-/* About End */
-
-/* Contact Start */
-
-.contact {
-    background: url('./img/kid-drinking-water.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.contact .content {
-   display: flex;
-   flex-direction: column;
-   gap: 16px;
-   justify-content: center;
-   align-items: center;
-   background: rgba(0, 0, 0, 0.5);
-   width: 100%;
-   height: 100vh;
-   color: white;
-}
-
-.contact .content form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
- }
-
- .contact .content form input {
-    background: transparent;
-    border: none;
-    border-bottom: white 2px solid;
- }
-
- .contact .content form textarea {
-    background: transparent;
-    border: none;
-    border-bottom: white 2px solid;
- }
-
- .contact .content form button {
-    border: black;
-    background: white;
-    border-radius: 8px;
-    padding: 6px;
- }
-
-
-
-/* Contact End */
-
-
-
-/*
-@media screen and (max-width: 800px) {
-    .hero {
-      color: blue;
-    }
+@keyframes floatY {
+  0%, 100% {
+    transform: translateY(0);
   }
-*/
+  50% {
+    transform: translateY(-1vw);
+  }
+}
+
+/* Main Menu Section */
+main.menu {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 2vw;
+}
+
+/* Each Menu Item */
+.item {
+  display: flex;
+  align-items: center;
+  gap: 1.5vw;
+  padding: 1.5vw;
+  border-radius: 1vw;
+  box-shadow: 0 0 1vw rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+/* Top and Bottom Styling */
+.item.top {
+  background-color: white;
+  color: black;
+}
+.item.bottom {
+  background-color: #ffcc00;
+  color: #000;
+}
+
+/* Image Styling */
+.item img {
+  width: 12vw;
+  object-fit: cover;
+  border-radius: 1vw;
+  flex-shrink: 0;
+}
+
+/* Text Info Styling */
+.info {
+  flex: 1;
+  text-align: right;
+}
+
+.info h3 {
+  font-size: 2vw;
+  margin-bottom: 0.5vw;
+}
+
+.info p {
+  font-size: 1.3vw;
+  line-height: 1.4;
+}
+
+.price {
+  display: inline-block;
+  margin-top: 1vw;
+  background-color: #b31313;
+  color: white;
+  padding: 0.5vw 1vw;
+  border-radius: 1vw;
+  font-weight: bold;
+  font-size: 1.8vw;
+}
+
+/* Corner Decorations */
+.corner {
+  position: absolute;
+  width: 6vw;
+  height: 6vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+  animation: floatCorner 4s ease-in-out infinite;
+  z-index: 0;
+}
+
+.top-left    { top: 0;    left: 0;    background-image: url('./img/tomato.png'); }
+.top-right   { top: 0;    right: 0;   background-image: url('./img/tomato.png'); }
+.bottom-left { bottom: 0; left: 0;    background-image: url('./img/tomato.png'); }
+.bottom-right{ bottom: 0; right: 0;   background-image: url('./img/tomato.png'); }
+
+@keyframes floatCorner {
+  0%, 100% { transform: translateY(0px); }
+  50%      { transform: translateY(-0.5vw); }
+}
