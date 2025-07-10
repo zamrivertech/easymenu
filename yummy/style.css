@@ -63,7 +63,6 @@ main.menu {
   display: flex;
   align-items: center;
   margin: 1.5vw;
-  width: calc(50% - 3vw);
   padding: 1.5vw;
   border-radius: 1vw;
   box-shadow: 0 0 1vw rgba(0, 0, 0, 0.3);
