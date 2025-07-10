@@ -55,14 +55,15 @@ main.menu {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 2vw;
+  margin: -1.5vw;
 }
 
 /* Each Menu Item */
 .item {
   display: flex;
   align-items: center;
-  gap: 1.5vw;
+  margin: 1.5vw;
+  width: calc(50% - 3vw);
   padding: 1.5vw;
   border-radius: 1vw;
   box-shadow: 0 0 1vw rgba(0, 0, 0, 0.3);
