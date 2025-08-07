@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EasyMenu | Zambezi River Services</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#1a1a1a" />
+  <style>
+    :root {
+      --color-bg: #121212;
+      --color-text: #f0f0f0;
+      --color-accent: #00bfa5;
+      --font-family: 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-family);
+      background-color: var(--color-bg);
+      color: var(--color-text);
+    }
+
+    header, footer {
+      padding: 1rem;
+      background-color: #1f1f1f;
+      text-align: center;
+    }
+
+    main {
+      padding: 2rem;
+    }
+
+    .btn-primary {
+      background-color: var(--color-accent);
+      color: #fff;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background-color: #009e8f;
+    }
+
+    ul.menu-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul.menu-list li {
+      margin: 0.5rem 0;
+    }
+
+    ul.menu-list a {
+      color: var(--color-accent);
+      text-decoration: none;
+    }
+
+    ul.menu-list a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>EasyMenu</h1>
+    <p>by Zambezi River Services</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Menus Disponíveis</h2>
+      <ul class="menu-list" id="menuList">
+        <!-- Dynamic links will be injected here -->
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <small>&copy; 2025 Zambezi River Services. Todos os direitos reservados.</small>
+  </footer>
+
+  <script>
+    async function loadMenus() {
+      try {
+        const response = await fetch('menus.json');
+        const menus = await response.json();
+        const list = document.getElementById('menuList');
+
+        menus.forEach(menu => {
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = menu.path;
+          a.textContent = menu.name;
+          li.appendChild(a);
+          list.appendChild(li);
+        });
+      } catch (error) {
+        console.error('Erro ao carregar menus:', error);
+      }
+    }
+
+    loadMenus();
+  </script>
+</body>
+</html>
