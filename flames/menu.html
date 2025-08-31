@@ -19,10 +19,10 @@
 </head>
 <body>
   <!-- Navbar -->
-  <nav>
+  <nav style="padding: 1rem;">
     <ul>
       <li><a href="./index.html">Início</a></li>
-      <li><a href="./pdf.html"><img src="./img/logo.png" alt="ExpressChicken Logo" class="logo" /></a></li>
+      <li><span class="logo" style="font-size: 35px;">FLAMES</span></li>
       <li><a href="./index.html#about">Sobre</a></li>
     </ul>
     <div class="nav-pills-container">
@@ -76,16 +76,16 @@
       const card = document.createElement('div');
       card.className = 'category-card';
       card.id = safeId;
+      card.style.backgroundColor = 'var(--background-color)';
 
       card.innerHTML = `
         <div class="menu-header">
-          <img src="${categoryItems[0]["Image"] || './img/default.png'}" alt="${category}" />
           <h2>${category}</h2>
         </div>
         ${categoryItems.map(item => `
           <div class="plate">
             <strong>${item["Name"]}</strong> <span class='price'>${item["Price (MT)"]} MT</span>
-            <small class="description">${item["Description"]}</small>
+            <small class="description" style="text-align:center;">${item["Description"] || ''}</small>
           </div>  
         `).join('')}
       `;
