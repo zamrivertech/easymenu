@@ -310,10 +310,10 @@
         const grid = document.createElement('div');
         grid.className = 'menu-grid';
         catGroup.forEach(category => {
-          if (!categories.includes(category)) return;
-          const catItems = items.filter(i => i["Category"] === category);
-          if (catItems.length === 0) return;
-          const block = createCategoryBlock(category, catItems);
+          if (!categories.includes(category)) return; const 
+          catItems = items.filter(i => i["Category"] === 
+          category); if (catItems.length === 0) return; const 
+          block = createCategoryBlock(category, catItems); 
           grid.appendChild(block);
         });
         page.appendChild(grid);
