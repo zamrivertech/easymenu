@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ExpressChicken | Menu</title>
+  <meta name="description" content="Veja o menu completo do ExpressChicken. Frango grelhado, sanduíches, salgadinhos e bebidas em Tete." />
+  <meta name="keywords" content="menu, frango, sanduíches, bebidas, ExpressChicken, Tete" />
+  <meta name="author" content="Zambezi River Services" />
+  <meta property="og:title" content="ExpressChicken | Menu Digital" />
+  <meta property="og:description" content="Explore nosso menu completo e faça seu pedido para takeaway." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_MZ" />
+  <meta name="theme-color" content="#E22218" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="./img/favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <nav>
+    <ul>
+      <li><a href="./index.html">Início</a></li>
+      <li><a href="./pdf.html"><img src="./img/logo.png" alt="ExpressChicken Logo" class="logo" /></a></li>
+      <li><a href="./index.html#about">Sobre</a></li>
+    </ul>
+    <div class="nav-pills-container">
+      <div class="nav-pills">
+        <!-- Nav pills will be injected here -->
+      </div>
+    </div>
+  </nav>
+  
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <div class="menu">
+    <!-- Menu cards will be injected here -->
+  </div>
+  
+
+<script>
+  const SHEET_URL = 'https://gsx2json.com/api?id=1hLQqPbEG-AKG8PpNkghQUhR_CFnhLbXU1XAZlgiWb30&sheet=menu';
+  const CACHE_KEY = 'expressChickenMenuCache';
+
+  function slugify(text) {
+    if (typeof text !== 'string') return '';
+    return text.toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/\s+/g, '-')
+      .replace(/[^\w\-]+/g, '');
+  }
+
+  function renderMenu(data) {
+    const items = data.rows;
+    const categories = [...new Set(items.map(i => i["Category"]))];
+    const menuContainer = document.querySelector('.menu');
+    const navPills = document.querySelector('.nav-pills');
+
+    menuContainer.innerHTML = '';
+    navPills.innerHTML = '';
+
+    categories.forEach(category => {
+      const safeId = slugify(category);
+      const categoryItems = items.filter(i => i["Category"] === category);
+
+      const pill = document.createElement('a');
+      pill.href = `#${safeId}`;
+      pill.textContent = category;
+      navPills.appendChild(pill);
+
+      const card = document.createElement('div');
+      card.className = 'category-card';
+      card.id = safeId;
+
+      card.innerHTML = `
+        <div class="menu-header">
+          <img src="${categoryItems[0]["Image"] || './img/default.png'}" alt="${category}" />
+          <h2>${category}</h2>
+        </div>
+        ${categoryItems.map(item => `
+          <div class="plate">
+            <strong>${item["Name"]}</strong> <span class='price'>${item["Price (MT)"]} MT</span>
+            <small class="description">${item["Description"]}</small>
+          </div>  
+        `).join('')}
+      `;
+
+      menuContainer.appendChild(card);
+    });
+  }
+
+  fetch(SHEET_URL)
+    .then(res => {
+      if (!res.ok) {
+        if (res.status === 429) {
+          console.warn("Quota exceeded — using cached data.");
+          const cached = localStorage.getItem(CACHE_KEY);
+          if (cached) {
+            renderMenu(JSON.parse(cached));
+          } else {
+            console.error("Quota exceeded and no cached data available.");
+          }
+        } else {
+          throw new Error(`HTTP error ${res.status}`);
+        }
+      } else {
+        return res.json();
+      }
+    })
+    .then(data => {
+      if (data && data.rows && Array.isArray(data.rows)) {
+        localStorage.setItem(CACHE_KEY, JSON.stringify(data));
+        renderMenu(data);
+      }
+    })
+    .catch(err => {
+      console.error("Fetch error:", err);
+    });
+</script>
+
+
+
+
+</body>
+</html>
