@@ -128,7 +128,7 @@ nav ul li a:hover {
     letter-spacing: 12px;
     font-size: 1.2rem;
     color: red;
-    opacity: 0.4;
+    opacity: 1;
     text-transform: uppercase;
     font-weight: bold;
     pointer-events: none;
