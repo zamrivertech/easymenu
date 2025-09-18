@@ -15,9 +15,9 @@
   <!-- NAV -->
   <nav>
     <ul>
-      <li><a href="#about">Sobre</a></li>
+      <li><a href="#home">Home</a></li>
       <li></li>
-      <li><a href="#contact">Contato</a></li>
+      <li><a href="#sobre">Sobre</a></li>
     </ul>
   </nav>
 
@@ -31,12 +31,21 @@
     </div>
   </section>
 
+
+<select id="phone">
+  <option value="" disabled selected>📞</option>
+  <option value="tel:855979819">85 597 9819</option>
+  <option value="tel:878879819">87 887 9819</option>
+</select>
+
   <!-- ABOUT -->
   <section id="about" class="restaurants">
     <h2>Sobre a FLAMES</h2>
-    <p style="text-align: center; margin-bottom: 1rem;">A FLAMES é mais que um restaurante — é uma experiência gastronômica que mistura sabor, ambiente acolhedor e os melhores cocktails. <br> Venha descobrir o rodízio que conquistou Tete.</p>
+    <p style="text-align: center; margin-bottom: 1rem;">A FLAMES é mais que um restaurante... <br> é uma experiência gastronômica que mistura sabor, ambiente acolhedor e os melhores cocktails. Venha descobrir o rodízio que conquistou Tete.
+
+    
+    <!-- 
     <div class="restaurant-cards">
-      <!-- Restaurante 1 -->
       <div class="card">
         <img src="./img/cidade.webp" alt="FLAMES - Centro da Cidade, Tete">
         <h3>FLAMES - Centro da Cidade</h3>
@@ -47,8 +56,8 @@
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3642.6183784712475!2d33.586730574906184!3d-16.156872084535355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1926473e1ed08a47%3A0x6cc9b840b67830db!2sFLAMES!5e1!3m2!1sen!2smz!4v1755633099001!5m2!1sen!2smz" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
-
-      <!-- Restaurante 2 -->
+      Restaurante 1 -->
+      <!-- Restaurante 2 
       <div class="card">
         <img src="./img/matema.jpg" alt="FLAMES - Matema, Entrada de Seta">
         <h3>FLAMES - Matema</h3>
@@ -59,20 +68,17 @@
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d765.8424536075752!2d33.62198537913913!3d-16.137162821661203!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x192649a0fa779c05%3A0x78be096899256229!2sFlames!5e1!3m2!1sen!2smz!4v1755633021580!5m2!1sen!2smz" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
-
     </div>
+          -->
   </section>
 
   <!-- CONTACT -->
   <section id="contact">
     <footer>
-      <p>&copy; 2025 FLAMES - Todos os direitos reservados.</p>
-      <p>📞 85 597 9819 | 87 887 9819 | 84 519 4813</p>
-      <p>
         <a href="https://www.instagram.com/flames_mz/?hl=pt" target="_blank">Instagram</a> |
         <a href="https://www.facebook.com/people/Flames_mz/100092700290977/" target="_blank">Facebook</a> |
         <a href="https://chat.whatsapp.com/KhtNKA6TACH4i1qY8BuYUf" target="_blank">WhatsApp</a>
-      </p>
+        <p>&copy; 2025 FLAMES - Todos os direitos reservados.</p>
     </footer>
   </section>
 <script>
@@ -92,6 +98,13 @@
     <div class="hero-name">${name}</div>
   `;
 </script>
-
+<script>
+  document.getElementById('phone').addEventListener('change', function () {
+    const number = this.value;
+    if (number) {
+      window.location.href = number;
+    }
+  });
+</script>
 </body>
 </html>

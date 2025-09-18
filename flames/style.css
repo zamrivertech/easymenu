@@ -162,6 +162,31 @@ nav ul li a:hover {
   border-color: transparent;
 }
 
+.menu-button {
+  font-family: Cinzel, serif;
+  display: inline-block;
+  padding: 4px 16px;
+  border: 3px solid var(--primary-color);
+  background: rgba(255, 19, 19, 0.4);
+  color: var(--primary-color);
+  transition: 0.4s ease;
+  font-weight: bold;
+}
+
+.menu-button:hover {
+  border: 3px solid var(--logo-color);
+  background: var(--primary-color);
+  color: var(--logo-color);
+}
+
+.menu-button.active {
+  border: 3px solid var(--logo-color);
+  background: var(--primary-color);
+  color: var(--logo-color);
+}
+
+
+
 /* SECTION */
 section {
   padding: 4rem 2rem;
@@ -287,14 +312,17 @@ section {
   scroll-margin-top: 200px;
   border: 4px solid var(--logo-color);
   margin: 1rem;
-  max-width: 460px;
+  min-width: 260px;
+  max-width: 400px;
   padding: 1rem;
   background-color: var(--primary-color);
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .category-card .menu-header {
-  margin-top: 20px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 .category-card h2 {
@@ -333,7 +361,6 @@ section {
 
 /* FOOTER */
 footer {
-  background: #111;
   padding: 2rem;
   text-align: center;
   color: var(--footer-text-color);
@@ -348,9 +375,47 @@ footer a:hover {
   color: var(--logo-color);
 }
 
+/* Floating Phone Selector */
+#phone {
+  position: fixed;
+  bottom: 40px;
+  left: 20px;
+  border-radius: 50px;
+  width: 50px;
+  height: 50px;
+  padding: 0 12px;
+  font-size: 16px;
+  color: white;
+  border: 3px solid var(--logo-color);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  appearance: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#phone:hover {
+  background-color: var(--logo-color);
+  border-color: var(--primary-color);
+}
+
+#phone:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--primary-color);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .hero-content h1 {
     font-size: 2rem;
   }
 }
+
+.hero-name {
+  color: var(--logo-color);
+  animation: fogo 1s infinite alternate;
+}
+
+    @keyframes fogo {
+      0% { text-shadow: 0 0 8px #ff3b30, 0 0 16px #ff6f61; }
+      100% { text-shadow: 0 0 16px #ff3b30, 0 0 32px #ff6f61; }
+    }
