@@ -1,10 +1,10 @@
-:root {
-      --color-primary: #E22218;
-      --color-accent: #FFF501;
-      --color-bg: #FFF8F0;
-      --color-dark: #323232;
-      --color-trust: #2E7D32;
-      --color-white: #FFFFFF;
+    :root {
+      --color-primary: #3f7733;     /* Olive Green – matches burger */
+      --color-accent: #F4C95D;      /* Honey Yellow – warm and appetizing */
+      --color-bg: #FFF8F0;          /* Creamy Beige – soft, food-friendly background */
+      --color-dark: #4A4A4A;        /* Charcoal Gray – matches wings and text */
+      --color-trust: #5C8D89;       /* Muted Teal – calm, trustworthy accent */
+      --color-white: #FFFFFF;       /* Pure White – for contrast and clarity */
     }
 
     html {
@@ -31,8 +31,9 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
-    nav .logo {
-      height: 60px;
+    nav .logo img {
+      padding-top: 6px;
+      width: 170px;
     }
 
     nav ul {
