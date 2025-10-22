@@ -1,246 +1,132 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TV Menu Display</title>
-  <link rel="icon" href="./img/favicon.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <title>Smart TV Interface</title>
   <style>
-    * { box-sizing: border-box; }
-    body {
+    /* Reset and base styles */
+    * {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: black;
-      color: white;
-      overflow: hidden;
+      padding: 0;
+      box-sizing: border-box;
     }
-    header {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      z-index: 1000;
-    }
-    #logo {
-      width: 120px;
-      cursor: pointer;
-    }
-    #dropdown {
-      position: absolute;
-      top: 140px;
-      left: 20px;
-      background: rgba(0,0,0,0.8);
-      padding: 1rem;
-      border-radius: 8px;
-      display: none;
-    }
-    #dropdown button {
-      display: block;
-      margin: 0.5rem 0;
-      font-size: 1.5rem;
-      background: #E22218;
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-    }
-    #background-container {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-    }
-    #bg-image, #bg-video {
-      position: absolute;
+
+    html, body {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      z-index: -1;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-    }
-    #menu-display {
-      position: absolute;
-      top: 100px;
-      left: 50px;
-      right: 50px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    #category-title {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      text-shadow: 2px 2px 4px black;
-    }
-    .menu-columns {
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    #image-column img {
-      width: 300px;
-      border-radius: 12px;
-    }
-    #plate-column {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      max-width: 600px;
-    }
-    .plate {
-      font-size: 2rem;
-      background: rgba(255,255,255,0.1);
-      padding: 1rem;
-      border-radius: 8px;
-    }
-    footer {
-      position: absolute;
-      bottom: 20px;
-      right: 20px;
-      z-index: 1000;
-    }
-    footer button {
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: #fff;
       font-size: 1.2rem;
-      margin-left: 1rem;
-      padding: 0.5rem 1rem;
-      background: #E22218;
-      color: white;
-      border: none;
-      cursor: pointer;
+      overflow: hidden;
     }
+
+    main {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    main * {
+      flex: 1;
+      height: 90vh;
+      margin: 2rem;
+    }
+
+    main .left {
+      background: red;
+    }
+
+    main .right {
+      background: blue;
+      display: flex;
+      flex-direction: column;
+      
+    }
+
+    main .right * {
+      margin: 0;
+    }
+
+    main .right .items * {
+      margin: 0;
+    }
+ 
+    main .right .all {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    main .right .items {
+      display: flex;
+      flex-direction: column;
+
+    }
+
+    main .right .items .item {
+      display: flex;
+      height: 0;
+      width: 0;
+    
+    }
+
+    main .right .title {
+      font-size: 2rem;
+    }
+
+
+
+    
+
   </style>
 </head>
 <body>
-  <header>
-    <img src="./img/logo.png" id="logo" alt="Logo" />
-    <div id="dropdown">
-      <button data-subgroup="Sanduíches">Sanduíches</button>
-      <button data-subgroup="Hambúrgueres">Hambúrgueres</button>
-      <button data-subgroup="Salgadinhos">Salgadinhos</button>
-      <button data-subgroup="Acompanhamentos">Acompanhamentos</button>
-      <button data-subgroup="Frango Panado">Frango Panado</button>
-      <button data-subgroup="Frango Zambeziana">Frango Zambeziana</button>
-      <button data-subgroup="Frango Limão e Alho">Frango Limão e Alho</button>
-      <button data-subgroup="Frango Paprika">Frango Paprika</button>
-      <button data-subgroup="Bebidas">Bebidas</button>
-    </div>
-  </header>
-
-  <main id="background-container">
-    <video id="bg-video" autoplay muted loop></video>
-    <img id="bg-image" />
-    <div id="menu-display">
-      <h1 id="category-title"></h1>
-      <div class="menu-columns">
-        <div id="image-column"></div>
-        <div id="plate-column"></div>
+  <main>
+    <section class="left">
+      <img src="./img/Acompanhamentos.png" alt="">
+    </section>
+    <section class="right">
+      <div class="title">Bebidas</div>
+      <div class="all">
+        <div class="items">Quentes
+          <div class="item">
+            <div class="name">Cafe Expresso</div>
+            <div class="price">70MT</div>
+          </div>
+          <div class="item">
+            <div class="name">Cafe Duplo</div>
+            <div class="price">120MT</div>
+          </div>
+          <div class="item">
+            <div class="name">Black Coffee</div>
+            <div class="price">120MT</div>
+          </div>  
+          <div class="item">
+            <div class="name">Expresso Machiato</div>
+            <div class="price">150MT</div>
+          </div>        
+        </div>
+        <div class="items">Frias
+          <div class="item">
+            <div class="name">Cafe Expresso</div>
+            <div class="price">70MT</div>
+          </div>
+          <div class="item">
+            <div class="name">Cafe Duplo</div>
+            <div class="price">120MT</div>
+          </div>
+          <div class="item">
+            <div class="name">Black Coffee</div>
+            <div class="price">120MT</div>
+          </div>  
+          <div class="item">
+            <div class="name">Expresso Machiato</div>
+            <div class="price">150MT</div>
+          </div>        
+        </div>
       </div>
-    </div>
+    </section>
   </main>
-
-  <footer>
-    <button id="download-image">Download Image</button>
-    <button id="download-video">Download Video</button>
-  </footer>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/ccapture.js@1.1.0/build/CCapture.all.min.js"></script>
-  <script>
-    const SHEET_URL = 'https://gsx2json.com/api?id=1LYxI_yZBT3jlNj8FLDCvkhAjDnB9GgdGbLU1aRukB7Y&sheet=Menu';
-    let menuData = [];
-    let currentIndex = 0;
-    let currentSubgroup = 'Sanduíches';
-
-    const bgImage = document.getElementById('bg-image');
-    const bgVideo = document.getElementById('bg-video');
-
-    async function fetchMenu() {
-      const res = await fetch(SHEET_URL);
-      const json = await res.json();
-      menuData = json.rows || [];
-      startSlideshow();
-    }
-
-    function startSlideshow() {
-      setInterval(() => {
-        const filtered = menuData.filter(item => item['Subgroup'] === currentSubgroup);
-        const pageItems = filtered.slice(currentIndex, currentIndex + 8);
-        updateDisplay(pageItems);
-        currentIndex = (currentIndex + 8) % filtered.length;
-      }, 8000);
-    }
-
-    function updateDisplay(items) {
-      const title = document.getElementById('category-title');
-      const imageCol = document.getElementById('image-column');
-      const plateCol = document.getElementById('plate-column');
-
-      title.textContent = currentSubgroup;
-      imageCol.innerHTML = '';
-      plateCol.innerHTML = '';
-
-      if (items[0]) {
-        const img = document.createElement('img');
-        img.src = items[0].Image || './img/default.png';
-        imageCol.appendChild(img);
-      }
-
-      items.forEach(item => {
-        const div = document.createElement('div');
-        div.className = 'plate';
-        div.innerHTML = `<strong>${item.Name}</strong> - ${item['Price (MT)']} MT<br><small>${item.Description || ''}</small>`;
-        plateCol.appendChild(div);
-      });
-    }
-
-    document.getElementById('logo').addEventListener('click', () => {
-      const dropdown = document.getElementById('dropdown');
-      dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
-    });
-
-    document.querySelectorAll('#dropdown button').forEach(btn => {
-      btn.addEventListener('click', () => {
-        currentSubgroup = btn.dataset.subgroup;
-        currentIndex = 0;
-        updateBackground(currentSubgroup);
-      });
-    });
-
-    function updateBackground(subgroup) {
-      bgImage.style.opacity = 0;
-      bgVideo.style.opacity = 0;
-
-      if (subgroup === 'Bebidas') {
-        bgVideo.src = './img/burger_hero.gif';
-        bgVideo.style.opacity = 1;
-      } else {
-        const imgPath = `./img/${subgroup}.png`;
-        bgImage.src = imgPath;
-        bgImage.style.opacity = 1;
-      }
-    }
-
-    document.getElementById('download-image').addEventListener('click', () => {
-      html2canvas(document.getElementById('menu-display')).then(canvas => {
-        const link = document.createElement('a');
-        link.download = 'menu.png';
-        link.href = canvas.toDataURL();
-        link.click();
-      });
-    });
-
-    document.getElementById('download-video').addEventListener('click', () => {
-      const capturer = new CCapture({ format: 'webm' });
-      capturer.start();
-      setTimeout(() => {
-        capturer.capture(document.getElementById('menu-display'));
-        capturer.stop();
-        capturer.save();
-      }, 3000);
-    });
-
-    fetchMenu();
-  </script>
 </body>
 </html>
