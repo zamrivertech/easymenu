@@ -1,0 +1,129 @@
+:root {
+      --color-primary: rgb(54,31,20);
+      --color-accent: rgb(57,74,62);
+      --color-bg: rgb(225,225,206);
+      --color-trust: rgb(218,189,124);
+      --color-white: white;
+
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--color-bg);
+      color: var(--color-dark);
+    }
+
+    a {
+      color: var(--color-bg);
+      text-decoration: none;
+    }    
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: var(--color-primary);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    nav .logo {
+      height: 75px;
+      margin: 0;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      margin-right: 60px;
+      padding: 0;
+    }
+
+    nav a {
+      color: var(--color-bg);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      height: 83vh;
+      padding: 6rem 2rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: 1rem;
+    }
+
+    #home {
+      background-color: var(--color-bg);
+      color: var(--color-primary);
+    }
+
+    #about {
+      background-color: var(--color-primary);
+      color: var(--color-bg);
+    }
+
+    .hero-text {
+      max-width: 600px;
+      font-size: 1.5rem;
+    }
+
+    .hero-text h1 span {
+      background-color: var(--color-primary);
+      color: var(--color-trust);
+      padding: 6px;
+      font-style: italic;
+    } 
+    
+    .hero-text p {
+      font-size: 1.15rem;
+      margin-bottom: 0;
+    }    
+
+    .menu-button {
+      background-color: var(--color-accent);
+      color: var(--color-bg);
+      border: none;
+      margin-top: 1rem;
+      padding: .7rem 1.7rem;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: .3s;
+    }
+
+    .menu-button:hover {
+      background-color: var(--color-primary);
+    }
+
+    .info-block {
+      max-width: 600px;
+      margin-top: 1rem;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .highlight {
+      color: var(--color-trust);
+      font-weight: bold;
+    }
+
+
