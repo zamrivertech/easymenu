@@ -12,5 +12,8 @@
 1 - Add menu content to spreadsheet
 2 - Categorise by description (subcategories) #NO need
 3 - Re-design pdf pages
+    3.1. Add dashed
 4 - Organise menu content in pdf page using arrays 
-6 - Only has to be 2 pages
+5 - Only has to be 2 pages
+6 - Pdf menu error (sheet alternative, remember the copilot chat)
+7 - Add a pdf button (public or private)

@@ -93,7 +93,7 @@
           ${categoryItems.map(item => `
             <div class="plate">
               <strong>${item["Name"]}</strong> <span class='price'>${item["Price (MT)"]} MT</span>
-              <small class="description">${item["Description"]}</small>
+              <small class="description">${item["Description"] ? item["Description"] : ""}</small>
             </div>  
           `).join('')}
         `;

@@ -130,8 +130,8 @@
             const item = group[0];
             return `<div class="plate">
               <strong>${item["Name"]}</strong>
+              <div class="dashed"></div>
               <span class="price">${item["Price (MT)"]} MT</span>
-              <span class="description">${item["Description"] || ''}</span>
             </div>`;
           } else {
             // Multiple portions/variants for this name

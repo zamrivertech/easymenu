@@ -428,6 +428,10 @@ section {
       object-fit: cover;
     }
 
+    .category-card .plate {
+      max-height: fit-content;
+    }
+
     .menu-header {
       display: flex;
       flex-direction: row-reverse;
@@ -493,4 +497,15 @@ section {
     .description {
       color: var(--color-dark);
       font-style: italic;
+    }
+
+    .dashed {
+      flex: 1;
+      border-bottom: dashed var(--color-primary) 2px;
+      width: 10px;
+      height: 10px;
+    }
+
+    .category-block .plate {
+      justify-content: space-between;
     }
