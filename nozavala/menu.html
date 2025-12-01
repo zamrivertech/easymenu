@@ -44,7 +44,7 @@
 
 <script>
   
-  const SHEET_URL = 'https://gsx2json.com/api?id=166JR2YkWszyUvnbM33x1mpiK6HvQVs_e_87tYf2wYug&sheet=Menu';
+  const SHEET_URL = 'https://gsx2json.com/api?id=1sbaGlBL0KrG9i9jUQZubnc9d-vSif8QCg8JE_o0xELI&sheet=Menu';
 
   function slugify(text) {
     if (typeof text !== 'string') return '';
@@ -88,7 +88,6 @@
 
         card.innerHTML = `
           <div class="menu-header">
-            <img src="${categoryItems[0]["Image"] || './img/default.png'}" alt="${category}" />
             <h2>${category}</h2>
           </div>
           ${categoryItems.map(item => `

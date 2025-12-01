@@ -67,10 +67,10 @@
     // Example: [['Sanduíches', 'Hambúrgueres'], ['Salgadinhos', 'Acompanhamentos'], ...]
     // Or just a flat array for a single page: ['Sanduíches', 'Hambúrgueres', ...]
     const CATEGORY_ORDER = [
-      ['Frango Paprika', 'Frango Limão e Alho', 'Frango Zambeziana', 'Frango Panado','Hambúrgueres', 'Acompanhamentos',],
-      ['Salgadinhos', 'Sanduíches','Bebidas']
+      ['Pratos Principais','Pizzas'],
+      []
     ];
-    const SHEET_URL = 'https://gsx2json.com/api?id=166JR2YkWszyUvnbM33x1mpiK6HvQVs_e_87tYf2wYug&sheet=Menu';
+    const SHEET_URL = 'https://gsx2json.com/api?id=1sbaGlBL0KrG9i9jUQZubnc9d-vSif8QCg8JE_o0xELI&sheet=Menu';
     const PAGE_HEIGHT_MM = 297 - 40; // 20mm padding top/bottom
     const PAGE_WIDTH_MM = 210 - 40;  // 20mm padding left/right
 
@@ -116,7 +116,6 @@
       const block = document.createElement('div');
       block.className = 'category-block';
       block.innerHTML = `
-<img src="./img/${category}.png" alt="${category}" onerror="this.onerror=null;this.src='./img/default.png';" />
         <h2>${category}</h2>
         ${Object.keys(grouped).map(name => {
           const group = grouped[name];
@@ -163,8 +162,8 @@
           const header = document.createElement('div');
           header.className = 'header-info';
           header.innerHTML = `
-            <img src="./img/logo.png" alt="ExpressChicken Logo" style="height:56px; margin-bottom:10px;"><br>
-            <strong>EXPRESS CHICKEN MENU</strong>
+            <img src="./img/logo.png" alt="No Zavla Logo" style="height:56px; margin-bottom:10px;"><br>
+            <strong>Restaurante No Zavala</strong>
           `;
           page.appendChild(header);
         }
@@ -185,12 +184,12 @@
           footer.innerHTML = `
             <img src="./img/qr-code.png" alt="ExpressChicken Logo" style="height:150px; margin-bottom:8px;">
             <div class='footer-text'>
-  <strong>ExpressChicken</strong><br>
-  Terça a Domingo, 10:00 - 21:00<br>
-  857450424 - 876269817 <br>
-  Ao lado do Antigo Cinema, 333, Cidade de Tete<br>
-  <span style="font-size:0.95em;">Obrigado pela preferência!</span>
-</div>
+            <strong>ExpressChicken</strong><br>
+            Terça a Domingo, 10:00 - 21:00<br>
+            857450424 - 876269817 <br>
+            Ao lado do Antigo Cinema, 333, Cidade de Tete<br>
+            <span style="font-size:0.95em;">Obrigado pela preferência!</span>
+          </div>
                 `;
           page.appendChild(footer);
         }
@@ -198,7 +197,7 @@
       });
     }
 
-    fetch('https://gsx2json.com/api?id=166JR2YkWszyUvnbM33x1mpiK6HvQVs_e_87tYf2wYug&sheet=Menu')
+    fetch('https://gsx2json.com/api?id=1sbaGlBL0KrG9i9jUQZubnc9d-vSif8QCg8JE_o0xELI&sheet=Menu')
       .then(res => res.json())
       .then(data => {
         if (!data.rows) {
