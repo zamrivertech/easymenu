@@ -3,4 +3,14 @@
 
 #DONE
 
+1 - DONE
+2 - Still need to organise better
+
+
 #NOT DONE
+
+1 - Add menu content to spreadsheet
+2 - Categorise by description (subcategories) #NO need
+3 - Re-design pdf pages
+4 - Organise menu content in pdf page using arrays 
+6 - Only has to be 2 pages

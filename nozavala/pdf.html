@@ -67,9 +67,16 @@
     // Example: [['Sanduíches', 'Hambúrgueres'], ['Salgadinhos', 'Acompanhamentos'], ...]
     // Or just a flat array for a single page: ['Sanduíches', 'Hambúrgueres', ...]
     const CATEGORY_ORDER = [
-      ['Pratos Principais','Pizzas'],
-      []
+      // Page 1
+      ['Cervejas', 'Soft Drinks', 'Vinhos', 'Bebidas Extra', 'Entradas', 'Petiscos'],
+
+      // Page 2
+      ['Pizzas', 'Carnes', 'Suína', 'Aves', 'Peixes e Mariscos', 'Filetes de Peixe'],
+
+      // Page 3
+      ['Bacalhau', 'Acompanhamento Extra']
     ];
+
     const SHEET_URL = 'https://gsx2json.com/api?id=1sbaGlBL0KrG9i9jUQZubnc9d-vSif8QCg8JE_o0xELI&sheet=Menu';
     const PAGE_HEIGHT_MM = 297 - 40; // 20mm padding top/bottom
     const PAGE_WIDTH_MM = 210 - 40;  // 20mm padding left/right
@@ -162,7 +169,7 @@
           const header = document.createElement('div');
           header.className = 'header-info';
           header.innerHTML = `
-            <img src="./img/logo.png" alt="No Zavla Logo" style="height:56px; margin-bottom:10px;"><br>
+            <img src="./img/logo.png" alt="No Zavala Logo"><br>
             <strong>Restaurante No Zavala</strong>
           `;
           page.appendChild(header);
@@ -178,7 +185,7 @@
         });
         page.appendChild(grid);
         // Add footer only to the second page (idx === 1)
-        if (idx === 1) {
+        if (idx === 2) {
           const footer = document.createElement('div');
           footer.className = 'footer-info';
           footer.innerHTML = `
@@ -226,7 +233,7 @@
         pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
       }
 
-      pdf.save('ExpressChicken_A4.pdf');
+      pdf.save('NoZavala_A4.pdf');
     });
 
   </script>
