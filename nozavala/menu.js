@@ -71,7 +71,7 @@ async function renderDigitalMenu() {
           .map(
             item => `
           <div class="plate">
-            <strong>${item["Name"]}</strong><div class='dashed'></div><span class='price'>${item["Price (MT)"]} MT</span>
+            <strong>${item["Name"]}</strong><div class="dashed"></div><span class='price'>${item["Price (MT)"]} MT</span>
             <small class="description">${item["Description"] || ""}</small>
           </div>
         `
@@ -87,7 +87,7 @@ async function renderDigitalMenu() {
 
 // ---------- PDF Menu (pdf.html) ----------
 const CATEGORY_ORDER = [
-  ["Acompanhamento Extra", "Petiscos", "Pizzas", "Carnes", "Aves", "Peixes e Mariscos","Entradas"],  
+  ["Entradas e Extras", "Petiscos", "Pizzas", "Carnes", "Aves", "Peixes e Mariscos"],  
 
   ["Cervejas", "Soft Drinks", "Vinhos", "Bebidas Extra"]
 ];
