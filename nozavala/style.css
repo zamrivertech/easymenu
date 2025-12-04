@@ -173,7 +173,7 @@ section {
   font-size: 1rem;
   font-weight: 600;
   background-color: var(--color-accent);
-  margin-right: 1rem;
+  margin-right: 0rem;
   text-align: right;
   padding: 4px 10px 4px 10px;
   margin-bottom: 1.4rem;
@@ -232,6 +232,10 @@ section {
   width: 100%;
   grid-auto-flow: dense;
   align-items: stretch;
+}
+
+.menu-row {
+  justify-content: space-between;
 }
 
 .category-block {
@@ -326,22 +330,6 @@ section {
 #exportPngBtn {
   display: block;
   margin: 20px auto 0 auto;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  background: var(--color-primary);
-  color: var(--color-trust);
-  border: none;
-  border-radius: 6px;
-}
-
-#exportPngBtn {
-  margin-top: 10px;
-}
-
-#downloadBtn:hover,
-#exportPngBtn:hover {
-  background: var(--color-primary);
 }
 
 /* ===========================
@@ -550,6 +538,30 @@ section {
 
     .category-block .plate {
       justify-content: space-between;
+    }
+
+    .footer-info .footer-text {
+      background-color: var(--color-accent);
+      color: var(--color-bg);
+      text-align: right;
+      padding: 1rem;
+    }
+
+    .footer-info img {
+      border: var(--color-accent) 4px solid;
+    }
+
+
+    .footer-info-alt {
+      background-color: var(--color-accent);
+      color: var(--color-bg);
+      text-align: center;
+      margin: 2rem 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: .75rem;
+      padding: 0rem;
     }
 
 

@@ -207,12 +207,19 @@ async function renderPdfMenu() {
         page.innerHTML += `<div class="footer-info">
           <img src="./img/qr-code.png" alt="QR" style="height:150px;">
           <div class='footer-text'>
-            <strong>ExpressChicken</strong><br>
-            Terça a Domingo, 10:00 - 21:00<br>
-            857450424 - 876269817 <br>
-            Ao lado do Antigo Cinema, 333, Cidade de Tete<br>
+            <strong>Restaurante No Zavala</strong><br>
+            Segunda a Domingo, 09:00 - 21:00<br>
+            879112092 - 872112092<br>
+            Cruzamento de Seta, Matema, Tete, Moçambique.<br>
             <span style="font-size:0.95em;">Obrigado pela preferência!</span>
           </div>
+        </div>`;
+      }
+
+      if (idx === 0) {
+        page.innerHTML += `<div class="footer-info-alt">
+           <p>Todos os pratos acompanham arroz, batata e salada. Xima é opcional.</p>
+           <p>Aceitamos pagamentos em dinheiro, M-Pesa e cartões.</p>   
         </div>`;
       }
 
