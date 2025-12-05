@@ -8,3 +8,26 @@
    you are still learning and growing for yourself
    Multi language and allow people to test themselves
 
+#What your menu template should have and do
+1 - create rest menus from phone only your auth and clients shoould not know
+2 - is it possible to automate instagram, facebook, whatsapp, x and other social medias and google business with code
+    there is graph api
+    but now the question is what do you want it to do?
+
+    https://learn.microsoft.com/en-us/graph/use-the-api
+    https://developers.google.com/my-business
+    
+#Things you have done already
+
+
+#Things you need to do
+-1 Experiment with and learn 11ty
+0 - create template folder and re-use html, css and js to scale
+   0.1 Brand your bussiness in each folder
+1 -  Privatize your easymenu repo and use vercel
+   1. old qr codes in restaturants to forward to new link
+2 - Your own dashboard to manage menus or google sheets excel
+   brainstorm ideas
+   search best tech stack
+3 - 
+
