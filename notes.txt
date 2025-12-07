@@ -19,9 +19,20 @@
     
 #Things you have done already
 
-
 #Things you need to do
+
+
+
+-3 now prioritze your client
+
+-2 and improve your easymenu page, make it attractive and
+   beautiful
+
 -1 Experiment with and learn 11ty
+   - Learn properly how to use 11ty to your advantage 
+     then implement, do not use AI, you will mess up your
+     project repo and waste time, learn, test, implement,
+     play around then imeplement
 0 - create template folder and re-use html, css and js to scale
    0.1 Brand your bussiness in each folder
 1 -  Privatize your easymenu repo and use vercel
