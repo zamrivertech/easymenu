@@ -1,7 +1,7 @@
 // menu.js
 
 // Use official Google Sheets API
-const SHEET_ID = "1sbaGlBL0KrG9i9jUQZubnc9d-vSif8QCg8JE_o0xELI";
+const SHEET_ID = "1qDj6dzDpbLsOYTNY9MBQtx59q3B2WKF2NeyCPjfuFJ4";
 const API_KEY = "AIzaSyA_88FypaC1s4exlXvKn_x0_28WvZnSLjs";
 const RANGE = "Menu!A:D"; // adjust columns/range to match your sheet
 
@@ -72,8 +72,8 @@ async function renderDigitalMenu() {
             item => `
           <div class="plate">
             <strong>${item["Name"]}</strong><div class="dashed"></div><span class='price'>${item["Price (MT)"]} MT</span>
-            <small class="description">${item["Description"] || ""}</small>
           </div>
+          <small class="description">${item["Description"] || ""}</small>
         `
           )
           .join("")}

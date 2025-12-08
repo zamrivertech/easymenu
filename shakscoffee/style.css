@@ -448,6 +448,11 @@ section {
       width: 100px;
     }
 
+    .category-card .description {
+      font-size: .8rem;
+      text-align: center;
+    }
+
     .category-block h2 {
       font-size: 1.5rem;
     }
