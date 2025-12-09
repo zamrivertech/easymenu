@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Allura&family=Great+Vibes&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');/* ===========================
+@import url('https://fonts.googleapis.com/css2?family=Allura&family=Great+Vibes&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:wght@100..900&display=swap');
+
+/* ===========================
    Root Variables
 =========================== */
 :root {
@@ -35,11 +37,14 @@ nav {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: transparent;
+  height: 120px;
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: transparent; 
+  backdrop-filter: blur(10px); 
+  -webkit-backdrop-filter: blur(10px);
 }
 
 nav .logo {
@@ -57,6 +62,7 @@ nav ul {
   margin: 0;
   margin-right: 60px;
   padding: 1rem 0;
+  margin-bottom: 40px;
 }
 
 nav a {
@@ -386,7 +392,7 @@ section {
       top: 80px;
       left: 0;
       right: 0;
-      background-color: var(--color-primary);
+      background-color: transparent;
       z-index: 999;
       overflow-x: auto;
       white-space: nowrap;
@@ -405,30 +411,32 @@ section {
       display: inline-block;
       margin-right: 1rem;
       padding: 0.5rem 1rem;
-      background-color: transparent;
-      border: 2px solid var(--color-trust);
-      color: var(--color-trust);
-      font-weight: 600;
-      font-size: .85rem;
+      background-color: var(--color-section);
+      border: 2px solid var(--color-accent);
+      color: var(--color-accent);
+      font-size: 0.85rem;
       text-decoration: none;
-      transition: 0.3s;
+      transition: 0.4s ease-in;
+      font-family: "Raleway", sans-serif;
+      font-style: oblique;
     }
 
     .nav-pills a:hover {
-      background-color: var(--color-trust);
-      color: var(--color-primary);
+      color: var(--color-section);
+      border-color: var(--color-accent) ;
+      background-color: var(--color-accent);
       text-decoration: none;
     }
 
     .category-card {
       scroll-margin-top: 200px;
-      border: var(--color-accent) 6px solid;
+      border: var(--color-accent) 4px solid;
       margin: 1rem;
       min-width: auto;
       max-width: 460px;
       padding: 1.3rem;
-      background-color: var(--color-primary);
-      color: var(--color-trust);
+      background-color: transparent;
+      color: var(--color-accent);
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
@@ -441,7 +449,7 @@ section {
     }
 
     .category-card .plate .dashed {
-      border-bottom: dashed 2px var(--color-bg);
+      border-bottom: dashed 2px var(--color-accent);
       width: fit-content;
       margin: 4px;
       height: 10px;
@@ -455,6 +463,10 @@ section {
 
     .category-block h2 {
       font-size: 1.5rem;
+    }
+
+    .category-card .plate strong, .category-card .plate .price {
+      color: var(--color-accent);
     }
 
 
@@ -497,8 +509,8 @@ section {
 
     .menu-header h2 {
       margin: 0;
-      font-size: 1.65rem;
-      color: var(--color-dark);
+      font-size: 2rem;
+      font-family: "Great Vibes";
     }
 
     .plate {
