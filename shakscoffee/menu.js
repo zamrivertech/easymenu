@@ -66,7 +66,10 @@ async function renderDigitalMenu() {
       card.className = "category-card";
       card.id = safeId;
       card.innerHTML = `
-        <div class="menu-header"><h2>${category}</h2></div>
+        <div class="menu-header">
+        <h2>${category}</h2>
+        </div>
+        <div class="plates">
         ${categoryItems
           .map(
             item => `
@@ -77,6 +80,7 @@ async function renderDigitalMenu() {
         `
           )
           .join("")}
+        </div>  
       `;
       menuContainer.appendChild(card);
     });
@@ -87,9 +91,14 @@ async function renderDigitalMenu() {
 
 // ---------- PDF Menu (pdf.html) ----------
 const CATEGORY_ORDER = [
-  ["Entradas e Extras", "Petiscos", "Pizzas", "Carnes", "Aves", "Peixes e Mariscos"],  
-
-  ["Cervejas", "Soft Drinks", "Vinhos", "Bebidas Extra"]
+  ['Omelettes Caseiros', 'Tostas de Casa', 'Pães Deliciosos', 'Pão Aromático', 'Delícias Europeias', 'Frutas'],
+  ['Salgadinhos da Hora', 'Sabores Sem Fronteira', 'Harmonia De Sabores', 'Rolos Turcos (Shawarma)', 'Pão Aromático', 'Shak’s Bites'],
+  ['Hamburgers Da Casa', 'Pizzas Inesquecíveis', 'Rolos Turcos (Shawarma)', 'Pães Deliciosos', 'Tostas de Casa', 'Omelettes Caseiros'],
+  ['Frangos da Fam', 'Carnes Gourmet', 'Tesouros do Mar', 'Sabores à Zambeze', 'Refeição Completa para Dias Atarefados', 'Fio da Paixão'],
+  ['Sabores Indianos', 'Sabores Sem Fronteira', 'Harmonia De Sabores', 'Sabores à Zambeze', 'Fio da Paixão', 'Refeição Completa para Dias Atarefados'],
+  ['Sonho Tentação (Waffles e Panquecas)', 'Dobraduras de Sabor (Crepes)', 'Sabor de Infância (Sorvetes)', 'Sobremesas', 'Casa dos Bolos', 'Tortas'],
+  ['Shak’s Shakes', 'Sumos Naturais', 'Refrigerantes', 'Vai a Um Calorzinho?', 'Papel Separado – Shisha'],
+  []
 ];
 
 function createCategoryBlock(category, items) {
@@ -203,7 +212,7 @@ async function renderPdfMenu() {
 
       page.appendChild(grid);
 
-      if (idx === 1) {
+      if (idx === 7) {
         page.innerHTML += `<div class="footer-info">
           <img src="./img/qr-code.png" alt="QR" style="height:150px;">
           <div class='footer-text'>
