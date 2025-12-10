@@ -3,7 +3,7 @@
 // Use official Google Sheets API
 const SHEET_ID = "1qDj6dzDpbLsOYTNY9MBQtx59q3B2WKF2NeyCPjfuFJ4";
 const API_KEY = "AIzaSyA_88FypaC1s4exlXvKn_x0_28WvZnSLjs";
-const RANGE = "Menu!A:D"; // adjust columns/range to match your sheet
+const RANGE = "Menu!A:H"; // adjust columns/range to match your sheet
 
 // ---------- Shared Helpers ----------
 function slugify(text) {
@@ -65,6 +65,7 @@ async function renderDigitalMenu() {
       const card = document.createElement("div");
       card.className = "category-card";
       card.id = safeId;
+      const hasExtras = categoryItems.some(i => i["Description2"]);
       card.innerHTML = `
         <div class="menu-header">
         <h2>${category}</h2>
@@ -80,6 +81,15 @@ async function renderDigitalMenu() {
         `
           )
           .join("")}
+          <div class="extras">
+            ${hasExtras
+              ? categoryItems
+                  .map(i => i["Description2"])
+                  .filter(Boolean)
+                  .map(text => `<div class="extra-line">${text}</div>`)
+                  .join("")
+              : ""}
+          </div>
         </div>  
       `;
       menuContainer.appendChild(card);
