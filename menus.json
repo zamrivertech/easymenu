@@ -1,5 +1,6 @@
 [
   { "name": "Chicken Express", "path": "expresschicken/index.html" },
   { "name": "Flames", "path": "flames/index.html" },
-  { "name": "No Zavala", "path": "nozavala/index.html" }
+  { "name": "No Zavala", "path": "nozavala/index.html" },
+  { "name": "Shak's Coffee", "path": "shakscoffee/index.html" }
 ]
