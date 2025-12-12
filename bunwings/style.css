@@ -129,8 +129,9 @@ section {
   width: 200px;
 }
 
-.hero-text h1 {
-  font-size: 2rem;
+.hero-text h1 .bw-text {
+  font-weight: 100;
+  font-size: 3.2rem;
   font-family: var(--font-main);
 }
 
@@ -665,8 +666,6 @@ nav ul {
 
 /* MAIN TITLE WRAPPER */
 .title-animated {
-  font-size: 3rem;
-  font-weight: 700;
   display: flex;
   align-items: center;
   gap: .5rem;
@@ -680,6 +679,7 @@ nav ul {
 
 /* ⭐ STAR — fade from transparent → primary → transparent */
 .star {
+  font-size: 2rem;
   animation: starFade 3s ease-in-out infinite;
   display: inline-block;
 }
