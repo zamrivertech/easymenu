@@ -18,7 +18,7 @@
     <a class="btn-primary" href="https://wa.me/258871838719" target="_blank">WhatsApp!</a>
   </header>
   <main>
-    <section id="home" style="background-color: aliceblue;">
+    <section id="home">
       <img src="./img/qrcode.gif" alt="" width="100">
       <h2>Menu Digitalizado com QR Code!</h2>
       <p>Gerencie seus menus
@@ -73,20 +73,23 @@
 
       
     </section>
+        <!--
     <section>
       <br>
       <ul class="menu-list" id="menuList">
-        <!-- Dynamic links will be injected here -->
+     Dynamic links will be injected here 
       </ul>
     </section>
     <section id="menus">
 
     </section>
-  </main>
+    -->
+
   <footer>
     <small>&copy; 2025 Zambezi River Services. Todos os direitos reservados.</small>
   </footer>
-  <script>
+  </main>
+<script>
     async function loadMenus() {
       try {
         const response = await fetch('menus.json');
