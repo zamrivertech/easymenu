@@ -6,87 +6,81 @@
   <title>EasyMenu | ZamRiverTech</title>
   <link rel="icon" href="./img/favicon.png" type="image/png" />
   <meta name="theme-color" content="#ffffff" />
-  <style>
-    :root {
-      --color-bg: #ffffff;
-      --color-text: #1a1a1a;
-      --color-accent: #282c86;
-      --font-family: 'Segoe UI', Roboto, sans-serif;
-    }
-    body {
-      margin: 0;
-      font-family: var(--font-family);
-      background-color: var(--color-bg);
-      color: var(--color-text);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    header, footer {
-      padding: 1rem;
-      background-color: #f5f5f5;
-      text-align: center;
-    }
-    main {
-      flex: 1;
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-    .btn-primary {
-      background-color: var(--color-accent);
-      color: #fff;
-      border: none;
-      padding: 0.75rem 1.5rem;
-      border-radius: 4px;
-      cursor: pointer;
-      text-decoration: none;
-      font-size: 1rem;
-      margin-top: 1.5rem;
-      transition: .5s all ease;
-    }
-    .btn-primary:hover {
-      background-color: #0c1650;
-    }
-    ul.menu-list {
-      list-style: none;
-      padding: 0;
-    }
-    ul.menu-list li {
-      margin: 0.5rem 0;
-    }
-    ul.menu-list a {
-      color: var(--color-accent);
-      text-decoration: none;
-    }
-    ul.menu-list a:hover {
-      text-decoration: underline;
-    }
-    .logo {
-      max-width: 120px;
-      margin-bottom: 1rem;
-    }
-  </style>
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
   <header>
-    <img src="./img/logo.png" alt="Logo EasyMenu" class="logo" />
+    <img src="./img/favicon.png" alt="Logo EasyMenu" class="logo" />
+    <ul>
+      <li> <a href="#home">Home</a> </li>
+      <li> <a href="#menus">Menus</a> </li>
+    </ul>
+    <a class="btn-primary" href="https://wa.me/258871838719" target="_blank">WhatsApp!</a>
   </header>
   <main>
-    <section>
+    <section id="home" style="background-color: aliceblue;">
+      <img src="./img/qrcode.gif" alt="" width="100">
       <h2>Menu Digitalizado com QR Code!</h2>
-      <p>Gerencie seus menus de forma prática e moderna com QR Code e planilha online para atualizar conteúdos em tempo real.</p>
+      <p>Gerencie seus menus
+        de forma prática e moderna <br> 
+        e atualiza conteúdos em tempo real!</p>
       <br>
-      <a class="btn-primary" href="https://wa.me/258871838719" target="_blank">WhatsApp!</a>
+      <div class="marquee">
+        <div class="marquee-track">
+          <div class="snap">
+            <img src="img/flm1.png">
+            <img src="img/flm2.png">
+          </div>
+          <div class="snap">
+            <img src="img/ec1.png">
+            <img src="img/ec2.png">
+          </div>
+          <div class="snap">
+            <img src="img/nz1.png">
+            <img src="img/nz2.png">
+          </div>
+          <div class="snap">
+            <img src="img/shaks1.png">
+            <img src="img/shaks2.png">
+          </div>       
+          <div class="snap">
+            <img src="img/bw1.png">
+            <img src="img/bw2.png">
+          </div>       
+          
+          <div class="snap">
+            <img src="img/flm1.png">
+            <img src="img/flm2.png">
+          </div>
+          <div class="snap">
+            <img src="img/ec1.png">
+            <img src="img/ec2.png">
+          </div>
+          <div class="snap">
+            <img src="img/nz1.png">
+            <img src="img/nz2.png">
+          </div>
+          <div class="snap">
+            <img src="img/shaks1.png">
+            <img src="img/shaks2.png">
+          </div>       
+          <div class="snap">
+            <img src="img/bw1.png">
+            <img src="img/bw2.png">
+          </div>   
+        </div>
+      </div>
+
+      
     </section>
     <section>
       <br>
       <ul class="menu-list" id="menuList">
         <!-- Dynamic links will be injected here -->
       </ul>
+    </section>
+    <section id="menus">
+
     </section>
   </main>
   <footer>

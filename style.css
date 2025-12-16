@@ -1,0 +1,136 @@
+    @import url('https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+    
+    :root {
+      --color-bg: #ffffff;
+      --color-text: #1a1a1a;
+      --color-accent: #282c86;
+      --font-family: 'Spectral';
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: var(--font-family);
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    section {
+        height: 85vh;
+    }
+
+    header {
+        position: fixed;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+    }
+
+    header ul {
+        list-style-type: none;
+        display: flex;
+        gap: 2rem;
+    }
+
+    header ul li a {
+        text-decoration: none;
+        color: var(--color-accent);
+    }
+
+    header > :last-child {
+        margin-top: 0;
+        margin-right: 2rem;
+    }
+
+    .logo {
+      max-width: 60px;
+    }
+
+    header, footer {
+      padding: 1rem;
+      background-color: #f5f5f5;
+      text-align: center;
+    }
+
+    #home {
+        padding: 10rem 2rem 0rem;
+    }
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .btn-primary {
+      background-color: var(--color-accent);
+      color: #fff;
+      border: none;
+      padding: 0.55rem .85rem;
+      border-radius: 20px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: .85rem;
+      margin-top: 1.5rem;
+      transition: .5s all ease;
+    }
+    .btn-primary:hover {
+      background-color: #0c1650;
+    }
+    ul.menu-list {
+      list-style: none;
+      padding: 0;
+    }
+    ul.menu-list li {
+      margin: 0.5rem 0;
+    }
+    ul.menu-list a {
+      color: var(--color-accent);
+      text-decoration: none;
+    }
+    ul.menu-list a:hover {
+      text-decoration: underline;
+    }
+
+    .marquee {
+    height: 300px;
+    width: 100%;
+    padding: 1.5rem 0;
+    }
+
+    .marquee-track {
+    display: flex;
+    gap: 2rem;
+    width: max-content;
+    animation: marquee 25s linear infinite;
+    }
+
+    .marquee img {
+    width: 120px;    
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 8px 20px rgba(0,0,0,.45);
+    }
+
+    /* Pause on hover (nice UX) */
+    .marquee:hover .marquee-track {
+    animation-play-state: paused;
+    }
+
+    @keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+    }
