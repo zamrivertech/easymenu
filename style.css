@@ -60,7 +60,7 @@
     }
 
     #home {
-        padding: 10rem 2rem 0rem;
+        padding: 10rem 5rem 0rem;
     }
     main {
       flex: 1;
@@ -101,8 +101,9 @@
     }
 
     .marquee {
+    overflow: hidden;
     height: 300px;
-    width: 100%;
+    width: 300px;
     padding: 1.5rem 0;
     }
 
@@ -134,3 +135,5 @@
         transform: translateX(-50%);
     }
     }
+
+    
