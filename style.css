@@ -3,7 +3,7 @@
     :root {
       --color-bg: #ffffff;
       --color-text: #1a1a1a;
-      --color-accent: #282c86;
+      --color-accent: #00487D;
       --font-family: 'Spectral';
     }
 
@@ -50,6 +50,8 @@
     header > :last-child {
         margin-top: 0;
         margin-right: 2rem;
+        text-align: center;
+
     }
 
     .logo {
@@ -61,13 +63,17 @@
       text-align: center;
     }
 
+    #home > * {
+        margin: 0;
+        padding: 0.75rem;
+    }
+
     #home {
-        gap: 0;
         text-align: center;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: space-evenly;
     }
     .btn-primary {
       background-color: var(--color-accent);
@@ -101,7 +107,7 @@
 
     .marquee {
     overflow: hidden;
-    height: 300px;
+    height: 235px;
     width: 300px;
     padding: 1.5rem 0;
     }
@@ -139,18 +145,14 @@
   font-family: var(--font-family);
   font-size: 0.85rem;
   color: var(--color-accent);
-
   background-color: transparent;
   border: 1px solid rgba(40, 44, 134, 0.25);
   border-radius: 20px;
-
-  padding: 0.45rem 0.75rem;
+  padding: .35rem;
   cursor: pointer;
-
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-
   transition: all 0.3s ease;
 }
 
