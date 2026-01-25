@@ -3,236 +3,63 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ExpressChicken | Menu</title>
-  <meta name="description" content="Veja o menu completo do ExpressChicken. Frango grelhado, sanduíches, salgadinhos e bebidas em Tete." />
-  <meta name="keywords" content="menu, frango, sanduíches, bebidas, ExpressChicken, Tete" />
-  <meta name="author" content="Zambezi River Services" />
-  <meta property="og:title" content="ExpressChicken | Menu Digital" />
+  <title>Zayka | Menu</title>
+  <meta name="description" content="Veja o menu completo do Zayka. Comida portuguesa e indiana saborosa em Tete — takeaway e refeições no local." />
+  <meta name="keywords" content="Zayka, menu, comida indiana, comida portuguesa, restaurante Tete, takeaway, Moçambique" />
+  <meta name="author" content="Zayka Restaurante" />
+  <meta property="og:title" content="Zayka | Menu Digital" />
   <meta property="og:description" content="Explore nosso menu completo e faça seu pedido para takeaway." />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="pt_MZ" />
-  <meta name="theme-color" content="#E22218" />
-  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <meta name="theme-color" content="#D4AF37" />
+  <link rel="icon" href="./img/logo.png" type="image/x-icon" />
   <link rel="stylesheet" href="./style.css" />
-  <link rel="icon" href="./img/favicon.png" type="image/x-icon">
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-
-    .menu-header {
+  <style> 
+    .category-card:first-child {
       margin-top: 100px;
-      text-align: center;
-    }
-
-    .menu-controls {
-      margin: 2rem auto;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .nav-pills-container {
-      width: 100%;  
-      position: fixed;
-      top: 80px;
-      left: 0;
-      right: 0;
-      background-color: var(--color-white);
-      z-index: 999;
-      overflow-x: auto;
-      white-space: nowrap;
-      padding: 0.5rem 1rem;
-      scrollbar-width: none;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .nav-pills-container::-webkit-scrollbar {
-      display: none;
-    }
-
-    .nav-pills a {
-      display: inline-block;
-      margin-right: 1rem;
-      padding: 0.5rem 1rem;
-      background-color: var(--color-primary);
-      color: var(--color-white);
-      font-weight: 600;
-      font-size: .85rem;
-      text-decoration: none;
-      transition: background-color 0.3s;
-    }
-
-    .nav-pills a:hover {
-      background-color: #b71c1c;
     }
 
     .category-card {
-      scroll-margin-top: 200px;
-      border: var(--color-primary) 4px solid;
-      margin: 1rem;
-      min-width: auto;
-      max-width: 460px;
-      padding: 1rem;
-      background-color: var(--color-white);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      scroll-margin-top: 155px;
     }
-
-    .category-card img {
-      width: 130px;
-      object-fit: cover;
-    }
-
-    .menu-header {
-      display: flex;
-      flex-direction: row-reverse;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap-reverse;
-      gap: 1rem;
-      margin-top: 0;
-    }
-
-    .menu-header h2 {
-      margin: 0;
-      font-size: 1.8rem;
-      color: var(--color-dark);
-    }
-
-    .plate {
-      width: 100%;
+  
+    nav, .nav-pills-container {
+      backdrop-filter: blur(8px);
       height: 100px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .plate strong {
-      color: var(--color-primary);
+      -webkit-backdrop-filter: blur(8px); /* for Safari */
     }
 
     nav ul {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .menu {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-top: 2rem;
-    }
-
-    .price {
-      display: inline-block;
-      background-color: var(--color-primary);
-      font-weight: bold;
-      color: var(--color-white);
-      padding: 0.1rem 1.6rem;
-      margin: .3rem;
-    }
-
-    .description {
-      color: var(--color-dark);
-      font-style: italic;
+     margin-bottom: 38px;
     }
   </style>
+  
 </head>
 <body>
   <!-- Navbar -->
   <nav>
     <ul>
       <li><a href="./index.html">Início</a></li>
-      <li><a href="./pdf.html"><img src="./img/logo.png" alt="ExpressChicken Logo" class="logo" /></a></li>
+      <li><img src="./img/logo.png" class="logo" /></li>
       <li><a href="./index.html#about">Sobre</a></li>
     </ul>
     <div class="nav-pills-container">
       <div class="nav-pills">
-        <!-- Nav pills will be injected here -->
+        <!-- Nav pills injected here -->
       </div>
     </div>
   </nav>
-  
-  <br>
-  <br>
-  <br>
-  <br>
 
-  <div class="menu">
-    <!-- Menu cards will be injected here -->
-  </div>
-  
+  <main>
+    <div class="menu">
+      <!-- Category cards injected here -->
+    </div>
+  </main>
 
-<script>
-  
-  const SHEET_URL = 'https://gsx2json.com/api?id=166JR2YkWszyUvnbM33x1mpiK6HvQVs_e_87tYf2wYug&sheet=Menu';
-
-  function slugify(text) {
-    if (typeof text !== 'string') return '';
-    return text.toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/\s+/g, '-')
-      .replace(/[^\w\-]+/g, '');
-  }
-
-  fetch(SHEET_URL)
-    .then(res => res.json())
-    .then(data => {
-      if (!data.rows) {
-        console.error("No rows found in response:", data);
-        return;
-      }
-
-      const items = data.rows;
-      const categories = [...new Set(items.map(i => i["Category"]))];
-      const menuContainer = document.querySelector('.menu');
-      const navPills = document.querySelector('.nav-pills');
-
-      menuContainer.innerHTML = '';
-      navPills.innerHTML = '';
-
-      categories.forEach(category => {
-        const safeId = slugify(category);
-        const categoryItems = items.filter(i => i["Category"] === category);
-
-        // Create nav pill
-        const pill = document.createElement('a');
-        pill.href = `#${safeId}`;
-        pill.textContent = category;
-        navPills.appendChild(pill);
-
-        // Create category card
-        const card = document.createElement('div');
-        card.className = 'category-card';
-        card.id = safeId;
-
-        card.innerHTML = `
-          <div class="menu-header">
-            <img src="${categoryItems[0]["Image"] || './img/default.png'}" alt="${category}" />
-            <h2>${category}</h2>
-          </div>
-          ${categoryItems.map(item => `
-            <div class="plate">
-              <strong>${item["Name"]}</strong> <span class='price'>${item["Price (MT)"]} MT</span>
-              <small class="description">${item["Description"]}</small>
-            </div>  
-          `).join('')}
-        `;
-
-        menuContainer.appendChild(card);
-      });
-    })
-    .catch(err => console.error("Fetch error:", err));
-</script>
-
-
-
+  <script src="./menu.js"></script>
+  <script>
+    MenuApp.renderDigitalMenu();
+  </script>
 </body>
 </html>
+

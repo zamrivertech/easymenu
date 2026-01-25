@@ -3,51 +3,135 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ExpressChicken | Frango Grelhado e Takeaway em Tete</title>
-  <meta name="description" content="ExpressChicken oferece frango grelhado delicioso e refeições rápidas em Tete. Faça seu pedido para takeaway agora!" />
-  <meta name="keywords" content="frango grelhado, takeaway, ExpressChicken, Tete, comida rápida, halal" />
-  <meta name="author" content="Zambezi River Services" />
-  <meta property="og:title" content="ExpressChicken | Takeaway em Tete" />
-  <meta property="og:description" content="Frango grelhado e refeições rápidas. Ligue para takeaway: 871838719" />
+  <title>Zayka | Restaurante em Tete</title>
+  <meta name="description" content="Comida portuguesa e indiana saborosa em Tete. Experimente o Zayka — takeaway e refeições no local." />
+  <meta name="keywords" content="Zayka, comida indiana, comida portuguesa, restaurante Tete, takeaway, Moçambique" />
+  <meta name="author" content="Zayka Restaurante" />
+  <meta property="og:title" content="Zayka | Restaurante em Tete" />
+  <meta property="og:description" content="Comida portuguesa e indiana saborosa. Ligue para takeaway: +258 84 732 2222" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="pt_MZ" />
-  <meta name="theme-color" content="#E22218" />
-  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <meta name="theme-color" content="#D4AF37" />
+  <link rel="icon" href="./img/logo.png" type="image/x-icon" />
   <link rel="stylesheet" href="./style.css">
-  <link rel="icon" href="./img/favicon.png" type="image/x-icon">
 </head>
 <body>
+
   <nav>
-    <img src="./img/logo.png" alt="ExpressChicken Logo" class="logo" />
     <ul>
       <li><a href="#home">Início</a></li>
+      <li><img src="./img/logo.png" alt="Zayka Logo" class="logo" /></li>
       <li><a href="#about">Sobre</a></li>
     </ul>
   </nav>
 
   <section id="home">
     <div class="hero-text">
-      <h1>Bem-vindo ao <br><span>ExpressChicken!</span></h1>
-      <p>Frango grelhado, refeições rápidas e sabor autêntico. <br> Faça seu pedido para takeaway agora!</p>
+      <h2>Comida indiana e portuguesa saborosa!</h2>
+    </div>   
+    <a href="./menu.html" class="explore-btn">
+      Ver Menu
+    </a>
+  
+  </section>
+  
+<section id="about" style="height: 100vh;">
+  <h2>Sobre Nós</h2>
+  <div class="info-block">
+    <div class="map-container">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3832.17924644677!2d33.584287974340356!3d-16.15970418453296!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19264700227a560b%3A0x1530e564985e7c3b!2sZAYKA%20Cafe%20%26%20Restaurant!5e0!3m2!1sen!2smz!4v1769371826508!5m2!1sen!2smz" 
+        width="100%" 
+        height="350" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
     </div>
-    <img src="./img/chicken-hero.gif" alt="Frango Grelhado" style="max-width: 160px;" />
-    <a href="./menu.html" class="menu-button">Veja Nosso Menu!</a>
-  </section>
+    <p><span class="highlight">Horário:</span> Segunda a Domingo, das 08h às 22h</p>
+    <p><span class="highlight">Telefone:</span> 
+      <a href="tel:+258867322222">+258 86 732 2222</a>, 
+      <a href="tel:+258847322222">+258 84 732 2222</a>
+    </p>
+    <p><span class="highlight">Serviço:</span> Takeaway & Refeições no local</p>
+    <p><span class="highlight">Pagamento:</span> Cash, E-mola, M-Pesa e POS</p>
+  </div>
+</section>
 
-  <section id="about">
-    <h2>Sobre Nós</h2>
-    <div class="info-block">
-      <p><span class="highlight">Localização:</span> Bairro Samora Machel, Tete, Moçambique (16°09'20"S 33°35'18"E)</p>
-      <p><span class="highlight">Horário de Funcionamento:</span> Segunda a Domingo, das 08h às 22h</p>
-      <p><span class="highlight">Telefone para Takeaway:</span> <a href="tel:+258871838719">871838719</a></p>
-      <p><span class="highlight">Serviço:</span> Takeaway rápido, frango grelhado, refeições halal</p>
-      <p><span class="highlight">Pagamento:</span> Cash, E-mola e M-Pesa</p>
-      <div class="halal-badge">
-        <img src="./img/halal.png" alt="Halal Certified">
-      </div>
-  </section>
+<!-- GSAP CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script>
+
+  // Fade in the #home section
+  gsap.from("#home", {
+    opacity: 0,       // start fully transparent
+    ease: "power2.out" // smooth easing
+    duration: 1.5,    // animation lasts 1.5 seconds
+  });
+  
+  // Animate navigation items
+  gsap.from("nav ul li", {
+    duration: 1,
+    y: -30,
+    opacity: 0,
+    stagger: 0.2,
+    ease: "power3.out"
+  });
+
+  // Animate hero text
+  gsap.from(".hero-text h2", {
+    duration: 1.2,
+    y: 50,
+    opacity: 0,
+    delay: 0.5,
+    ease: "power3.out"
+  });
+
+  // Animate menu button on page load
+  gsap.from(".explore-btn", {
+    duration: 1.2,
+    y: 30,
+    opacity: 0,
+    delay: 1,
+    ease: "back.out(1.7)"
+  });
+
+  // Hover animation with GSAP
+  const btn = document.querySelector(".menu-btn");
+  btn.addEventListener("mouseenter", () => {
+    gsap.to(btn, { scale: 1.05, backgroundColor: "#D4AF37", color: "#fff", duration: 0.3 });
+  });
+  btn.addEventListener("mouseleave", () => {
+    gsap.to(btn, { scale: 1, backgroundColor: "#fff", color: "#D4AF37", duration: 0.3 });
+  });
+
+  gsap.from("#about h2", {
+    scrollTrigger: "#about",
+    duration: 1,
+    y: -40,
+    opacity: 0,
+    ease: "power3.out"
+  });
+
+  gsap.from("#about .map-container, #about .info-block p", {
+    scrollTrigger: "#about",
+    duration: 1,
+    y: 30,
+    opacity: 0,
+    stagger: 0.2,
+    ease: "power2.out"
+  });
+
+
+
+  
+</script>
+
+
+
 
 
 </body>
 </html>
+
