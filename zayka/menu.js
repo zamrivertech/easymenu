@@ -30,7 +30,6 @@ async function fetchMenuData() {
   });
 }
 
-// ---------- Digital Menu ----------
 async function renderDigitalMenu() {
   try {
     const items = await fetchMenuData();
@@ -50,6 +49,15 @@ async function renderDigitalMenu() {
       pill.href = `#${safeId}`;
       pill.textContent = category;
       navPills.appendChild(pill);
+
+      // Animate pill
+      gsap.from(pill, {
+        duration: 0.6,
+        y: -20,
+        opacity: 0,
+        ease: "power2.out",
+        delay: navPills.children.length * 0.1
+      });
 
       // Category card
       const card = document.createElement("section");
@@ -90,11 +98,37 @@ async function renderDigitalMenu() {
 
       card.appendChild(platesContainer);
       menuContainer.appendChild(card);
+
+      // Animate card on scroll
+      gsap.from(card, {
+        scrollTrigger: {
+          trigger: card,
+          start: "top 85%",
+        },
+        duration: 1,
+        y: 40,
+        opacity: 0,
+        ease: "power2.out"
+      });
+
+      // Animate plates inside card
+      gsap.from(platesContainer.children, {
+        scrollTrigger: {
+          trigger: card,
+          start: "top 80%",
+        },
+        duration: 0.8,
+        y: 20,
+        opacity: 0,
+        stagger: 0.15,
+        ease: "power3.out"
+      });
     });
   } catch (err) {
     console.error("Digital menu error:", err);
   }
 }
+
 
 // ---------- Export ----------
 window.MenuApp = { renderDigitalMenu };
