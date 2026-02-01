@@ -1,7 +1,11 @@
 For the change language ui,
 make a modal, witha fixed setting button, or contact button
 
+DONTFORGET TO CORRECT THE RIGHT MARGIN OF THE LAST NAVPILL
+
 this exapmlpe
+
+NOTHING HAPPENS TO THE IFRAME
 
 <!DOCTYPE html>
 <html lang="en">

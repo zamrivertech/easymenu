@@ -7,13 +7,113 @@
   <meta name="description" content="Comida portuguesa e indiana saborosa em Tete. Experimente o Zayka — takeaway e refeições no local." />
   <meta name="keywords" content="Zayka, comida indiana, comida portuguesa, restaurante Tete, takeaway, Moçambique" />
   <meta name="author" content="Zayka Restaurante" />
-  <meta property="og:title" content="Zayka | Restaurante em Tete" />
-  <meta property="og:description" content="Comida portuguesa e indiana saborosa. Ligue para takeaway: +258 84 732 2222" />
-  <meta property="og:type" content="website" />
-  <meta property="og:locale" content="pt_MZ" />
-  <meta name="theme-color" content="#D4AF37" />
   <link rel="icon" href="./img/logo.png" type="image/x-icon" />
   <link rel="stylesheet" href="./style.css">
+  
+  <style>
+    /* Full Card UI Styles */
+    :root {
+        --card-bg: #1a1a1a;
+        --text-main: #ffffff;
+        --text-dim: #999999;
+        --accent-gold: #D4AF37;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 380px; /* Original card width */
+        background: var(--card-bg);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        margin-bottom: 30px; /* Space before your original text */
+    }
+
+    .map-wrapper {
+        position: relative;
+        width: 100%;
+        height: 250px;
+        background: #000;
+        cursor: pointer;
+    }
+
+    .map-wrapper iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        position: relative;
+        z-index: 1;
+    }
+
+    .map-overlay-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 5;
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        pointer-events: none;
+    }
+
+    .is-active .map-overlay-img {
+        opacity: 0;
+        transform: scale(1.1);
+    }
+
+    .badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: white;
+        color: white;
+        padding: 6px;
+        border-radius: 4px;
+        z-index: 10;
+        font-size: 14px;
+        pointer-events: none;
+    }
+
+    .content {
+        padding: 24px;
+        text-align: left;
+    }
+
+    .content h2 {
+        margin: 0 !important; /* Overriding potential global h2 styles */
+        font-size: 1.25rem;
+        color: var(--text-main);
+        font-weight: 500;
+    }
+
+    .content p {
+        margin: 4px 0 20px 0 !important;
+        color: var(--text-dim);
+        font-size: 0.9rem;
+    }
+
+    .meta {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        border-top: 1px solid #333;
+        padding-top: 15px;
+    }
+
+    .meta-item {
+        text-align: center;
+        color: var(--accent-gold);
+        font-size: 0.8rem;
+        line-height: 22px;
+    }
+
+    /* Keep your original text highlights */
+    .highlight {
+        color: #D4AF37;
+        font-weight: bold;
+    }
+  </style>
 </head>
 <body>
 
@@ -27,108 +127,87 @@
 
   <section id="home">
     <div class="hero-text">
-      <h2>Comida indiana e portuguesa saborosa!</h2>
+      <div class="hero-title">
+        <h1>
+           ZAYKA
+           <div class="border"></div>
+        </h1>
+
+        <h3>RESTAURANTE</h3>
+      </div>  
+      <p>Comida indiana e portuguesa saborosa!</p>
     </div>   
-    <a href="./menu.html" class="explore-btn">
-      Ver Menu
-    </a>
-  
+    <a href="./menu.html" class="explore-btn">Ver Menu</a>
   </section>
   
-<section id="about" style="height: 90vh;">
-  <h2>Sobre Nós</h2>
-  <div class="info-block">
-    <div class="map-container">
-      <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3832.17924644677!2d33.584287974340356!3d-16.15970418453296!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19264700227a560b%3A0x1530e564985e7c3b!2sZAYKA%20Cafe%20%26%20Restaurant!5e0!3m2!1sen!2smz!4v1769371826508!5m2!1sen!2smz" 
-        width="100%" 
-        height="350" 
-        style="border:0;" 
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-    </div>
-    <p><span class="highlight">Horário:</span> Segunda a Domingo, das 08h às 22h</p>
-    <p><span class="highlight">Telefone:</span> 
-      <a href="tel:+258867322222">+258 86 732 2222</a>, 
-      <a href="tel:+258847322222">+258 84 732 2222</a>
-    </p>
-    <p><span class="highlight">Serviço:</span> Takeaway & Refeições no local</p>
-    </div>
-</section>
+  <section id="about" style="min-height: 90vh; padding: 50px 20px; display: flex; flex-direction: column; align-items: center;">
+    <h2 style="margin-bottom: 30px;">Sobre Nós <div class="border"></div></h2>
+    
+    <div class="info-block" style="width: 100%; max-width: 380px;">
+        <div class="card">
+            <div class="map-wrapper" id="interact-area">
+                <div class="badge">👑</div>
+                
+                <img class="map-overlay-img" src="./img/restaurant.jpg" alt="Zayka Preview">
+                
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3832.17924644677!2d33.584287974340356!3d-16.15970418453296!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19264700227a560b%3A0x1530e564985e7c3b!2sZAYKA%20Cafe%20%26%20Restaurant!5e0!3m2!1sen!2smz!4v1769371826508!5m2!1sen!2smz" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-<script>
-  gsap.registerPlugin(ScrollTrigger);
+            <div class="content">
+                <h2>ZAYKA, Cafe & Restaurant</h2>
+                <p>RHRP+3PP, Av. Julius Nyerere, Cidade de Tete, Tete, Moçambique.</p>
+                <div class="meta">
+                    <div class="meta-item">Zayka é o ponto de encontro para quem não abdica de uma refeição de qualidade em Tete. Disponível para takeaway e refeições no local.</div>
+                </div>
+            </div>
+        </div>
 
-  gsap.from("#home", {
-    opacity: 0,
-    ease: "power2.out",
-    duration: 1.5,
-  });
+        <p><span class="highlight">Horário:</span> Segunda a Domingo, das 08h às 22h</p>
+        <p><span class="highlight">Telefone:</span> 
+          <a href="tel:+258867322222" style="color: inherit; text-decoration: none;">+258 86 732 2222</a>, 
+          <a href="tel:+258847322222" style="color: inherit; text-decoration: none;">+258 84 732 2222</a>
+        </p>
+     </div>
+  </section>
 
-  gsap.from("nav ul li", {
-    duration: 1,
-    y: -30,
-    opacity: 0,
-    stagger: 0.2,
-    ease: "power3.out"
-  });
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
 
-  gsap.from(".hero-text h2", {
-    duration: 1.2,
-    y: 50,
-    opacity: 0,
-    delay: 0.5,
-    ease: "power3.out"
-  });
+    // Initial Animations
+    gsap.from("#home", { opacity: 0, ease: "power2.out", duration: 1.5 });
+    gsap.from("nav ul li", { duration: 1, y: -30, opacity: 0, stagger: 0.2, ease: "power3.out" });
 
-  gsap.from(".explore-btn", {
-    duration: 1.2,
-    y: 30,
-    opacity: 0,
-    delay: 1,
-    ease: "back.out(1.7)"
-  });
+    // Card Reveal Logic
+    const interactArea = document.getElementById('interact-area');
+    const card = document.querySelector('.card');
 
-  const btn = document.querySelector(".explore-btn");
-  btn.addEventListener("mouseenter", () => {
-    gsap.to(btn, { scale: 1.05, backgroundColor: "#D4AF37", color: "#fff", duration: 0.3 });
-  });
-  btn.addEventListener("mouseleave", () => {
-    gsap.to(btn, { scale: 1, backgroundColor: "#fff", color: "#D4AF37", duration: 0.3 });
-  });
+    const showMap = () => {
+      card.classList.add('is-active');
+      gsap.to(card, { scale: 1.02, duration: 0.3 });
+    };
 
-  gsap.from("#about h2", {
-    scrollTrigger: {
-      trigger: "#about",
-      start: "top 80%",
-    },
-    duration: 1,
-    y: -40,
-    opacity: 0,
-    ease: "power3.out"
-  });
+    const hideMap = () => {
+      card.classList.remove('is-active');
+      gsap.to(card, { scale: 1, duration: 0.3 });
+    };
 
-  gsap.from("#about .map-container, #about .info-block p", {
-    scrollTrigger: {
-      trigger: "#about",
-      start: "top 80%",
-    },
-    duration: 1,
-    y: 30,
-    opacity: 0,
-    stagger: 0.2,
-    ease: "power2.out"
-  });
-</script>
+    interactArea.addEventListener('mouseenter', showMap);
+    interactArea.addEventListener('mouseleave', hideMap);
+    interactArea.addEventListener('touchstart', showMap, {passive: true});
+    interactArea.addEventListener('touchend', hideMap);
 
-
-
-
-
+    // Section Animation
+    gsap.from(".card, .info-block p", {
+      scrollTrigger: { trigger: "#about", start: "top 80%" },
+      duration: 1, y: 30, opacity: 0, stagger: 0.2, ease: "power2.out"
+    });
+  </script>
 </body>
 </html>
-

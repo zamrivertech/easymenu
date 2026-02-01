@@ -83,7 +83,7 @@ section {
 }
 
 #home {
-  background: var(--color-bg) url('./img/bg.png') center/cover no-repeat;
+  background: var(--color-bg) url('./img/bg2.png') center/cover no-repeat;
   color: var(--color-primary);
 }
 
@@ -322,4 +322,3 @@ a.explore-btn:hover svg path {
   color: var(--color-text);
   font-style: italic;
 }
-
