@@ -1,213 +1,263 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zayka | Restaurante em Tete</title>
-  <meta name="description" content="Comida portuguesa e indiana saborosa em Tete. Experimente o Zayka — takeaway e refeições no local." />
-  <meta name="keywords" content="Zayka, comida indiana, comida portuguesa, restaurante Tete, takeaway, Moçambique" />
-  <meta name="author" content="Zayka Restaurante" />
-  <link rel="icon" href="./img/logo.png" type="image/x-icon" />
-  <link rel="stylesheet" href="./style.css">
-  
-  <style>
-    /* Full Card UI Styles */
-    :root {
-        --card-bg: #1a1a1a;
-        --text-main: #ffffff;
-        --text-dim: #999999;
-        --accent-gold: #D4AF37;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zayka | Restaurante em Tete</title>
+    <meta name="description" content="Comida portuguesa e indiana saborosa em Tete. Experimente o Zayka — takeaway e refeições no local." />
+    <meta name="keywords" content="Zayka, comida indiana, comida portuguesa, restaurante Tete, takeaway, Moçambique" />
+    <meta name="author" content="Zayka Restaurante" />
+    <link rel="icon" href="./img/logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="./style.css">
 
-    .card {
-        width: 100%;
-        max-width: 380px; /* Original card width */
-        background: var(--card-bg);
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        margin-bottom: 30px; /* Space before your original text */
-    }
+    <style>
+        :root {
+            --card-bg: #1a1a1a;
+            --text-main: #ffffff;
+            --text-dim: #999999;
+            --accent-gold: #D4AF37;
+        }
 
-    .map-wrapper {
-        position: relative;
-        width: 100%;
-        height: 250px;
-        background: #000;
-        cursor: pointer;
-    }
+        /* Hero Text Styles */
+        #stagger-p span {
+            display: inline-block;
+            white-space: pre;
+        }
 
-    .map-wrapper iframe {
-        width: 100%;
-        height: 100%;
-        border: none;
-        position: relative;
-        z-index: 1;
-    }
+        /* Card UI Styles */
+        .card {
+            width: 100%;
+            max-width: 380px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            margin-bottom: 30px;
+        }
 
-    .map-overlay-img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        z-index: 5;
-        transition: opacity 0.4s ease, transform 0.4s ease;
-        pointer-events: none;
-    }
+        .map-wrapper {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            background: #000;
+            cursor: pointer;
+        }
 
-    .is-active .map-overlay-img {
-        opacity: 0;
-        transform: scale(1.1);
-    }
+        .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            position: relative;
+            z-index: 1;
+        }
 
-    .badge {
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        background: white;
-        color: white;
-        padding: 6px;
-        border-radius: 4px;
-        z-index: 10;
-        font-size: 14px;
-        pointer-events: none;
-    }
+        .map-overlay-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 5;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            pointer-events: none;
+        }
 
-    .content {
-        padding: 24px;
-        text-align: left;
-    }
+        .is-active .map-overlay-img {
+            opacity: 0;
+            transform: scale(1.1);
+        }
 
-    .content h2 {
-        margin: 0 !important; /* Overriding potential global h2 styles */
-        font-size: 1.25rem;
-        color: var(--text-main);
-        font-weight: 500;
-    }
+        .badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: white;
+            padding: 4px;
+            border-radius: 4px;
+            z-index: 10;
+            font-size: 14px;
+            cursor: pointer;
+        }
 
-    .content p {
-        margin: 4px 0 20px 0 !important;
-        color: var(--text-dim);
-        font-size: 0.9rem;
-    }
+        .content {
+            padding: 24px;
+            text-align: center;
+        }
 
-    .meta {
-        display: flex;
-        gap: 15px;
-        align-items: center;
-        border-top: 1px solid #333;
-        padding-top: 15px;
-    }
+        .content h2 {
+            margin: 0 !important;
+            font-size: 1.25rem;
+            color: var(--text-main);
+            font-weight: 500;
+        }
 
-    .meta-item {
-        text-align: center;
-        color: var(--accent-gold);
-        font-size: 0.8rem;
-        line-height: 22px;
-    }
+        .content p {
+            margin: 4px 0 20px 0 !important;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
 
-    /* Keep your original text highlights */
-    .highlight {
-        color: #D4AF37;
-        font-weight: bold;
-    }
-  </style>
+        .meta {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            border-top: 1px solid #333;
+            padding-top: 15px;
+        }
+
+        .meta-item {
+            text-align: center;
+            color: var(--accent-gold);
+            font-size: 0.8rem;
+            line-height: 22px;
+        }
+
+        .highlight {
+            color: #D4AF37;
+            font-weight: bold;
+        }
+    </style>
 </head>
+
 <body>
 
-  <nav>
-    <ul>
-      <li><a href="#home">Início</a></li>
-      <li><img src="./img/logo.png" alt="Zayka Logo" class="logo" /></li>
-      <li><a href="#about">Sobre</a></li>
-    </ul>
-  </nav>
+    <nav>
+        <ul>
+            <li><a href="#home">Início</a></li>
+            <li><img src="./img/logo.png" alt="Zayka Logo" class="logo" /></li>
+            <li><a href="#about">Sobre</a></li>
+        </ul>
+    </nav>
 
-  <section id="home">
-    <div class="hero-text">
-      <div class="hero-title">
-        <h1>
-           ZAYKA
-           <div class="border"></div>
-        </h1>
+    <section id="home">
+        <div class="hero-text">
+            <div class="hero-title">
+                <h1>
+                    ZAYKA
+                    <div class="border"></div>
+                </h1>
+                <h3>RESTAURANTE</h3>
+            </div>
+            <p id="stagger-p">Comida indiana saborosa e mais!</p>
+        </div>
+        <a href="./menu.html" class="explore-btn">Veja Menu!</a>
+    </section>
 
-        <h3>RESTAURANTE</h3>
-      </div>  
-      <p>Comida indiana e portuguesa saborosa!</p>
-    </div>   
-    <a href="./menu.html" class="explore-btn">Ver Menu</a>
-  </section>
-  
-  <section id="about" style="min-height: 90vh; padding: 50px 20px; display: flex; flex-direction: column; align-items: center;">
-    <h2 style="margin-bottom: 30px;">Sobre Nós <div class="border"></div></h2>
-    
-    <div class="info-block" style="width: 100%; max-width: 380px;">
-        <div class="card">
-            <div class="map-wrapper" id="interact-area">
-                <div class="badge">👑</div>
-                
-                <img class="map-overlay-img" src="./img/restaurant.jpg" alt="Zayka Preview">
-                
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3832.17924644677!2d33.584287974340356!3d-16.15970418453296!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19264700227a560b%3A0x1530e564985e7c3b!2sZAYKA%20Cafe%20%26%20Restaurant!5e0!3m2!1sen!2smz!4v1769371826508!5m2!1sen!2smz" 
-                    allowfullscreen="" 
-                    loading="lazy">
-                </iframe>
+    <section id="about" style="min-height: 90vh; padding: 50px 20px; display: flex; flex-direction: column; align-items: center;">
+        <h2 style="margin-bottom: 30px;">Sobre Nós <div class="border"></div></h2>
+        <div class="info-block" style="width: 100%; max-width: 380px;">
+         <p><span class="highlight" style="font-size: 1.25rem;">Venha Visitar e <br> Saborear Nossos Pratos!</span></p>
+            <div class="card">
+                <div class="map-wrapper" id="interact-area">
+                    <div class="badge">📍</div>
+                    <img class="map-overlay-img" src="./img/restaurant.jpg" alt="Zayka Preview">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3832.179246147!2d33.5868629!3d-16.159704200000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19264700227a560b%3A0x1530e564985e7c3b!2sZAYKA%20Cafe%20%26%20Restaurant!5e0!3m2!1sen!2smz!4v1770150836815!5m2!1sen!2smz" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+                <div class="content">
+                    <h2>Cafe & Restaurant</h2>
+                    <p>Perto da Loja Vodacom<br> Av. Julius Nyerere, Cidade de Tete, Moçambique.</p>
+                    <div class="meta">
+                        <div class="meta-item">O ponto de encontro para quem não abdica de uma refeição de qualidade em Tete.</div>
+                    </div>
+                </div>
             </div>
 
-            <div class="content">
-                <h2>ZAYKA, Cafe & Restaurant</h2>
-                <p>RHRP+3PP, Av. Julius Nyerere, Cidade de Tete, Tete, Moçambique.</p>
-                <div class="meta">
-                    <div class="meta-item">Zayka é o ponto de encontro para quem não abdica de uma refeição de qualidade em Tete. Disponível para takeaway e refeições no local.</div>
-                </div>
+            <p><span class="highlight">Horário:</span> Segunda a Domingo, das 08h às 22h.</p>
+        </div>
+    </section>
+
+      <!-- Fixed Contact Button -->
+        <button class="contact-btn btn-neon" id="openModal">💬</button>
+
+        <!-- Modal -->
+        <div class="modal" id="contactModal">
+            <div class="modal-content">
+            <h2>Quick Actions</h2>
+            <div class="modal-actions">
+                <button class="call-btn" onclick="window.location.href='tel:+258123456789'">📞 Call Restaurant</button>
+                <button class="lang-btn" onclick="alert('Language changed!')">🌐 Change Language</button>
+                <button class="close-btn" id="closeModal">Close</button>
+            </div>
             </div>
         </div>
 
-        <p><span class="highlight">Horário:</span> Segunda a Domingo, das 08h às 22h</p>
-        <p><span class="highlight">Telefone:</span> 
-          <a href="tel:+258867322222" style="color: inherit; text-decoration: none;">+258 86 732 2222</a>, 
-          <a href="tel:+258847322222" style="color: inherit; text-decoration: none;">+258 84 732 2222</a>
-        </p>
-     </div>
-  </section>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  
-  <script>
-    gsap.registerPlugin(ScrollTrigger);
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-    // Initial Animations
-    gsap.from("#home", { opacity: 0, ease: "power2.out", duration: 1.5 });
-    gsap.from("nav ul li", { duration: 1, y: -30, opacity: 0, stagger: 0.2, ease: "power3.out" });
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
 
-    // Card Reveal Logic
-    const interactArea = document.getElementById('interact-area');
-    const card = document.querySelector('.card');
+        // --- 1. Prepare Text for Stagger ---
+        const heroP = document.getElementById('stagger-p');
+        const textContent = heroP.textContent;
+        heroP.textContent = "";
+        [...textContent].forEach(char => {
+            const span = document.createElement('span');
+            span.textContent = char;
+            heroP.appendChild(span);
+        });
 
-    const showMap = () => {
-      card.classList.add('is-active');
-      gsap.to(card, { scale: 1.02, duration: 0.3 });
-    };
+        // --- 2. Initial Page Load Timeline ---
+        const tl = gsap.timeline();
 
-    const hideMap = () => {
-      card.classList.remove('is-active');
-      gsap.to(card, { scale: 1, duration: 0.3 });
-    };
+        tl.from("#home", { opacity: 0, duration: 1 })
+          .from("nav ul li", { y: -20, opacity: 0, stagger: 0.1, ease: "power3.out" }, "-=0.5")
+          .from(".hero-title h1, .hero-title h3", { y: 40, opacity: 0, stagger: 0.2, ease: "power4.out" }, "-=0.3")
+          .from("#stagger-p span", { 
+              opacity: 0, 
+              y: 20, 
+              rotationX: 90, 
+              duration: 0.6, 
+              stagger: 0.03, 
+              ease: "power2.out" 
+          }, "-=0.2")
+          .from(".explore-btn", { scale: 0.8, opacity: 0, duration: 0.5, ease: "back.out(1.7)" }, "-=0.2");
 
-    interactArea.addEventListener('mouseenter', showMap);
-    interactArea.addEventListener('mouseleave', hideMap);
-    interactArea.addEventListener('touchstart', showMap, {passive: true});
-    interactArea.addEventListener('touchend', hideMap);
+        // --- 3. Card Interactivity ---
+        const interactArea = document.getElementById('interact-area');
+        const card = document.querySelector('.card');
 
-    // Section Animation
-    gsap.from(".card, .info-block p", {
-      scrollTrigger: { trigger: "#about", start: "top 80%" },
-      duration: 1, y: 30, opacity: 0, stagger: 0.2, ease: "power2.out"
-    });
-  </script>
+        // --- 4. Scroll Animations ---
+        gsap.from(".card, .info-block p", {
+            scrollTrigger: {
+                trigger: "#about",
+                start: "top 80%"
+            },
+            duration: 1,
+            y: 30,
+            opacity: 0,
+            stagger: 0.2,
+            ease: "power2.out"
+        });
+    </script>
+
+    <script>
+        const modal = document.getElementById('contactModal');
+        const openBtn = document.getElementById('openModal');
+        const closeBtn = document.getElementById('closeModal');
+
+        openBtn.addEventListener('click', () => modal.style.display = 'flex');
+        closeBtn.addEventListener('click', () => modal.style.display = 'none');
+        window.addEventListener('click', (e) => {
+        if (e.target === modal) modal.style.display = 'none';
+        });
+
+        // Select the badge element
+        const badge = document.querySelector('.badge');
+
+        // Add the click event listener
+        badge.addEventListener('click', function() {
+            // Find the parent .map-wrapper and toggle the .is-active class
+            const wrapper = this.closest('.map-wrapper');
+            wrapper.classList.toggle('is-active');
+        });
+    </script>
+        
 </body>
+
 </html>
+

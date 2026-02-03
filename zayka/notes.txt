@@ -1,3 +1,49 @@
+
+#DO THESE FIRST
+
+fix about section height - DONE
+
+fix hero text - DONE
+
+ - To find a text, select the file then ctrl + f
+
+remove padding in nav and add blur bg - DONE
+
+test and add animation - DONE
+
+in about ifrane card, the top right icon should be a swap
+button for image and map, map should be 3d - ???
+
+in about section, not all info needs to be inside iframe
+put some text outside iframe - Looks good
+
+fix margin top scroll for about title - No need!
+
+Too much information in iframe - Looks good now!
+
+Change modal design and add animation
+
+FIX IMAP LOCATION
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 For the change language ui,
 make a modal, witha fixed setting button, or contact button
 
@@ -13,100 +59,7 @@ NOTHING HAPPENS TO THE IFRAME
   <meta charset="UTF-8">
   <title>Fixed Contact Button</title>
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      background: #f9f9f9;
-    }
 
-    /* Fixed button */
-    .contact-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: linear-gradient(135deg, #ff6b6b, #f06595);
-      color: #fff;
-      border: none;
-      border-radius: 50px;
-      padding: 14px 22px;
-      font-size: 16px;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      transition: transform 0.2s ease;
-    }
-    .contact-btn:hover {
-      transform: scale(1.05);
-    }
-
-    /* Modal backdrop */
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.5);
-      justify-content: center;
-      align-items: center;
-    }
-
-    /* Modal box */
-    .modal-content {
-      background: #fff;
-      border-radius: 12px;
-      padding: 24px;
-      width: 300px;
-      text-align: center;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-      animation: fadeIn 0.3s ease;
-    }
-
-    .modal-content h2 {
-      margin-top: 0;
-      font-size: 20px;
-      color: #333;
-    }
-
-    .modal-actions button {
-      display: block;
-      width: 100%;
-      margin: 10px 0;
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-      font-size: 15px;
-      cursor: pointer;
-      transition: background 0.2s ease;
-    }
-
-    .call-btn {
-      background: #51cf66;
-      color: #fff;
-    }
-    .call-btn:hover {
-      background: #40c057;
-    }
-
-    .lang-btn {
-      background: #339af0;
-      color: #fff;
-    }
-    .lang-btn:hover {
-      background: #228be6;
-    }
-
-    .close-btn {
-      margin-top: 12px;
-      background: #dee2e6;
-      color: #333;
-    }
-    .close-btn:hover {
-      background: #ced4da;
-    }
-
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(-10px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-  </style>
 </head>
 <body>
 
