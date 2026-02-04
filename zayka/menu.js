@@ -1,7 +1,7 @@
 // Google Sheets API
 const SHEET_ID = "1LshawAIIIorlZF1T3rV6LDx1hx81M-CpOCmMq3hGQjU";
 const API_KEY = "AIzaSyA_88FypaC1s4exlXvKn_x0_28WvZnSLjs";
-const RANGE = "Menu!A:E"; // Includes Image column
+const RANGE = "Menu!A:E";
 
 // ---------- Helpers ----------
 function slugify(text) {
@@ -34,6 +34,7 @@ async function renderDigitalMenu() {
   try {
     const items = await fetchMenuData();
     const categories = [...new Set(items.map(i => i["Category"]))];
+
     const menuContainer = document.querySelector(".menu");
     const navPills = document.querySelector(".nav-pills");
 
@@ -70,11 +71,10 @@ async function renderDigitalMenu() {
       h2.textContent = category;
       header.appendChild(h2);
 
-      // ✅ Image below h2 (from "Image" column)
-      const categoryImageUrl = categoryItems[0]?.Image;
-      if (categoryImageUrl) {
+      const imageUrl = categoryItems[0]?.Image;
+      if (imageUrl) {
         const img = document.createElement("img");
-        img.src = categoryImageUrl;
+        img.src = imageUrl;
         img.alt = category;
         img.loading = "lazy";
         img.className = "category-image";
@@ -111,7 +111,6 @@ async function renderDigitalMenu() {
       card.appendChild(platesContainer);
       menuContainer.appendChild(card);
 
-      // Animate card
       gsap.from(card, {
         scrollTrigger: {
           trigger: card,
@@ -123,7 +122,6 @@ async function renderDigitalMenu() {
         ease: "power2.out"
       });
 
-      // Animate plates
       gsap.from(platesContainer.children, {
         scrollTrigger: {
           trigger: card,
@@ -141,5 +139,5 @@ async function renderDigitalMenu() {
   }
 }
 
-// ---------- Export ----------
 window.MenuApp = { renderDigitalMenu };
+

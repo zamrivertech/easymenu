@@ -4,17 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Zayka | Menu</title>
+
   <meta name="description" content="Veja o menu completo do Zayka. Comida portuguesa e indiana saborosa em Tete — takeaway e refeições no local." />
   <meta name="keywords" content="Zayka, menu, comida indiana, comida portuguesa, restaurante Tete, takeaway, Moçambique" />
   <meta name="author" content="Zayka Restaurante" />
+
   <meta property="og:title" content="Zayka | Menu Digital" />
   <meta property="og:description" content="Explore nosso menu completo e faça seu pedido para takeaway." />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="pt_MZ" />
+
   <meta name="theme-color" content="#D4AF37" />
+
   <link rel="icon" href="./img/logo.png" type="image/x-icon" />
   <link rel="stylesheet" href="./style.css" />
-  <style> 
+
+  <style>
     .category-card:first-child {
       margin-top: 100px;
     }
@@ -22,106 +27,173 @@
     .category-card {
       scroll-margin-top: 155px;
     }
-  
+
     nav, .nav-pills-container {
       backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       height: 100px;
-      -webkit-backdrop-filter: blur(8px); /* for Safari */
     }
 
     nav ul {
-     margin-bottom: 38px;
+      margin-bottom: 38px;
     }
 
+    /* ---------- CATEGORY IMAGE ---------- */
     .category-image {
-  width: clamp(80px, 30vw, 120px);
-  height: auto;
-  display: block;
-  margin: 0.75rem auto;
-  cursor: pointer;
+      width: 40vw;
+      max-width: 120px;
+      height: auto;
+      display: block;
+      margin: 0.75rem auto;
+      cursor: pointer;
+      border-radius: 14px;
 
-  border-radius: 14px;
-  animation: slow-spin 20s linear infinite;
+      animation: slow-spin 20s linear infinite;
 
-  transition:
-    transform 0.6s ease,
-    box-shadow 0.6s ease,
-    border-radius 0.6s ease,
-    opacity 0.4s ease;
-}
+      transition:
+        transform 0.6s ease,
+        box-shadow 0.6s ease,
+        border-radius 0.6s ease,
+        opacity 0.4s ease;
+    }
 
-/* Slow spin */
-@keyframes slow-spin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
+    @keyframes slow-spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
 
-/* Hover polish */
-.category-image:hover {
-  animation-play-state: paused;
-  transform: scale(1.15);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-}
+    .category-image:hover {
+      animation-play-state: paused;
+      transform: scale(1.15);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    }
 
-/* 🔥 TRUE fullscreen mode */
-.category-image.is-fullscreen {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
+    /* ---------- MODAL ---------- */
+    .image-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 999999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
 
-  width: 100vw !important;
-  height: 100vh !important;
+    .image-modal.active {
+      display: flex;
+    }
 
-  max-width: none !important;
-  max-height: none !important;
+    .image-modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
 
-  object-fit: contain;
-  background: rgba(0,0,0,0.92);
-  padding: 2rem;
-  margin: 0 !important;
+    .image-modal-content {
+      position: relative;
+      z-index: 2;
+      max-width: 92vw;
+      max-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-  border-radius: 0 !important;
-  animation: none !important;
-  transform: none !important;
+    .image-modal-content img {
+      max-width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+      border-radius: 14px;
+      animation: none;
+      background: rgba(0,0,0,0.6);
+      padding: 1rem;
+    }
 
-  z-index: 2147483647 !important; /* nuclear z-index */
-  cursor: zoom-out;
-}
+    .image-modal-title {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      color: #fff;
+      letter-spacing: 0.05em;
+      opacity: 0.9;
+    }
+
+    .image-modal-close {
+      position: absolute;
+      top: 12px;
+      right: -6px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(0,0,0,0.7);
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+    }
+
+    .image-modal-close:hover {
+      background: rgba(0,0,0,0.9);
+    }
+
+    .image-modal {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .image-modal.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .image-modal-content {
+      transform: scale(0.96);
+    }
 
   </style>
 </head>
+
 <body>
   <!-- Navbar -->
-  <nav>
+  <nav style="margin: .25rem;">
     <ul>
       <li><a href="./index.html">Início</a></li>
       <li><img src="./img/logo.png" class="logo" /></li>
       <li><a href="./index.html#about">Sobre</a></li>
     </ul>
     <div class="nav-pills-container">
-      <div class="nav-pills">
-        <!-- Nav pills injected here -->
-      </div>
+      <div class="nav-pills"></div>
     </div>
   </nav>
 
   <main>
-    <div class="menu">
-      <!-- Category cards injected here -->
-    </div>
+    <div class="menu"></div>
   </main>
+
+  <!-- IMAGE MODAL -->
+  <div class="image-modal" id="imageModal">
+    <div class="image-modal-backdrop"></div>
+
+    <div class="image-modal-content">
+      <button class="image-modal-close" id="closeModal">✕</button>
+      <img id="modalImage" alt="" />
+      <div class="image-modal-title" id="modalTitle"></div>
+    </div>
+  </div>
 
   <script src="./menu.js"></script>
 
-  <!-- GSAP + ScrollTrigger -->
+  <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
   <script>
     MenuApp.renderDigitalMenu();
 
     gsap.registerPlugin(ScrollTrigger);
 
-    // Animate navbar items
     gsap.from("nav ul li", {
       duration: 1,
       y: -30,
@@ -130,7 +202,6 @@
       ease: "power3.out"
     });
 
-    // Animate nav pills container
     gsap.from(".nav-pills-container", {
       duration: 1,
       y: -20,
@@ -139,32 +210,114 @@
       ease: "power2.out"
     });
 
-    // Animate category cards when they scroll into view
-    gsap.utils.toArray(".category-card").forEach(card => {
-      gsap.from(card, {
-        scrollTrigger: {
-          trigger: card,
-          start: "top 85%", // when card enters viewport
-        },
-        duration: 1,
-        y: 40,
-        opacity: 0,
-        ease: "power2.out"
-      });
-    });
   </script>
 
-  <script>
-document.addEventListener("click", (e) => {
-  const img = e.target.closest(".category-image");
-  if (!img) return;
+  <!-- MODAL LOGIC -->
+<script>
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImage");
+  const modalTitle = document.getElementById("modalTitle");
+  const closeBtn = document.getElementById("closeModal");
 
-  img.classList.toggle("is-fullscreen");
+  let startY = 0;
+  let currentY = 0;
 
-  // prevent body scroll when fullscreen
-  document.body.style.overflow =
-    img.classList.contains("is-fullscreen") ? "hidden" : "";
-});
+  function openModal(img) {
+    modalImg.src = img.src;
+    modalImg.alt = img.alt;
+    modalTitle.textContent = img.alt;
+
+    modal.classList.add("active");
+    document.body.style.overflow = "hidden";
+
+    gsap.fromTo(
+      modal.querySelector(".image-modal-backdrop"),
+      { opacity: 0 },
+      { opacity: 1, duration: 0.3, ease: "power2.out" }
+    );
+
+    gsap.fromTo(
+      ".image-modal-content",
+      { scale: 0.9, y: 30, opacity: 0 },
+      { scale: 1, y: 0, opacity: 1, duration: 0.35, ease: "power3.out" }
+    );
+  }
+
+  function closeModal() {
+    gsap.to(".image-modal-content", {
+      scale: 0.9,
+      y: 30,
+      opacity: 0,
+      duration: 0.25,
+      ease: "power2.in"
+    });
+
+    gsap.to(modal.querySelector(".image-modal-backdrop"), {
+      opacity: 0,
+      duration: 0.25,
+      onComplete: () => {
+        modal.classList.remove("active");
+        modalImg.src = "";
+        document.body.style.overflow = "";
+      }
+    });
+  }
+
+  // OPEN
+  document.addEventListener("click", (e) => {
+    const img = e.target.closest(".category-image");
+    if (!img) return;
+    openModal(img);
+  });
+
+  // CLOSE BUTTON
+  closeBtn.addEventListener("click", closeModal);
+
+  // BACKDROP CLICK
+  modal.querySelector(".image-modal-backdrop")
+    .addEventListener("click", closeModal);
+
+  // ESC KEY
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.classList.contains("active")) {
+      closeModal();
+    }
+  });
+
+  // 📱 SWIPE DOWN TO CLOSE (mobile)
+  modal.addEventListener("touchstart", (e) => {
+    startY = e.touches[0].clientY;
+  });
+
+  modal.addEventListener("touchmove", (e) => {
+    currentY = e.touches[0].clientY;
+    const diff = currentY - startY;
+
+    if (diff > 0) {
+      gsap.set(".image-modal-content", {
+        y: diff,
+        scale: 1 - diff / 1000
+      });
+    }
+  });
+
+  modal.addEventListener("touchend", () => {
+    const diff = currentY - startY;
+
+    if (diff > 120) {
+      closeModal();
+    } else {
+      gsap.to(".image-modal-content", {
+        y: 0,
+        scale: 1,
+        duration: 0.25,
+        ease: "power2.out"
+      });
+    }
+
+    startY = 0;
+    currentY = 0;
+  });
 </script>
 
 </body>

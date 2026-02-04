@@ -280,13 +280,15 @@ a.explore-btn:hover svg path {
 
 .nav-pills a {
   display: inline-block;
-  margin-right: 1rem;
+  margin-top: -.35rem;
+  margin-right: .75rem;
   padding: 0.5rem 1rem;
   background-color: var(--color-logo);
   color: var(--color-primary);
   font-weight: 600;
-  font-size: .85rem;
+  font-size: .65rem;
   text-decoration: none;
+  font-style: italic;
   transition: background-color 0.3s;
 }
 
@@ -313,6 +315,7 @@ a.explore-btn:hover svg path {
 }
 
 .category-card h2 {
+  font-size: 1.65rem;
   padding-bottom: .5rem;
 }
 
