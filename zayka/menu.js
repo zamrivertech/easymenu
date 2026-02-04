@@ -98,7 +98,7 @@ async function renderDigitalMenu() {
 
         const price = document.createElement("span");
         price.className = "price";
-        price.textContent = `${item["Price (MT)"]} MT`;
+        price.textContent = `${item["Price (MT)"]}`;
 
         const desc = document.createElement("small");
         desc.className = "description";

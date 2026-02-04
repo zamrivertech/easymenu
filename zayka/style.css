@@ -280,7 +280,7 @@ a.explore-btn:hover svg path {
 
 .nav-pills a {
   display: inline-block;
-  margin-top: -.35rem;
+  margin-top: 0px;
   margin-right: .75rem;
   padding: 0.5rem 1rem;
   background-color: var(--color-logo);
@@ -290,10 +290,15 @@ a.explore-btn:hover svg path {
   text-decoration: none;
   font-style: italic;
   transition: background-color 0.3s;
+  
 }
 
 .nav-pills a:hover {
   background-color: var(--color-trust);
+}
+
+.nav-pills a:last-child {
+  margin-right: 5rem;
 }
 
 .category-card {
