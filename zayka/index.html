@@ -175,12 +175,18 @@
         <!-- Modal -->
         <div class="modal" id="contactModal">
             <div class="modal-content">
-            <h2>Quick Actions</h2>
+            <button id="closeModal">✕</button>
             <div class="modal-actions">
-                <button class="call-btn" onclick="window.location.href='tel:+258123456789'">📞 Call Restaurant</button>
-                <button class="lang-btn" onclick="alert('Language changed!')">🌐 Change Language</button>
-                <button class="close-btn" id="closeModal">Close</button>
-            </div>
+                <h2>Contacto</h2>
+                <button class="call-btn" onclick="window.location.href='tel:+258123456789'">Ligue E Encomenda Agora! </button>
+               <h3>Idiomas</h3>
+                <div class="languages">
+                <button class="lang-btn" data-lang="en">English</button>
+                <button class="lang-btn" data-lang="pt">Português</button>
+                <button class="lang-btn" data-lang="gu">Gujarati</button>
+                <button class="lang-btn" data-lang="zh">中文</button>
+                </div>
+               </div>
             </div>
         </div>
 
@@ -256,6 +262,8 @@
             wrapper.classList.toggle('is-active');
         });
     </script>
+    <script src="./lang.js"></script>
+
         
 </body>
 
