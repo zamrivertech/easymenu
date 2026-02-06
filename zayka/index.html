@@ -9,125 +9,20 @@
     <meta name="keywords" content="Zayka, comida indiana, comida portuguesa, restaurante Tete, takeaway, Moçambique" />
     <meta name="author" content="Zayka Restaurante" />
     <link rel="icon" href="./img/logo.png" type="image/x-icon" />
-    <link rel="stylesheet" href="./style.css">
-
-    <style>
-        :root {
-            --card-bg: #1a1a1a;
-            --text-main: #ffffff;
-            --text-dim: #999999;
-            --accent-gold: #D4AF37;
-        }
-
-        /* Hero Text Styles */
-        #stagger-p span {
-            display: inline-block;
-            white-space: pre;
-        }
-
-        /* Card UI Styles */
-        .card {
-            width: 100%;
-            max-width: 380px;
-            background: var(--card-bg);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            margin-bottom: 30px;
-        }
-
-        .map-wrapper {
-            position: relative;
-            width: 100%;
-            height: 250px;
-            background: #000;
-            cursor: pointer;
-        }
-
-        .map-wrapper iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            position: relative;
-            z-index: 1;
-        }
-
-        .map-overlay-img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 5;
-            transition: opacity 0.4s ease, transform 0.4s ease;
-            pointer-events: none;
-        }
-
-        .is-active .map-overlay-img {
-            opacity: 0;
-            transform: scale(1.1);
-        }
-
-        .badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: white;
-            padding: 4px;
-            border-radius: 4px;
-            z-index: 10;
-            font-size: 14px;
-            cursor: pointer;
-        }
-
-        .content {
-            padding: 24px;
-            text-align: center;
-        }
-
-        .content h2 {
-            margin: 0 !important;
-            font-size: 1.25rem;
-            color: var(--text-main);
-            font-weight: 500;
-        }
-
-        .content p {
-            margin: 4px 0 20px 0 !important;
-            color: var(--text-dim);
-            font-size: 0.9rem;
-        }
-
-        .meta {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-            border-top: 1px solid #333;
-            padding-top: 15px;
-        }
-
-        .meta-item {
-            text-align: center;
-            color: var(--accent-gold);
-            font-size: 0.8rem;
-            line-height: 22px;
-        }
-
-        .highlight {
-            color: #D4AF37;
-            font-weight: bold;
-        }
-    </style>
+    <!-- CSS Modules -->
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/modal.css">
+    <link rel="stylesheet" href="./css/animations.css">
 </head>
 
 <body>
 
     <nav>
         <ul>
-            <li><a href="#home">Início</a></li>
+            <li><a href="#home" data-i18n="home">Início</a></li>
             <li><img src="./img/logo.png" alt="Zayka Logo" class="logo" /></li>
-            <li><a href="#about">Sobre</a></li>
+            <li><a href="#about" data-i18n="about">Sobre</a></li>
         </ul>
     </nav>
 
@@ -140,15 +35,15 @@
                 </h1>
                 <h3>RESTAURANTE</h3>
             </div>
-            <p id="stagger-p">Comida Saborosa & Mais!</p>
+            <p id="stagger-p" data-i18n="heroText">Comida Saborosa & Mais!</p>
         </div>
-        <a href="./menu.html" class="explore-btn">Veja Menu!</a>
+        <a href="./menu.html" class="explore-btn" data-i18n="menu">Veja Menu!</a>
     </section>
 
     <section id="about" style="min-height: 90vh; padding: 50px 20px; display: flex; flex-direction: column; align-items: center;">
-        <h2 style="margin-bottom: 30px;">Sobre Nós <div class="border"></div></h2>
+        <h2 style="margin-bottom: 30px;"><span data-i18n="aboutTitle">Sobre Nós</span> <div class="border"></div></h2>
         <div class="info-block" style="width: 100%; max-width: 380px;">
-         <p><span class="highlight" style="font-size: 1.25rem;">Venha Visitar e <br> Saborear Nossos Pratos!</span></p>
+         <p><span class="highlight" style="font-size: 1.25rem;" data-i18n="visitText">Venha Visitar e <br> Saborear Nossos Pratos!</span></p>
             <div class="card">
                 <div class="map-wrapper" id="interact-area">
                     <div class="badge">📍</div>
@@ -157,15 +52,15 @@
                 </div>
 
                 <div class="content">
-                    <h2>Cafe & Restaurant</h2>
-                    <p>Perto da Loja Vodacom<br> Av. Julius Nyerere, Cidade de Tete, Moçambique.</p>
+                    <h2 data-i18n="cafeTitle">Cafe & Restaurant</h2>
+                    <p data-i18n="address">Perto da Loja Vodacom<br> Av. Julius Nyerere, Cidade de Tete, Moçambique.</p>
                     <div class="meta">
-                        <div class="meta-item">O ponto de encontro para quem não abdica de uma refeição de qualidade em Tete.</div>
+                        <div class="meta-item" data-i18n="description">O ponto de encontro para quem não abdica de uma refeição de qualidade em Tete.</div>
                     </div>
                 </div>
             </div>
 
-            <p><span class="highlight">Horário:</span> Segunda a Domingo, das 08h às 22h.</p>
+            <p><span class="highlight" data-i18n="hoursLabel">Horário:</span> <span data-i18n="hours">Segunda a Domingo, das 08h às 22h.</span></p>
         </div>
     </section>
 
@@ -175,11 +70,10 @@
         <!-- Modal -->
         <div class="modal" id="contactModal">
             <div class="modal-content">
-            <button id="closeModal">✕</button>
+            <button id="closeContactModal">✕</button>
             <div class="modal-actions">
                 <h2>Contacto</h2>
                 <button class="call-btn" onclick="window.location.href='tel:+258123456789'">Ligue E Encomenda Agora! </button>
-               <h3>Idiomas</h3>
                 <div class="languages">
                 <button class="lang-btn" data-lang="en">English</button>
                 <button class="lang-btn" data-lang="pt">Português</button>
@@ -196,6 +90,20 @@
 
     <script>
         gsap.registerPlugin(ScrollTrigger);
+
+        // --- Function to create stagger animation ---
+        function animateStaggerText() {
+            // Calculate initial animation timing for stagger
+            const heroP = document.getElementById('stagger-p');
+            gsap.from("#stagger-p span", { 
+                opacity: 0, 
+                y: 20, 
+                rotationX: 90, 
+                duration: 0.6, 
+                stagger: 0.03, 
+                ease: "power2.out" 
+            });
+        }
 
         // --- 1. Prepare Text for Stagger ---
         const heroP = document.getElementById('stagger-p');
@@ -239,30 +147,19 @@
             stagger: 0.2,
             ease: "power2.out"
         });
-    </script>
 
-    <script>
-        const modal = document.getElementById('contactModal');
-        const openBtn = document.getElementById('openModal');
-        const closeBtn = document.getElementById('closeModal');
-
-        openBtn.addEventListener('click', () => modal.style.display = 'flex');
-        closeBtn.addEventListener('click', () => modal.style.display = 'none');
-        window.addEventListener('click', (e) => {
-        if (e.target === modal) modal.style.display = 'none';
-        });
-
-        // Select the badge element
-        const badge = document.querySelector('.badge');
-
-        // Add the click event listener
-        badge.addEventListener('click', function() {
-            // Find the parent .map-wrapper and toggle the .is-active class
-            const wrapper = this.closest('.map-wrapper');
-            wrapper.classList.toggle('is-active');
+        // --- 5. Re-animate stagger text on language change ---
+        window.addEventListener('languageChanged', () => {
+            animateStaggerText();
         });
     </script>
-    <script src="./lang.js"></script>
+
+    <!-- JS Modules -->
+    <script src="./js/common.js"></script>
+    <script src="./js/language.js"></script>
+    <script src="./js/page-translator.js"></script>
+    <script src="./js/sheet-api.js"></script>
+    <script src="./js/modals.js"></script>
 
         
 </body>
