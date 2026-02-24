@@ -774,6 +774,14 @@ section {
   cursor: pointer;
 }
 
+.modal-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem; /* spacing between call button and language block */
+  width: 100%;
+}
+
 .modal-actions .call-btn {
   background: var(--color-primary);
   color: var(--color-white);
@@ -781,14 +789,21 @@ section {
   border: none;
   border-radius: 8px;
   font-size: 1rem;
-  margin: 1rem 0;
+  margin: 0; /* spacing handled by parent gap */
   cursor: pointer;
+  width: 100%;
+  max-width: 240px;
+  text-align: center;
+  white-space: normal;
 }
 
 .modal-actions .languages {
   display: flex;
   justify-content: center;
   gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem; /* extra breathing room */
+  width: 100%;
 }
 
 .modal-actions .lang-btn {

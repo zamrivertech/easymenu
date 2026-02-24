@@ -46,6 +46,8 @@
 
   <section id="home">
     <div class="hero-text">
+                  <button class="lang-btn" data-lang="en">English</button>
+            <button class="lang-btn" data-lang="pt">Português</button>
       <h1>Bem-vindo<br><span>ao Ellite!</span></h1>
       <p>Sabores autênticos de Moatize, logo ao lado da Casa Bota.<br> Venha provar a fusão perfeita entre tradição e modernidade!</p>
     </div>
@@ -96,11 +98,65 @@
     openBtn.addEventListener('click', () => modal.classList.add('active'));
     closeBtn.addEventListener('click', () => modal.classList.remove('active'));
 
+    // language helper text mapping
+    const TEXT_MAP = {
+      pt: {
+        heroTitle: 'Bem-vindo\n<span>ao Ellite!</span>',
+        heroPara: 'Sabores autênticos de Moatize, logo ao lado da Casa Bota.<br> Venha provar a fusão perfeita entre tradição e modernidade!',
+        aboutHeading: 'Sobre Nós',
+        menuButton: 'Confira o Nosso Menu!',
+        contactTitle: 'Contacto',
+        callButton: 'Ligue E Encomenda Agora!',
+        locationLabel: 'Localização:',
+        hoursLabel: 'Horário de Funcionamento:',
+        phoneLabel: 'Telefone:',
+        serviceLabel: 'Serviço:',
+        paymentLabel: 'Pagamento:',
+      },
+      en: {
+        heroTitle: 'Welcome\n<span>to Ellite!</span>',
+        heroPara: 'Authentic flavors from Moatize, just beside Casa Bota.<br> Come taste the perfect fusion of tradition and modernity!',
+        aboutHeading: 'About Us',
+        menuButton: 'Check Our Menu!',
+        contactTitle: 'Contact',
+        callButton: 'Call & Order Now!',
+        locationLabel: 'Location:',
+        hoursLabel: 'Opening Hours:',
+        phoneLabel: 'Phone:',
+        serviceLabel: 'Service:',
+        paymentLabel: 'Payment:',
+      }
+    };
+
+    function updateText(lang) {
+      const t = TEXT_MAP[lang] || TEXT_MAP.pt;
+      document.querySelector('#home .hero-text h1').innerHTML = t.heroTitle;
+      document.querySelector('#home .hero-text p').innerHTML = t.heroPara;
+      document.querySelector('#about h2').textContent = t.aboutHeading;
+      document.querySelector('#home .menu-button').textContent = t.menuButton;
+      document.querySelector('#contactModal .modal-actions h2').textContent = t.contactTitle;
+      document.querySelector('#contactModal .call-btn').textContent = t.callButton;
+      // about labels
+      const info = document.querySelector('#about .info-block');
+      if (info) {
+        info.querySelectorAll('p').forEach((p, idx) => {
+          switch(idx) {
+            case 0: p.innerHTML = `<span class="highlight">${t.locationLabel}</span> Próximo à Casa Bota, Moatize, Tete, Moçambique.`; break;
+            case 1: p.innerHTML = `<span class="highlight">${t.hoursLabel}</span> Segunda a Domingo, das 08h às 22h`; break;
+            case 2: p.innerHTML = `<span class="highlight">${t.phoneLabel}</span> <a href="tel:+258841230987">841230987</a> (WhatsApp disponível)`; break;
+            case 3: p.innerHTML = `<span class="highlight">${t.serviceLabel}</span> Takeaway & Refeições no Local`; break;
+            case 4: p.innerHTML = `<span class="highlight">${t.paymentLabel}</span> Cash, E-mola, M-Pesa e POS`; break;
+          }
+        });
+      }
+    }
+
     // initialize language preference
     const storedLang = localStorage.getItem('menuLang');
     if (storedLang) {
       document.documentElement.lang = storedLang;
       document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.getAttribute('data-lang') === storedLang));
+      updateText(storedLang);
     }
 
     // language buttons store preference
@@ -110,6 +166,7 @@
         localStorage.setItem('menuLang', lang);
         document.documentElement.lang = lang;
         document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.getAttribute('data-lang') === lang));
+        updateText(lang);
         // optionally close modal or give feedback
         modal.classList.remove('active');
       });
