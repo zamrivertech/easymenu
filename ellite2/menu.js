@@ -1,9 +1,18 @@
 // menu.js
 
 // Use official Google Sheets API
-const SHEET_ID = "1sbaGlBL0KrG9i9jUQZubnc9d-vSif8QCg8JE_o0xELI";
+const SHEET_ID = "1GNZQ2jyNs8tENfcGjF_jnY2j7kXbYJtTpk39iDrK68s";
 const API_KEY = "AIzaSyA_88FypaC1s4exlXvKn_x0_28WvZnSLjs";
-const RANGE = "Menu!A:D"; // adjust columns/range to match your sheet
+
+// language handling
+let CURRENT_LANG = localStorage.getItem('menuLang') || 'pt';
+// ensure html element lang matches
+if (typeof document !== 'undefined') document.documentElement.lang = CURRENT_LANG;
+
+function sheetRangeForLang(lang) {
+  const tab = lang === 'en' ? 'Menu-en' : 'Menu-pt';
+  return `${tab}!A:E`; // assume extra column for Image
+}
 
 // ---------- Shared Helpers ----------
 function slugify(text) {
@@ -24,7 +33,8 @@ function groupBy(arr, key) {
 }
 
 async function fetchMenuData() {
-  const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY}&t=${Date.now()}`;
+  const range = sheetRangeForLang(CURRENT_LANG);
+  const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${encodeURIComponent(range)}?key=${API_KEY}&t=${Date.now()}`;
   const res = await fetch(url, { cache: "no-store" });
   const data = await res.json();
   if (!data.values) throw new Error("No values found");
@@ -71,6 +81,7 @@ async function renderDigitalMenu() {
           .map(
             item => `
           <div class="plate">
+            ${item["Image"] ? `<img src="${item["Image"]}" alt="${item["Name"]}" class="plate-img" />` : ""}
             <strong>${item["Name"]}</strong><div class="dashed"></div><span class='price'>${item["Price (MT)"]} MT</span>
             <small class="description">${item["Description"] || ""}</small>
           </div>
@@ -85,6 +96,40 @@ async function renderDigitalMenu() {
   }
 }
 
+function setLanguage(lang) {
+  if (lang !== 'en' && lang !== 'pt') return;
+  CURRENT_LANG = lang;
+  localStorage.setItem('menuLang', lang);
+  renderDigitalMenu();
+  // reflect attribute on html element
+  document.documentElement.lang = lang;
+  // if pdf page present
+  if (typeof renderPdfMenu === 'function') renderPdfMenu();
+
+  // update active state on any language buttons
+  document.querySelectorAll('.menu-controls .lang-btn, .modal .lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+  });
+}
+
+// wire up buttons when DOM ready
+if (typeof window !== 'undefined') {
+  document.addEventListener('DOMContentLoaded', () => {
+    const btnEn = document.getElementById('lang-en');
+    const btnPt = document.getElementById('lang-pt');
+    if (btnEn) {
+      btnEn.addEventListener('click', () => setLanguage('en'));
+      if (CURRENT_LANG === 'en') btnEn.classList.add('active');
+    }
+    if (btnPt) {
+      btnPt.addEventListener('click', () => setLanguage('pt'));
+      if (CURRENT_LANG === 'pt') btnPt.classList.add('active');
+    }
+  });
+}
+
+// ---------- PDF Menu (pdf.html) ----------
+
 // ---------- PDF Menu (pdf.html) ----------
 const CATEGORY_ORDER = [
   ["Entradas e Extras", "Petiscos", "Pizzas", "Carnes", "Aves", "Peixes e Mariscos"],  
@@ -97,7 +142,7 @@ function createCategoryBlock(category, items) {
     const block = document.createElement("div");
     block.className = "category-block";
     block.innerHTML = `<h2>${category}</h2>
-      <table style="width:100%; border-collapse:collapse; font-size:0.98em; color:#e22218;">
+      <table style="width:100%; border-collapse:collapse; font-size:0.98em; color:#C6A75E;">
         <tbody>
           ${items
             .map(
@@ -125,6 +170,7 @@ function createCategoryBlock(category, items) {
         if (group.length === 1) {
           const item = group[0];
           return `<div class="plate">
+            ${item["Image"] ? `<img src="${item["Image"]}" alt="${item["Name"]}" class="plate-img"/>` : ""}
             <strong>${item["Name"]}</strong>
             <div class="dashed"></div>
             <span class="price">${item["Price (MT)"]} MT</span>
@@ -136,6 +182,7 @@ function createCategoryBlock(category, items) {
               ${group
                 .map(
                   item => `
+                ${item["Image"] ? `<tr><td colspan="2"><img src="${item["Image"]}" alt="${item["Name"]}" style="max-width:80px; display:block; margin:4px auto;"></td></tr>` : ``}
                 <tr>
                   <td>${item["Description"] || ""}</td>
                   <td style='text-align:right;'>${item["Price (MT)"]} MT</td>
@@ -165,9 +212,9 @@ async function renderPdfMenu() {
 
       if (idx === 0) {
         page.innerHTML += `<div class="header-info">
-          <p>Refeições Rápidas!</p>
-          <img src="./img/logo.png" alt="Logo">
-          <p>Sabor Autêntico!</p>
+          <p>Sabores de Moatize!</p>
+          <img src="./img/logo.png" alt="Ellite Logo">
+          <p>Próximo à Casa Bota</p>
         </div>`;
       }
 
@@ -207,10 +254,10 @@ async function renderPdfMenu() {
         page.innerHTML += `<div class="footer-info">
           <img src="./img/qr-code.png" alt="QR" style="height:150px;">
           <div class='footer-text'>
-            <strong>Restaurante No Zavala</strong><br>
-            Segunda a Domingo, 09:00 - 21:00<br>
-            879112092 - 872112092<br>
-            Cruzamento de Seta, Matema, Tete, Moçambique.<br>
+            <strong>Restaurante Ellite</strong><br>
+            Segunda a Domingo, 08:00 - 22:00<br>
+            841230987<br>
+            Próximo à Casa Bota, Moatize, Tete, Moçambique.<br>
             <span style="font-size:0.95em;">Obrigado pela preferência!</span>
           </div>
         </div>`;
