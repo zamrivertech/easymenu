@@ -1,0 +1,95 @@
+
+#DO THESE FIRST
+
+fix about section height - DONE
+
+fix hero text - DONE
+
+ - To find a text, select the file then ctrl + f
+
+remove padding in nav and add blur bg - DONE
+
+test and add animation - DONE
+
+in about ifrane card, the top right icon should be a swap
+button for image and map, map should be 3d - ???
+
+in about section, not all info needs to be inside iframe
+put some text outside iframe - Looks good
+
+fix margin top scroll for about title - No need!
+
+Too much information in iframe - Looks good now!
+
+Change modal design and add animation
+
+FIX IMAP LOCATION
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+For the change language ui,
+make a modal, witha fixed setting button, or contact button
+
+DONTFORGET TO CORRECT THE RIGHT MARGIN OF THE LAST NAVPILL
+
+this exapmlpe
+
+NOTHING HAPPENS TO THE IFRAME
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fixed Contact Button</title>
+  <style>
+
+</head>
+<body>
+
+  <!-- Fixed Contact Button -->
+  <button class="contact-btn" id="openModal">Contact</button>
+
+  <!-- Modal -->
+  <div class="modal" id="contactModal">
+    <div class="modal-content">
+      <h2>Quick Actions</h2>
+      <div class="modal-actions">
+        <button class="call-btn" onclick="window.location.href='tel:+258123456789'">📞 Call Restaurant</button>
+        <button class="lang-btn" onclick="alert('Language changed!')">🌐 Change Language</button>
+        <button class="close-btn" id="closeModal">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('contactModal');
+    const openBtn = document.getElementById('openModal');
+    const closeBtn = document.getElementById('closeModal');
+
+    openBtn.addEventListener('click', () => modal.style.display = 'flex');
+    closeBtn.addEventListener('click', () => modal.style.display = 'none');
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) modal.style.display = 'none';
+    });
+  </script>
+
+</body>
+</html>
+

@@ -1,0 +1,664 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap');
+
+/* ===========================
+   Root Variables
+=========================== */
+:root {
+  --color-primary: #8B6B2E;
+  --color-accent: #C6A75E;
+  --color-bg: #F5F1E8;
+  --color-trust: #C6A75E;
+  --color-white: #FFFFFF;
+  --color-dark: #1a1a1a;
+}
+
+/* ===========================
+   Base
+=========================== */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  background-color: var(--color-bg);
+  color: var(--color-dark);
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* ===========================
+   Navigation (Improved)
+=========================== */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 85px;
+  background-color: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+nav ul {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  margin: 0;
+  list-style: none;
+}
+
+nav a {
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 1rem;
+  position: relative;
+  transition: 0.3s ease;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background: var(--color-accent);
+  transition: 0.3s;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+.logo {
+  height: 70px;
+}
+
+/* ===========================
+   Sections
+=========================== */
+section {
+  min-height: 100vh;
+  padding: 120px 2rem 60px 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ===========================
+   Hero Section
+=========================== */
+#home {
+  background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+    url('./img/ellitebg.jpg');
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  color: white;
+}
+
+.hero-text {
+  max-width: 700px;
+}
+
+.hero-image-container img {
+  width: 100%;
+  max-width: 520px;
+  margin-bottom: 1.5rem;
+}
+
+.hero-text p {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: #f3f3f3;
+}
+
+/* ===========================
+   CTA Button (Premium feel)
+=========================== */
+.explore-btn {
+  margin-top: 2rem;
+  padding: 0.9rem 2.4rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  border: 2px solid var(--color-accent);
+  color: white;
+  font-weight: bolder;
+  background: transparent;
+  transition: all 0.4s ease;
+  letter-spacing: 1px;
+  box-shadow: 2px 2px 28px 5px var(--color-primary);
+  backdrop-filter: blur(12px);
+}
+
+.explore-btn:hover {
+  background: var(--color-accent);
+  color: var(--color-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* ===========================
+   About Section
+=========================== */
+#about {
+  background: var(--color-primary);
+  color: var(--color-bg);
+  text-align: center;
+}
+
+#about h1 {
+  font-size: 2.3rem;
+  margin-bottom: 2rem;
+}
+
+.info-block {
+  max-width: 900px;
+  width: 100%;
+}
+
+/* ===========================
+   Card Improved
+=========================== */
+.card {
+  background: #111;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+  margin-bottom: 2rem;
+  transition: 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.map-wrapper {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+}
+
+.map-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.map-overlay-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: var(--color-accent);
+  color: var(--color-dark);
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.content {
+  padding: 2rem;
+}
+
+.content h2 {
+  font-size: 1.4rem;
+  color: var(--color-accent);
+  margin-bottom: 0.6rem;
+}
+
+.content p {
+  color: #bbb;
+  font-size: 0.95rem;
+}
+
+.meta {
+  border-top: 1px solid #333;
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+
+.meta-item {
+  font-size: 0.85rem;
+  color: var(--color-accent);
+}
+
+/* ===========================
+   Contact Info
+=========================== */
+.contact-info {
+  margin-top: 1.5rem;
+  font-size: 1.05rem;
+}
+
+.highlight {
+  color: var(--color-accent);
+  font-weight: bold;
+}
+
+.contact-info a {
+  color: var(--color-bg);
+  font-weight: 600;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+/* ===========================
+   Responsive
+=========================== */
+@media (max-width: 768px) {
+
+  nav ul {
+    padding: 0 1rem;
+  }
+
+  .logo {
+    height: 55px;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+  }
+
+  #about h1 {
+    font-size: 1.8rem;
+  }
+
+  .content {
+    padding: 1.4rem;
+  }
+}
+
+/* =========================================
+   DIGITAL MENU LAYOUT
+========================================= */
+
+.menu {
+  max-width: 900px;
+  margin: 140px auto 80px auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* =========================================
+   HORIZONTAL NAV PILLS (DRAG SCROLL)
+========================================= */
+
+.nav-pills-container {
+  position: fixed;
+  top: 85px; /* below navbar */
+  left: 0;
+  width: 100%;
+  background: var(--color-primary);
+  z-index: 999;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  scrollbar-width: none;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.nav-pills-container::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-pills {
+  display: flex;
+  gap: 0.8rem;
+  padding: 0.8rem 1.2rem;
+  width: max-content;
+}
+
+/* Individual Pills */
+.nav-pills a {
+  flex-shrink: 0;
+  padding: 0.55rem 1.2rem;
+  border-radius: 50px;
+  border: 2px solid var(--color-accent);
+  background: transparent;
+  color: var(--color-bg);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.nav-pills a:hover {
+  background: var(--color-accent);
+  color: var(--color-dark);
+  transform: translateY(-2px);
+}
+
+.nav-pills a:active {
+  transform: scale(0.95);
+}
+
+/* =========================================
+   CATEGORY CARD (DIGITAL)
+========================================= */
+
+.category-card {
+  background: linear-gradient(145deg, #111, #1c1c1c);
+  border: 2px solid var(--color-accent);
+  border-radius: 18px;
+  padding: 2rem 1.5rem;
+  color: var(--color-bg);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+  transition: all 0.4s ease;
+  scroll-margin-top: 170px; /* aligns with fixed nav + pills */
+}
+
+.category-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.45);
+}
+
+/* Category Header */
+.menu-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.menu-header h2 {
+  font-size: 1.6rem;
+  color: var(--color-accent);
+  margin: 0;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* =========================================
+   PLATE ROW
+========================================= */
+
+.plate {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 1.2rem;
+}
+
+.plate strong {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-bg);
+}
+
+/* dashed separator */
+.dashed {
+  border-bottom: 1px dashed rgba(255,255,255,0.25);
+  margin: 4px 0;
+  width: 100%;
+}
+
+/* price */
+.price {
+  align-self: flex-end;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.25rem 0.9rem;
+  border-radius: 20px;
+  background: var(--color-accent);
+  color: var(--color-dark);
+  letter-spacing: 0.5px;
+}
+
+/* description */
+.description {
+  font-size: 0.8rem;
+  color: #b8b8b8;
+  font-style: italic;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 768px) {
+
+  .menu {
+    margin-top: 160px;
+  }
+
+  .category-card {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .menu-header h2 {
+    font-size: 1.3rem;
+  }
+
+  .plate strong {
+    font-size: 0.95rem;
+  }
+
+  .price {
+    font-size: 0.8rem;
+  }
+
+  .nav-pills a {
+    font-size: 0.75rem;
+    padding: 0.45rem 1rem;
+  }
+}
+
+/* ===============================
+   DOWNLOAD BUTTON (PDF PAGE)
+================================= */
+.menu-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 12px 24px;
+  background: #e22218;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+.menu-button:hover {
+  background: #b81a12;
+  transform: translateY(-3px);
+}
+
+/* ===============================
+   A4 PAGE SETUP
+================================= */
+#menu {
+  display: flex;
+  justify-content: center;
+  padding: 60px 0;
+}
+
+#pages {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.page {
+  width: 794px;       /* A4 width in px */
+  height: 1123px;     /* A4 height in px */
+  background: white;
+  padding: 60px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* ===============================
+   HEADER SECTION
+================================= */
+.header-info {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-info img {
+  height: 90px;
+  margin: 15px 0;
+}
+
+.header-info p {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #e22218;
+}
+
+/* ===============================
+   MENU GRID
+================================= */
+.menu-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  flex: 1;
+}
+
+.menu-row {
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+}
+
+.category-block {
+  flex: 1;
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  background: #fafafa;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.category-block h2 {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  color: #e22218;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 2px solid #e22218;
+  padding-bottom: 6px;
+}
+
+/* ===============================
+   PLATE STYLE
+================================= */
+.plate {
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+
+.plate strong {
+  font-weight: 600;
+}
+
+.dashed {
+  border-bottom: 1px dashed #bbb;
+  margin: 4px 0;
+}
+
+.price {
+  float: right;
+  font-weight: 600;
+  color: #000;
+}
+
+/* Tables inside categories */
+.category-block table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.category-block td {
+  padding: 4px 0;
+}
+
+/* ===============================
+   FOOTERS
+================================= */
+.footer-info,
+.footer-info-alt {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 0.9rem;
+}
+
+.footer-info img {
+  height: 120px;
+}
+
+.footer-text {
+  line-height: 1.6;
+}
+
+.footer-info-alt {
+  flex-direction: column;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+/* ===============================
+   PRINT SETTINGS
+================================= */
+@media print {
+  body {
+    background: white;
+  }
+
+  .menu-button {
+    display: none;
+  }
+
+  .page {
+    box-shadow: none;
+    margin: 0;
+    page-break-after: always;
+  }
+}

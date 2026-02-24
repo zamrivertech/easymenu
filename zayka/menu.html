@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zayka | Menu</title>
+
+  <meta name="description" content="Veja o menu completo do Zayka. Comida portuguesa e indiana saborosa em Tete — takeaway e refeições no local." />
+  <meta name="keywords" content="Zayka, menu, comida indiana, comida portuguesa, restaurante Tete, takeaway, Moçambique" />
+  <meta name="author" content="Zayka Restaurante" />
+
+  <meta property="og:title" content="Zayka | Menu Digital" />
+  <meta property="og:description" content="Explore nosso menu completo e faça seu pedido para takeaway." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_MZ" />
+
+  <meta name="theme-color" content="#D4AF37" />
+
+  <link rel="icon" href="./img/logo.png" type="image/x-icon" />
+  <!-- CSS Modules -->
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/menu.css">
+  <link rel="stylesheet" href="./css/modal.css">
+  <link rel="stylesheet" href="./css/animations.css">
+
+  <style>
+    .category-card:first-child {
+      margin-top: 100px;
+    }
+
+    .category-card {
+      scroll-margin-top: 155px;
+    }
+
+    nav, .nav-pills-container {
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      height: 100px;
+    }
+
+    nav ul {
+      margin-bottom: 38px;
+    }
+
+    /* ---------- CATEGORY IMAGE ---------- */
+    .category-image {
+      width: 40vw;
+      max-width: 120px;
+      height: auto;
+      display: block;
+      margin: 0.75rem auto;
+      cursor: pointer;
+      border-radius: 14px;
+
+      animation: slow-spin 20s linear infinite;
+
+      transition:
+        transform 0.6s ease,
+        box-shadow 0.6s ease,
+        border-radius 0.6s ease,
+        opacity 0.4s ease;
+    }
+
+    @keyframes slow-spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    .category-image:hover {
+      animation-play-state: paused;
+      transform: scale(1.15);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav>
+    <ul>
+      <li><a href="./index.html" data-i18n="home">Início</a></li>
+      <li><img src="./img/logo.png" class="logo" /></li>
+      <li><a href="./index.html#about" data-i18n="about">Sobre</a></li>
+    </ul>
+    <div class="nav-pills-container">
+      <div class="nav-pills"></div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="menu"></div>
+  </main>
+
+  <!-- Fixed Contact Button -->
+  <button class="contact-btn btn-neon" id="openModal">💬</button>
+
+  <!-- Contact Modal (also used for image display) -->
+  <div class="modal" id="contactModal">
+    <div class="modal-content">
+      <button id="closeContactModal">✕</button>
+      
+      <!-- Contact Actions -->
+      <div class="modal-actions" id="modalContact">
+        <h2>Contacto</h2>
+        <button class="call-btn" onclick="window.location.href='tel:+258123456789'">Ligue E Encomenda Agora!</button>
+        <div class="languages">
+          <button class="lang-btn" data-lang="en">English</button>
+          <button class="lang-btn" data-lang="pt">Português</button>
+          <button class="lang-btn" data-lang="gu">Gujarati</button>
+          <button class="lang-btn" data-lang="zh">中文</button>
+        </div>
+      </div>
+      
+      <!-- Image Display -->
+      <div class="modal-image" id="modalImage" style="display: none;">
+        <img id="imageContent" alt="" />
+        <div class="image-caption" id="imageCaptionText"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/common.js"></script>
+  <script src="./js/language.js"></script>
+  <script src="./js/page-translator.js"></script>
+  <script src="./js/sheet-api.js"></script>
+  <script src="./js/menu-renderer.js"></script>
+  <script src="./js/modals.js"></script>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <script>
+    // Initialize menu
+    gsap.registerPlugin(ScrollTrigger);
+    MenuRenderer.renderDigitalMenu();
+
+    gsap.from("nav ul li", {
+      duration: 1,
+      y: -30,
+      opacity: 0,
+      stagger: 0.2,
+      ease: "power3.out"
+    });
+
+    gsap.from(".nav-pills-container", {
+      duration: 1,
+      y: -20,
+      opacity: 0,
+      delay: 0.5,
+      ease: "power2.out"
+    });
+  </script>
+
+</body>
+</html>
+
