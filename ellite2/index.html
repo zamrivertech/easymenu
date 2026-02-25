@@ -34,7 +34,7 @@
       <div class="modal-content">
       <button id="closeContactModal">✕</button>
       <div class="modal-actions">
-          <h2>Contacto</h2>
+          <h2 style="display: none;">Contacto</h2>
           <button class="call-btn" onclick="window.location.href='tel:+258123456789'">Ligue E Encomenda Agora! </button>
           <div class="languages">
             <button class="lang-btn" data-lang="en">English</button>
@@ -46,12 +46,10 @@
 
   <section id="home">
     <div class="hero-text">
-                  <button class="lang-btn" data-lang="en">English</button>
-            <button class="lang-btn" data-lang="pt">Português</button>
-      <h1>Bem-vindo<br><span>ao Ellite!</span></h1>
+      <img src="./img/ellite_text.png" alt="Ellite">
+      <h1 style="display: none;">Bem-vindo<br><span>ao Ellite!</span></h1>
       <p>Sabores autênticos de Moatize, logo ao lado da Casa Bota.<br> Venha provar a fusão perfeita entre tradição e modernidade!</p>
     </div>
-    <img src="./img/hero.png" alt="Ellite Gastronomia" style="max-width: 180px;" class="hero-image" />
     <a href="./menu.html" class="menu-button explore-btn">Confira o Nosso Menu!</a>
   </section>
 
@@ -102,7 +100,7 @@
     const TEXT_MAP = {
       pt: {
         heroTitle: 'Bem-vindo\n<span>ao Ellite!</span>',
-        heroPara: 'Sabores autênticos de Moatize, logo ao lado da Casa Bota.<br> Venha provar a fusão perfeita entre tradição e modernidade!',
+        heroPara: 'Sabores autênticos de Moatize.<br> Venha provar a fusão perfeita entre tradição e modernidade!',
         aboutHeading: 'Sobre Nós',
         menuButton: 'Confira o Nosso Menu!',
         contactTitle: 'Contacto',
@@ -115,7 +113,7 @@
       },
       en: {
         heroTitle: 'Welcome\n<span>to Ellite!</span>',
-        heroPara: 'Authentic flavors from Moatize, just beside Casa Bota.<br> Come taste the perfect fusion of tradition and modernity!',
+        heroPara: 'Authentic flavors from Moatize.<br> Come taste the perfect fusion of tradition and modernity!',
         aboutHeading: 'About Us',
         menuButton: 'Check Our Menu!',
         contactTitle: 'Contact',

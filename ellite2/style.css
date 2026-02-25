@@ -38,7 +38,7 @@ nav {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: var(--color-primary);
+  background-color: var(--color-white);
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
@@ -65,7 +65,7 @@ nav ul {
 }
 
 nav a {
-  color: var(--color-bg);
+  color: var(--color-primary);
   text-decoration: none;
   font-weight: 600;
 }
@@ -89,7 +89,12 @@ section {
 }
 
 #home {
-  background-color: var(--color-bg);
+  background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.25)),
+    url('./img/ellitebg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  
   color: var(--color-primary);
 }
 
@@ -114,8 +119,14 @@ section {
 }
 
 .hero-text p {
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   margin-bottom: 0;
+  color: var(--color-white);
+  text-shadow: 2px 2px 6px var(--color-dark);
+}
+
+.hero-text img {
+  width: 100%;
 }
 
 .hero-image {
@@ -141,6 +152,8 @@ section {
   cursor: pointer;
   text-decoration: none;
   transition: .3s ease-in-out;
+  box-shadow: 2px 2px 28px 5px var(--color-primary);
+  backdrop-filter: blur(12px);
 }
 
 .menu-button:hover {
@@ -768,10 +781,13 @@ section {
   background: none;
   border: none;
   font-size: 1.2rem;
-  position: absolute;
-  top: 10px;
-  right: 10px;
   cursor: pointer;
+}
+
+.modal-content #closeContactModal {
+  position: absolute;
+  right: 16px;
+  top: 16px;
 }
 
 .modal-actions {
