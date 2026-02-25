@@ -78,7 +78,7 @@ nav a:hover {
    Sections
 =========================== */
 section {
-  height: 83vh;
+  height: 100vh;
   padding: 6rem 2rem 2rem;
   display: flex;
   flex-direction: column;
@@ -99,6 +99,7 @@ section {
 }
 
 #about {
+  height: fit-content;
   background-color: var(--color-primary);
   color: var(--color-bg);
 }
@@ -611,69 +612,96 @@ section {
   color: var(--color-primary);
 }
 
-/* card & map for about section */
+
+/* Card UI Styles */
 .card {
-  background: #111;
-  border-radius: 16px;
+  width: 100%;
+  max-width: 380px;
+  background: #1a1a1a;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.4);
-  margin-bottom: 2rem;
-  transition: 0.4s ease;
-}
-.card:hover {
-  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  margin-bottom: 30px;
 }
 
 .map-wrapper {
   position: relative;
   width: 100%;
-  height: 280px;
-  overflow: hidden;
+  height: 250px;
+  background: #000;
+  cursor: pointer;
 }
+
 .map-wrapper iframe {
   width: 100%;
   height: 100%;
   border: none;
+  position: relative;
+  z-index: 1;
 }
+
 .map-overlay-img {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  z-index: 5;
   transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
 }
+
+.is-active .map-overlay-img {
+  opacity: 0;
+  transform: scale(1.1);
+}
+
 .badge {
   position: absolute;
   top: 15px;
   right: 15px;
-  background: var(--color-accent);
-  color: var(--color-dark);
-  padding: 6px 8px;
-  border-radius: 6px;
+  background: white;
+  padding: 4px;
+  border-radius: 4px;
+  z-index: 10;
   font-size: 14px;
-  font-weight: bold;
+  cursor: pointer;
 }
+
 .content {
-  padding: 2rem;
+  padding: 24px;
+  text-align: center;
 }
+
 .content h2 {
-  font-size: 1.4rem;
-  color: var(--color-accent);
-  margin-bottom: 0.6rem;
+  margin: 0 !important;
+  font-size: 1.25rem;
+  color: #ffffff;
+  font-weight: 500;
 }
+
 .content p {
-  color: #bbb;
-  font-size: 0.95rem;
+  margin: 4px 0 20px 0 !important;
+  color: #999999;
+  font-size: 0.9rem;
 }
+
 .meta {
+  display: flex;
+  gap: 15px;
+  align-items: center;
   border-top: 1px solid #333;
-  padding-top: 1rem;
-  margin-top: 1rem;
+  padding-top: 15px;
 }
+
 .meta-item {
-  font-size: 0.85rem;
-  color: var(--color-accent);
+  text-align: center;
+  color: #D4AF37;
+  font-size: 0.8rem;
+  line-height: 22px;
 }
+
 
 /* general plate image styling */
 .plate-img {
