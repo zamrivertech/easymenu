@@ -44,7 +44,6 @@ nav {
   justify-content: space-between;
   align-items: center;
   z-index: 1000;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 nav .logo {
@@ -388,15 +387,16 @@ section {
       top: 80px;
       left: 0;
       right: 0;
-      background-color: var(--color-primary);
       z-index: 999;
       overflow-x: auto;
       white-space: nowrap;
+      background-color: var(--color-white);
       margin-top: 6px;
       padding: 0.6rem 1rem;
       scrollbar-width: none;
       display: flex;
       justify-content: space-between;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
     .nav-pills-container::-webkit-scrollbar {
@@ -420,6 +420,10 @@ section {
       background-color: var(--color-trust);
       color: var(--color-primary);
       text-decoration: none;
+    }
+
+    .external-border {
+      border: solid var(--color-dark) 12px;
     }
 
     .category-card {
@@ -522,7 +526,6 @@ section {
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding-top: 2rem;
       background-color: var(--color-bg);
     }
 
