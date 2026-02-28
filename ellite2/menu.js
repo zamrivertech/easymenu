@@ -83,8 +83,8 @@ async function renderDigitalMenu() {
           <div class="plate">
             ${item["Image"] ? `<img src="${item["Image"]}" alt="${item["Name"]}" class="plate-img" />` : ""}
             <strong>${item["Name"]}</strong><div class="dashed"></div><span class='price'>${item["Price (MT)"]} MT</span>
-            <small class="description">${item["Description"] || ""}</small>
           </div>
+          <small class="description">${item["Description"] || ""}</small>
         `
           )
           .join("")}

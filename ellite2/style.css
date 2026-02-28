@@ -471,17 +471,13 @@ section {
       height: 10px;
     }
 
-    .category-card .plate {
-      flex-direction: row;
-    }
-
     .category-card img {
       width: 130px;
       object-fit: cover;
     }
 
     .category-card .plate {
-      max-height: fit-content;
+      width: 100%;
     }
 
     .menu-header {
@@ -504,9 +500,7 @@ section {
 
     .plate {
       width: 100%;
-      height: 100px;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
     }
@@ -804,7 +798,7 @@ section {
   border-radius: 12px;
   position: relative;
   max-width: 400px;
-  width: 90%;
+  width: 50%;
   text-align: center;
 }
 
@@ -817,8 +811,8 @@ section {
 
 .modal-content #closeContactModal {
   position: absolute;
-  right: 16px;
-  top: 16px;
+  right: 10px;
+  top: 10px;
 }
 
 .modal-actions {
