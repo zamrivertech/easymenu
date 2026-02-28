@@ -3,23 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ellite | Menu</title>
-  <meta name="description" content="Descubra a excelência gastronómica no No Zavala. Oferecemos pratos variados e refeições rápidas de alta qualidade em Tete." />
-  <meta name="keywords" content="Ellite, Restaurante em Moatize, Tete, Comida Moçambicana, Matema Restaurante" />
+  <title>Restaurante Ellite | Nosso Menu</title>
+  <meta name="description" content="Explore o menu completo do Restaurante Ellite. Pratos inspirados em Moatize e sabores caseiros na zona de Casa Bota." />
+  <meta name="keywords" content="menu, gastronomia, especialidades, bebidas, Ellite, Moatize, Casa Bota" />
   <meta name="author" content="Zambezi River Services" />
-  <meta property="og:title" content="Ellite | Moatize, Tete" />
-  <meta property="og:description" content="Pratos tradicionais e conveniência. Faça o seu pedido para takeaway: 879112092" />
+  <meta property="og:title" content="Restaurante Ellite | Menu Digital" />
+  <meta property="og:description" content="Descubra nossas delícias e peça takeaway no Ellite, Moatize." />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="pt_MZ" />
-  <link rel="icon" href="./img/favicon.png" type="image/x-icon">
+  <meta name="theme-color" content="#C6A75E" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="icon" href="./img/favicon.png" type="image/x-icon">
 </head>
 <body>
   <nav>
     <ul>
       <li><a href="./index.html">Início</a></li>
-      <li><a href="./pdf.html"><img src="./img/logo.png" alt="No Zavala Logo" class="logo" /></a></li>
+      <li><a href="./pdf.html"><img src="./img/logo.png" alt="Ellite Logo" class="logo" /></a></li>
       <li><a href="./index.html#about">Sobre</a></li>
     </ul>
     <div class="nav-pills-container">
@@ -27,24 +29,61 @@
         </div>
     </div>
   </nav>
-  
-  <br>
-  <br>
+
+  <!-- Fixed Contact Button -->
+  <button class="contact-btn btn-neon" id="openModal">💬</button>
+
+  <!-- Modal -->
+  <div class="modal" id="contactModal">
+      <div class="modal-content">
+      <button id="closeContactModal">✕</button>
+      <div class="modal-actions">
+          <h2>Contacto</h2>
+          <button class="call-btn" onclick="window.location.href='tel:+258123456789'">Ligue E Encomenda Agora! </button>
+          <div class="languages">
+            <button class="lang-btn" data-lang="en">English</button>
+            <button class="lang-btn" data-lang="pt">Português</button>
+          </div>
+         </div>
+      </div>
+  </div>
+
+  <div class="menu-controls">
+    <button id="lang-pt" class="lang-btn" data-lang="pt">PT</button>
+    <button id="lang-en" class="lang-btn" data-lang="en">EN</button>
+  </div>
+
   <br>
   <br>
 
   <div class="menu">
     </div>
-<!-- GSAP Core -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-
-<!-- ScrollTrigger Plugin -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>  
+  
 <script src="./menu.js"></script>
 <script>
-  // Initializing the No Zavala Digital Menu
+  // Initializing the Ellite Digital Menu
   MenuApp.renderDigitalMenu();
-  
+</script>
+
+<script>
+  // modal open/close (reuse from index)
+  const openBtn = document.getElementById('openModal');
+  const modal = document.getElementById('contactModal');
+  const closeBtn = document.getElementById('closeContactModal');
+  if (openBtn && modal) {
+    openBtn.addEventListener('click', () => modal.classList.add('active'));
+    closeBtn.addEventListener('click', () => modal.classList.remove('active'));
+  }
+
+  // language buttons in modal set preference
+  document.querySelectorAll('.modal .lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const lang = btn.getAttribute('data-lang');
+      localStorage.setItem('menuLang', lang);
+      setLanguage(lang);
+      modal.classList.remove('active');
+    });
+  });
 </script>
 
 </body>

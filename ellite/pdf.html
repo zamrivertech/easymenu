@@ -1,13 +1,30 @@
 <!DOCTYPE html>
 <html lang="pt">
   <meta charset="UTF-8">
-  <title>Restaurante No Zavala | Menu A4 PDF</title>
+  <title>Restaurante Ellite | Menu A4 PDF</title>
   <link rel="stylesheet" href="./style.css">
   <link rel="icon" type="image/png" href="./img/favicon.png">
 </head>
 <body>
+<script>
+  const pref = localStorage.getItem('menuLang');
+  if(pref) {
+    document.documentElement.lang = pref;
+  }
+  document.addEventListener('DOMContentLoaded', () => {
+    const h1 = document.querySelector('.pdf-header h1');
+    if (h1) {
+      h1.textContent = pref === 'en' ? 'Ellite Restaurant Menu' : 'Menu Restaurante Ellite';
+    }
+  });
+</script>
 
-  <button id="downloadBtn" class="menu-button">Baixar PDF</button>
+  <header class="pdf-header">
+    <img src="./img/logo.png" alt="Ellite Logo" class="logo" />
+    <h1>Menu Restaurante Ellite</h1>
+  </header>
+
+  <button id="downloadBtn" class="menu-button explore-btn">Baixar PDF</button>
 
   <div id="menu"><div id="pages"></div></div>
 
@@ -51,7 +68,7 @@
         pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
       }
 
-      pdf.save("menu-restaurante-no-zavala.pdf");
+      pdf.save("menu-restaurante-ellite.pdf");
     });
   });
 </script>
