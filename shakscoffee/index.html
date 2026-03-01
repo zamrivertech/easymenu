@@ -12,6 +12,72 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./style.css">
   <link rel="icon" href="./img/favicon.png" type="image/x-icon">
+  <style>
+    .ramadan-fab {
+  position: fixed; bottom: 20px; right: 20px;
+  /* use theme variables so button adapts to the root palette */
+  background: var(--color-section);
+  color: var(--color-bg);
+  padding: 15px 25px; border-radius: 50px;
+  border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  font-weight: bold; z-index: 1000;
+}
+
+.modal {
+  display: none; position: fixed; top: 0; left: 0;
+  width: 100%; height: 100%; background: rgba(0,0,0,0.7);
+  justify-content: center; align-items: center; z-index: 2000;
+}
+
+.modal-content {
+  /* use root variables so the dialog matches the site's colour scheme */
+  background: var(--color-bg);
+  color: var(--color-primary);
+  padding: 25px; border-radius: 20px;
+  width: 90%; max-width: 400px; text-align: center;
+  position: relative; max-height: 80vh; overflow-y: auto;
+}
+
+.close-btn { position: absolute; top: 10px; right: 15px; cursor: pointer; font-size: 24px; }
+.clock { font-size: 2rem; color: #1a2a6c; margin: 10px 0; }
+.times { margin: 15px 0; font-weight: bold; }
+.countdown { color: #d35400; font-weight: bold; margin-bottom: 20px; }
+
+/* Ramadan table formatting */
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.table-container th,
+.table-container td {
+  padding: 8px;
+  border: 1px solid var(--color-accent);
+  text-align: center;
+}
+
+.table-container th {
+  background-color: var(--color-section);
+  color: var(--color-bg);
+}
+
+/* highlight current day row */
+.current-day {
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+}
+/* subtle indicator for the last 10 days (left accent) */
+.last-days { border-left: 6px solid var(--color-accent); }
+
+/* Welcome banner inside modal */
+.ramadan-welcome { margin-bottom: 8px; }
+.ramadan-welcome h3 { margin: 0 0 6px 0; font-size: 1.1rem; }
+.ramadan-welcome p { margin: 0; font-size: 0.95rem; opacity: 0.95; }
+
+/* decorative crescent & stars */
+.ramadan-decor { position: absolute; top: -8px; right: -8px; width: 80px; height: 80px; opacity: 0.14; pointer-events: none; }
+  </style>
 </head>
 <body>
   <nav style="height: 50px;backdrop-filter: none;">
@@ -89,6 +155,231 @@
       <img src="./img/halal.png" alt="">
     </section>
 
+<button id="openModalBtn" class="ramadan-fab">🌙 Ramadan Mubarak</button>
+
+<div id="ramadanModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <div class="ramadan-welcome">
+      <h3>Ramadan Mubarak</h3>
+      <p>Bem-vindo ao mês do Ramadan — informações de jejum e contagem regressiva abaixo.</p>
+    </div>
+    <!-- decorative crescent and stars (decorative only) -->
+    <svg class="ramadan-decor" viewBox="0 0 64 64" aria-hidden="true">
+      <path fill="var(--color-accent)" d="M40.5 10c-7.7 0-14 6.3-14 14 0 6.5 4.5 12 10.6 13.6C36 39 47 32 47 21.5 47 15.1 44.1 10 40.5 10z"/>
+      <circle fill="var(--color-accent)" cx="12" cy="10" r="2" />
+      <circle fill="var(--color-accent)" cx="52" cy="6" r="1.5" />
+    </svg>
+    <h2 id="ramadanDay">Carregando...</h2>
+    <div id="liveClock" class="clock"></div>
+    <div id="ramadanStatus"></div>
+    <div class="times">
+      <p id="fajrTime"></p>
+      <p id="maghribTime"></p>
+    </div>
+    <div id="countdown" class="countdown"></div>
+    
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th scope="col">Dia</th><th scope="col">Data</th><th scope="col">Fajr</th><th scope="col">Maghrib</th></tr>
+        </thead>
+        <tbody id="ramadanTable"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  // ===============================
+// DADOS DO RAMADÃO 2026 - TETE
+// ===============================
+
+// Ramadão 1447 em Tete (Fev/Mar 2026)
+// Formato: AAAA-MM-DD
+
+const ramadanData = [
+  { date: "2026-02-18", fajr: "04:17", maghrib: "18:20" },
+  { date: "2026-02-19", fajr: "04:18", maghrib: "18:19" },
+  { date: "2026-02-20", fajr: "04:18", maghrib: "18:19" },
+  { date: "2026-02-21", fajr: "04:19", maghrib: "18:18" },
+  { date: "2026-02-22", fajr: "04:19", maghrib: "18:17" },
+  { date: "2026-02-23", fajr: "04:20", maghrib: "18:17" },
+  { date: "2026-02-24", fajr: "04:20", maghrib: "18:16" },
+  { date: "2026-02-25", fajr: "04:21", maghrib: "18:15" },
+  { date: "2026-02-26", fajr: "04:21", maghrib: "18:15" },
+  { date: "2026-02-27", fajr: "04:21", maghrib: "18:14" },
+  { date: "2026-02-28", fajr: "04:21", maghrib: "18:14" },
+  { date: "2026-03-01", fajr: "04:22", maghrib: "18:13" },
+  { date: "2026-03-02", fajr: "04:22", maghrib: "18:13" },
+  { date: "2026-03-03", fajr: "04:22", maghrib: "18:12" },
+  { date: "2026-03-04", fajr: "04:23", maghrib: "18:11" },
+  { date: "2026-03-05", fajr: "04:23", maghrib: "18:11" },
+  { date: "2026-03-06", fajr: "04:24", maghrib: "18:10" },
+  { date: "2026-03-07", fajr: "04:24", maghrib: "18:09" },
+  { date: "2026-03-08", fajr: "04:24", maghrib: "18:09" },
+  { date: "2026-03-09", fajr: "04:25", maghrib: "18:08" },
+  { date: "2026-03-10", fajr: "04:25", maghrib: "18:07" },
+  { date: "2026-03-11", fajr: "04:25", maghrib: "18:06" },
+  { date: "2026-03-12", fajr: "04:26", maghrib: "18:06" },
+  { date: "2026-03-13", fajr: "04:26", maghrib: "18:05" },
+  { date: "2026-03-14", fajr: "04:26", maghrib: "18:04" },
+  { date: "2026-03-15", fajr: "04:26", maghrib: "18:04" },
+  { date: "2026-03-16", fajr: "04:26", maghrib: "18:03" },
+  { date: "2026-03-17", fajr: "04:26", maghrib: "18:02" },
+  { date: "2026-03-18", fajr: "04:26", maghrib: "18:01" },
+  { date: "2026-03-19", fajr: "04:27", maghrib: "18:01" }
+];
+
+
+// ===============================
+// LIVE CLOCK
+// ===============================
+
+function updateClock() {
+  const now = new Date();
+  const clock = now.toLocaleTimeString();
+  document.getElementById("liveClock").innerText = clock;
+}
+
+setInterval(updateClock, 1000);
+
+
+// ===============================
+// OBTER INFORMAÇÃO DO RAMADÃO HOJE
+// ===============================
+
+function makeLocalDate(dateStr, timeStr) {
+  const [y, mo, d] = dateStr.split("-").map(Number);
+  const [hh, mm] = timeStr.split(":").map(Number);
+  return new Date(y, mo - 1, d, hh, mm, 0);
+}
+
+let countdownInterval = null;
+
+function startCountdownToDate(targetDate, label, endMessage) {
+  if (countdownInterval) clearInterval(countdownInterval);
+
+  function update() {
+    const now = new Date();
+    const diff = targetDate - now;
+    if (diff <= 0) {
+      document.getElementById("countdown").innerText = endMessage || (label === 'Iftar' ? 'Hora do Iftar! 🌙' : 'Eid Mubarak! 🎉');
+      clearInterval(countdownInterval);
+      return;
+    }
+
+    const h = Math.floor(diff / (1000 * 60 * 60));
+    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+    document.getElementById("countdown").innerText =
+      `Tempo para ${label}: ${h}h ${m}m ${s}s`;
+  }
+
+  update();
+  countdownInterval = setInterval(update, 1000);
+}
+
+
+// ===============================
+// OBTER INFORMAÇÃO DO RAMADÃO HOJE (ATUALIZADO)
+// ===============================
+
+function getTodayRamadan() {
+  const today = new Date();
+  const todayIso = today.toISOString().split("T")[0];
+  const index = ramadanData.findIndex(d => d.date === todayIso);
+
+  const first = ramadanData[0];
+  const last = ramadanData[ramadanData.length - 1];
+
+  if (index === -1) {
+    // before or after Ramadan
+    if (new Date(todayIso) < new Date(first.date)) {
+      document.getElementById("ramadanStatus").innerText = 'Ramadão ainda não começou.';
+      const target = makeLocalDate(first.date, first.maghrib);
+      startCountdownToDate(target, 'Iftar', 'Início do Ramadão! 🌙');
+    } else if (new Date(todayIso) > new Date(last.date)) {
+      document.getElementById("ramadanStatus").innerText = 'Ramadão terminou. Contagem até o Eid Mubarak.';
+      const [y, mo, d] = last.date.split("-").map(Number);
+      const eid = new Date(y, mo - 1, d + 1, 0, 0, 0);
+      startCountdownToDate(eid, 'Eid Mubarak', 'Eid Mubarak! 🎉');
+    } else {
+      document.getElementById("ramadanStatus").innerText = 'Ramadão não está ativo hoje.';
+    }
+
+    document.getElementById("ramadanDay").innerText = '—';
+    document.getElementById("fajrTime").innerText = '';
+    document.getElementById("maghribTime").innerText = '';
+    return;
+  }
+
+  const todayData = ramadanData[index];
+  const dayNumber = index + 1;
+
+  document.getElementById("ramadanDay").innerText = `Dia ${dayNumber} do Ramadan`;
+  document.getElementById("ramadanStatus").innerText = `Ramadão em andamento — Dia ${dayNumber}`;
+
+  document.getElementById("fajrTime").innerText = `Fajr (início do jejum): ${todayData.fajr}`;
+  document.getElementById("maghribTime").innerText = `Maghrib (fim do jejum / Iftar): ${todayData.maghrib}`;
+
+  const target = makeLocalDate(todayData.date, todayData.maghrib);
+  startCountdownToDate(target, 'Iftar', 'Hora do Iftar! 🌙');
+}
+
+
+// ===============================
+// GERAR TABELA COMPLETA DO RAMADÃO (COM ÚLTIMOS 10 DIAS)
+// ===============================
+
+function generateTable() {
+  const table = document.getElementById("ramadanTable");
+  const todayIso = new Date().toISOString().split("T")[0];
+  const lastIndex = ramadanData.length - 1;
+
+  ramadanData.forEach((day, index) => {
+    const row = document.createElement("tr");
+
+    // mark last 10 days
+    if (index >= Math.max(0, lastIndex - 9)) {
+      row.classList.add("last-days");
+    }
+
+    if (day.date === todayIso) {
+      // destaque visual para o dia atual
+      row.classList.add("current-day");
+    }
+
+    row.innerHTML = `
+      <td>${index + 1}</td>
+      <td>${day.date}</td>
+      <td>${day.fajr}</td>
+      <td>${day.maghrib}</td>
+    `;
+
+    table.appendChild(row);
+  });
+}
+
+
+// ===============================
+// INIT
+// ===============================
+
+updateClock();
+getTodayRamadan();
+generateTable();
+
+const modal = document.getElementById("ramadanModal");
+const btn = document.getElementById("openModalBtn");
+const closeBtn = document.querySelector(".close-btn");
+
+btn.onclick = () => modal.style.display = "flex";
+closeBtn.onclick = () => modal.style.display = "none";
+window.onclick = (e) => { if (e.target == modal) modal.style.display = "none"; }
+</script>
 
 </body>
 </html>
