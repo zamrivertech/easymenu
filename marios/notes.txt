@@ -1,0 +1,18 @@
+#TIPS
+1- You do not need to add images for this one
+
+#DONE
+
+1 - DONE
+2 - its okay, can probably be improved
+6 - change tech stack to retrive menu, now using
+    google sheet api, now much faster and no limit requests
+3 and 3.1 - Done but category blocks still need to be properly aligned
+5 and 4 - Done but still need to organise content
+7 - Can be public but improve button design
+1 - change pdf button style and makesure it works, it works
+
+
+#NOT DONE
+
+Add your branding
