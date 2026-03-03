@@ -150,9 +150,9 @@ if (typeof window !== 'undefined') {
 
 // ---------- PDF Menu (pdf.html) ----------
 const CATEGORY_ORDER = [
-  ["Entradas e Extras", "Petiscos", "Pizzas", "Carnes", "Aves", "Peixes e Mariscos"],  
+  ["Entradas & Petiscos", "No Pão & Sanduíches", "Pratos Principais"],  
 
-  ["Cervejas", "Soft Drinks", "Vinhos", "Bebidas Extra"]
+  ["Pizzas", "Bebidas & Cafetaria", "Sobremesas", "Bebidas Extra"]
 ];
 
 function createCategoryBlock(category, items) {
@@ -202,7 +202,6 @@ function createCategoryBlock(category, items) {
                   item => `
                 ${item["Image"] ? `<tr><td colspan="2"><img src="${item["Image"]}" alt="${item["Name"]}" style="max-width:80px; display:block; margin:4px auto;"></td></tr>` : ``}
                 <tr>
-                  <td>${item["Description"] || ""}</td>
                   <td style='text-align:right;'>${item["Price (MT)"]} MT</td>
                 </tr>
               `
