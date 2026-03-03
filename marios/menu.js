@@ -1,7 +1,7 @@
 // menu.js
 
 // Use official Google Sheets API
-const SHEET_ID = "1qDj6dzDpbLsOYTNY9MBQtx59q3B2WKF2NeyCPjfuFJ4";
+const SHEET_ID = "1x7JPQyGkZyvNshZfy4W5MkIIqbiQPP4Lg9HyUYq1rD0";
 const API_KEY = "AIzaSyA_88FypaC1s4exlXvKn_x0_28WvZnSLjs";
 const RANGE = "Menu!A:H"; // adjust columns/range to match your sheet
 

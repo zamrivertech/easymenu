@@ -1,13 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Allura&family=Great+Vibes&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap');
 
 /* ===========================
    Root Variables
 =========================== */
 :root {
   --color-primary: #F5F5DC;
-  --color-accent: #fcde97;
-  --color-bg: #1C1C1C;
-  --color-highlight: #8B3E2F;
+  --color-accent: #F88E2A;
+  --color-accent-dark: #3a210b;
+  --color-bg: #000000ce;
+  --color-highlight: #414649;
   --color-section: #5C4033;
 }
 
@@ -20,7 +21,7 @@ html {
 
 body {
   margin: 0;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
   background-color: var(--color-bg);
   color: var(--color-dark);
 }
@@ -66,7 +67,7 @@ nav ul {
 }
 
 nav a {
-  color: var(--color-accent);
+  color: var(--color-primary);
   text-decoration: none;
   font-weight: 600;
 }
@@ -79,7 +80,7 @@ nav a:hover {
    Sections
 =========================== */
 section {
-  height: 83vh;
+  height: 90vh;
   padding: 6rem 2rem 2rem;
   display: flex;
   flex-direction: column;
@@ -90,24 +91,46 @@ section {
 }
 
 #home {
-  background-color: var(--color-bg);
-  color: var(--color-primary);
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+    url('./img/bg.jpg');
+    
+  background-size: cover;          /* fills section */
+  background-position: center;     /* center image */
+  background-repeat: no-repeat;    /* no repeating */
+  background-attachment: fixed;    /* parallax effect */
+
+  color: var(--color-primary);               /* white text for dark bg */
 }
 
 #about {
+  height: fit-content;
   background-color: var(--color-bg);
   color: var(--color-accent);
+}
+
+#about h2 {
+  color: var(--color-primary);
+}
+
+.border {
+  margin-top: 6px;
+  border-radius: 26px;
+  height: 6px;
+  width: 100%;
+  background-color: var(--color-accent);
 }
 
 /* ===========================
    Hero
 =========================== */
+
 .hero-text {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: -60px;
+  margin-top: -100px;
   gap: 1.85rem;
   max-width: 600px;
   font-size: 1.5rem;
@@ -115,9 +138,9 @@ section {
 
 .hero-text img {
   display: block;
-  margin: 0;
+  margin: auto;
   padding: 0;
-  width: 200px;
+  width: 60%;
 }
 
 .hero-text h1 {
@@ -155,22 +178,24 @@ section {
    Buttons
 =========================== */
 .menu-button {
-  font-family: "Allura";
-  background-color: var(--color-section);
+  font-family: "Great Vibes";
+  background-color: var(--color-accent-dark);
   color: var(--color-accent);
+  border-radius: 32px;
   border: 2px solid var(--color-accent);
   margin-top: 1rem;
-  padding: .2rem 2rem;
-  font-size: 1.4rem;
+  padding: .3rem 2rem;
+  font-size: 1.45rem;
   cursor: pointer;
   text-decoration: none;
-  transition: .3s ease-in-out;
+  box-shadow: 2px 2px 22px 2px var(--color-accent);
 }
 
 .menu-button:hover {
   background-color: var(--color-accent);
   color: var(--color-section);
   border: 2px solid var(--color-section);
+  box-shadow: 2px 2px 22px 2px transparent;
 }
 
 /* ===========================
@@ -181,10 +206,19 @@ section {
   margin-top: 1rem;
   font-size: 1rem;
   line-height: 1.6;
+  color: var(--color-primary);
+}
+
+.info-block strong {
+  color: var(--color-accent);
+}
+
+.info-block a {
+  font-style: italic;
+  color: var(--color-primary);
 }
 
 .highlight {
-  color: var(--color-trust);
   font-weight: bold;
 }
 
