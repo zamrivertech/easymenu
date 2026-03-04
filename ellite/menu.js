@@ -81,7 +81,7 @@ async function renderDigitalMenu() {
         .map(
           item => `
         <div class="plate">
-          ${item["Image"] ? `<img src="${item["Image"]}" alt="${item["Name"]}" class="plate-img" />` : ""}
+         ${item["Image"] ? `<img style="display:none" src="${item["Image"]}" alt="${item["Name"]}" class="plate-img" />` : ""}
           <strong>${item["Name"]}</strong>
           <small class="description">${item["Description"] || ""}</small>
           <span class='price'>${item["Price (MT)"]} MT</span>
@@ -150,9 +150,9 @@ if (typeof window !== 'undefined') {
 
 // ---------- PDF Menu (pdf.html) ----------
 const CATEGORY_ORDER = [
-  ["Entradas & Petiscos", "No Pão & Sanduíches","Pizzas", "Bebidas & Cafetaria", "Sobremesas", "Bebidas Extra"],  
+  ["Entradas & Petiscos","Pizzas", "Sobremesas", "Entradas & Extras"],  
 
-  ["Pizzas", "Bebidas & Cafetaria", "Sobremesas", "Bebidas Extra"]
+  ["No Pão & Sanduíches", "Pratos Principais", "Bebidas & Cafetaria"]
 ];
 
 function createCategoryBlock(category, items) {
@@ -187,8 +187,9 @@ function createCategoryBlock(category, items) {
         const group = grouped[name];
         if (group.length === 1) {
           const item = group[0];
-          return `<div class="plate">
-            ${item["Image"] ? `<img src="${item["Image"]}" alt="${item["Name"]}" class="plate-img"/>` : ""}
+          return `
+          ${item["Image"] ? `<img src="${item["Image"]}" alt="${item["Name"]}" class="plate-img"/>` : ""}
+          <div class="plate">
             <strong>${item["Name"]}</strong>
             <div class="dashed"></div>
             <span class="price">${item["Price (MT)"]} MT</span>
