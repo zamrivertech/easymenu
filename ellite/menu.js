@@ -150,7 +150,7 @@ if (typeof window !== 'undefined') {
 
 // ---------- PDF Menu (pdf.html) ----------
 const CATEGORY_ORDER = [
-  ["Entradas & Petiscos", "No Pão & Sanduíches", "Pratos Principais"],  
+  ["Entradas & Petiscos", "No Pão & Sanduíches","Pizzas", "Bebidas & Cafetaria", "Sobremesas", "Bebidas Extra"],  
 
   ["Pizzas", "Bebidas & Cafetaria", "Sobremesas", "Bebidas Extra"]
 ];
@@ -229,9 +229,7 @@ async function renderPdfMenu() {
 
       if (idx === 0) {
         page.innerHTML += `<div class="header-info">
-          <p>Sabores de Moatize!</p>
           <img src="./img/logo.png" alt="Ellite Logo">
-          <p>Próximo à Casa Bota</p>
         </div>`;
       }
 
