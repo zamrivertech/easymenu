@@ -266,26 +266,25 @@ async function renderPdfMenu() {
 
       page.appendChild(grid);
 
-      if (idx === 1) {
-        page.innerHTML += `<div class="footer-info">
-          <img src="./img/qr-code.png" alt="QR" style="height:150px;">
-          <div class='footer-text'>
-            <strong>Restaurante Ellite</strong><br>
-            Segunda a Domingo, 08:00 - 22:00<br>
-            841230987<br>
-            Próximo à Casa Bota, Moatize, Tete, Moçambique.<br>
-            <span style="font-size:0.95em;">Obrigado pela preferência!</span>
-          </div>
-        </div>`;
-      }
+if (idx === 0) { 
+  page.innerHTML += `
+    <div class="footer-info-alt">
+      <p>Todos os pratos são preparados no momento com ingredientes frescos e selecionados. O tempo de preparação pode variar conforme o prato e o volume de pedidos.</p>
 
-      if (idx === 0) {
-        page.innerHTML += `<div class="footer-info-alt">
-           <p>Todos os pratos acompanham arroz, batata e salada. Xima é opcional.</p>
-           <p>Aceitamos pagamentos em dinheiro, M-Pesa e cartões.</p>   
-        </div>`;
-      }
+      <p>Agradecemos a sua preferência e desejamos-lhe <strong>Bom apetite!</strong></p>
+    </div>
+  `;
+}
 
+if (idx === 1) { 
+  page.innerHTML += `
+    <div class="footer-info-alt">
+      <p><strong>Restauração & Catering</strong></p>
+
+      <p><strong>Reservas:</strong> 📞 843 854 724 / 864 001 763</p>
+    </div>
+  `;
+}
       pagesDiv.appendChild(page);
     });
   } catch (err) {

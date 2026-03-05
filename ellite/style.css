@@ -11,6 +11,7 @@
   --color-trust: #C6A75E;
   --color-white: #FFFFFF;
   --color-dark: #1a1a1a;
+  --color-dark-light: #575757;
 }
 
 /* ===========================
@@ -194,8 +195,8 @@ section {
 
 .header-info img {
   display: block;
-  margin-bottom: 0;
-  height: 80px;
+  margin-top: 1rem;
+  height: 150px;
 }
 
 .footer-info {
@@ -283,18 +284,15 @@ section {
   font-weight: 700;
 }
 
-.category-block .plate strong {
-  color: var(--color-primary);
-}
-
 .category-block .plate {
+  text-align: left;
+  color: var(--color-dark-light);
   display: flex;
   flex-direction: row;
 }
 
 .category-block .plate .price {
   background-color: transparent;
-  color: var(--color-primary);
   width: fit-content;  
   padding: 0;
 }
@@ -425,6 +423,7 @@ section {
     }
 
     .category-block .plate .dashed {
+      opacity: 0;
       border-bottom: dashed 2px var(--color-primary);
       flex: 1;
       width: fit-content;
@@ -555,18 +554,21 @@ section {
       border: var(--color-accent) 4px solid;
     }
 
+.footer-info-alt {
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+    text-align: center;
+    font-size: .85rem;
+    margin: 1rem .85rem 0 .85rem;
+    line-height: 1.6;
+    padding: .85rem .85rem;
+    border-radius: 8px;
+    max-width: 100%;
+}
 
-    .footer-info-alt {
-      background-color: var(--color-accent);
-      color: var(--color-bg);
-      text-align: center;
-      margin: 2rem 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: .75rem;
-      padding: 0rem;
-    }
+.footer-info-alt p {
+    margin-bottom: 0rem;
+}
 
     .menu-grid {
   display: flex;
