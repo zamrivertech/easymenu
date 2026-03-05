@@ -720,6 +720,10 @@ section {
   padding-top: 15px;
 }
 
+.menu-row:first-child {
+  margin-top: .35rem;
+}
+
 .meta-item {
   text-align: center;
   color: #D4AF37;
