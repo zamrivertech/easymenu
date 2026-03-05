@@ -196,7 +196,7 @@ section {
 .header-info img {
   display: block;
   margin-top: 1rem;
-  height: 150px;
+  width: 140px;
 }
 
 .footer-info {
@@ -233,6 +233,7 @@ section {
   page-break-after: always;
   display: flex;
   flex-direction: column;
+  border: 8px dotted var(--color-accent);
 }
 
 /* ===========================
@@ -264,7 +265,7 @@ section {
   flex: 1 1 calc(50% - 10px); /* 2 per row with gap accounted for */
   max-width: 100%;              /* ensures 2 columns max on desktop */
   box-sizing: border-box;
-  padding: 14px;
+  padding: 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -275,6 +276,10 @@ section {
   display: none; /* clean hiding */
 }
 
+.menu-row:first-child {
+  margin-top: 1rem;
+}
+
 .category-block h2 {
   border-bottom: solid 2px var(--color-primary);
   margin: 0 0 10px 0;
@@ -282,6 +287,8 @@ section {
   width: 100%;
   text-align: left;
   font-weight: 700;
+  letter-spacing: 4px;
+  font-size: 1.25rem;
 }
 
 .category-block .plate {
@@ -289,6 +296,7 @@ section {
   color: var(--color-dark-light);
   display: flex;
   flex-direction: row;
+  margin: auto auto;
 }
 
 .category-block .plate .price {
@@ -399,6 +407,14 @@ section {
       min-width: min-content;
       padding: 1rem;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .category-block small {
+      padding: 4px 0px;
+      color: var(--color-dark);
+      font-style: italic;
+      font-size: .65rem;
+      align-self: flex-start;
     }
 
     .category-card .plate * {
@@ -555,19 +571,39 @@ section {
     }
 
 .footer-info-alt {
-    background-color: var(--color-accent);
+    border-top: solid 3px var(--color-accent);
     color: var(--color-bg);
-    text-align: center;
     font-size: .85rem;
-    margin: 1rem .85rem 0 .85rem;
+    margin: 1rem 0;
     line-height: 1.6;
-    padding: .85rem .85rem;
-    border-radius: 8px;
+    padding: .5rem 0;
     max-width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-text {
+    flex: 1;
+    text-align: left;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .footer-info-alt p {
-    margin-bottom: 0rem;
+    margin: auto 0;
+    color: var(--color-primary);
+}
+
+.footer-qr {
+    flex-shrink: 0;
+}
+
+.footer-qr img {
+    width: 160px;
 }
 
     .menu-grid {
@@ -579,10 +615,11 @@ section {
 .menu-row {
   display: flex;
   gap: 1rem;
+  height: max-content;
 }
 
 .category-block {
-  height: min-content;
+  height: 100%;
   flex: 0 0 calc(33.333% - 1rem); /* default: 3 per row */
   box-sizing: border-box;
 }
@@ -696,9 +733,11 @@ section {
 
 
 /* general plate image styling */
+
 .plate-img {
-  max-width: 100%;
-  height: auto;
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
   border-radius: 8px;
   margin-bottom: 0.5rem;
   display: block;

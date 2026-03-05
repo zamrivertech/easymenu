@@ -150,13 +150,13 @@ if (typeof window !== 'undefined') {
 
 // ---------- PDF Menu (pdf.html) ----------
 const CATEGORY_ORDER = [
-  ["Entradas & Petiscos","Pizzas", "Sobremesas", "Entradas & Extras"],  
+  ["Entradas","Pizzas", "Sobremesas", "Extras"],  
 
-  ["No Pão & Sanduíches", "Pratos Principais", "Bebidas & Cafetaria"]
+  ["Sanduíches", "Pratos Principais", "Bebidas"]
 ];
 
 function createCategoryBlock(category, items) {
-  if (category === "Bebidas") {
+  if (category === "") {
     const block = document.createElement("div");
     block.className = "category-block";
     block.innerHTML = `<h2>${category}</h2>
@@ -193,7 +193,9 @@ function createCategoryBlock(category, items) {
             <strong>${item["Name"]}</strong>
             <div class="dashed"></div>
             <span class="price">${item["Price (MT)"]} MT</span>
-          </div>`;
+          </div>
+          <small>${item["Description"]}</small>
+          `;
         } else {
           return `<div class="plate">
             <strong>${name}</strong>
@@ -269,16 +271,25 @@ async function renderPdfMenu() {
 if (idx === 0) { 
   page.innerHTML += `
     <div class="footer-info-alt">
-      <p>Todos os pratos são preparados no momento com ingredientes frescos e selecionados. O tempo de preparação pode variar conforme o prato e o volume de pedidos.</p>
+      <div class="footer-text">
+        <p>Todos os pratos são preparados no momento com ingredientes frescos e selecionados. O tempo de preparação pode variar conforme o prato e o volume de pedidos.</p>
 
-      <p>Agradecemos a sua preferência e desejamos-lhe <strong>Bom apetite!</strong></p>
+        <p>Agradecemos a sua preferência e desejamos-lhe <strong>Bom apetite!</strong></p>
+
+        <p><strong>MPesa:</strong> 843854724 – Walter Clemente Caetano</p>
+        <p><strong>Emola:</strong> 879497148 – Paula Cristina Azevedo</p>
+      </div>
+
+      <div class="footer-qr">
+        <img src="./img/qr-code.png" alt="QR Code">
+      </div>
     </div>
   `;
 }
 
 if (idx === 1) { 
   page.innerHTML += `
-    <div class="footer-info-alt">
+    <div  style="display:none"  class="footer-info-alt">
       <p><strong>Restauração & Catering</strong></p>
 
       <p><strong>Reservas:</strong> 📞 843 854 724 / 864 001 763</p>

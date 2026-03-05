@@ -1,18 +1,19 @@
-#TIPS
-1- You do not need to add images for this one
+Hamburguer simples 250 DONE
+organize hamburguer DONE
 
-#DONE
+frango 1/2 600 DONE
 
-1 - DONE
-2 - its okay, can probably be improved
-6 - change tech stack to retrive menu, now using
-    google sheet api, now much faster and no limit requests
-3 and 3.1 - Done but category blocks still need to be properly aligned
-5 and 4 - Done but still need to organise content
-7 - Can be public but improve button design
-1 - change pdf button style and makesure it works, it works
+sanducihe de 500 description DONE
 
+sumo 500ml - 100 DONE
+gap idx 2 emola and mpesa DONE
 
-#NOT DONE
+camarrao junto DONE
 
-Add your branding
+frango junto DONE
+
+make logo big (i think done)
+
+update numbers in digital
+
+844965609
