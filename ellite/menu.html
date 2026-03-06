@@ -30,28 +30,6 @@
     </div>
   </nav>
 
-  <!-- Fixed Contact Button -->
-  <button class="contact-btn btn-neon" id="openModal">💬</button>
-
-  <!-- Modal -->
-  <div class="modal" id="contactModal">
-      <div class="modal-content">
-      <button id="closeContactModal">✕</button>
-      <div class="modal-actions">
-          <h2>Contacto</h2>
-          <button class="call-btn" onclick="window.location.href='tel:+258123456789'">Ligue E Encomenda Agora! </button>
-          <div class="languages">
-            <button class="lang-btn" data-lang="en">English</button>
-            <button class="lang-btn" data-lang="pt">Português</button>
-          </div>
-         </div>
-      </div>
-  </div>
-
-  <div class="menu-controls">
-    <button id="lang-pt" class="lang-btn" data-lang="pt">PT</button>
-    <button id="lang-en" class="lang-btn" data-lang="en">EN</button>
-  </div>
 
   <br>
   <br>
@@ -63,27 +41,6 @@
 <script>
   // Initializing the Ellite Digital Menu
   MenuApp.renderDigitalMenu();
-</script>
-
-<script>
-  // modal open/close (reuse from index)
-  const openBtn = document.getElementById('openModal');
-  const modal = document.getElementById('contactModal');
-  const closeBtn = document.getElementById('closeContactModal');
-  if (openBtn && modal) {
-    openBtn.addEventListener('click', () => modal.classList.add('active'));
-    closeBtn.addEventListener('click', () => modal.classList.remove('active'));
-  }
-
-  // language buttons in modal set preference
-  document.querySelectorAll('.modal .lang-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const lang = btn.getAttribute('data-lang');
-      localStorage.setItem('menuLang', lang);
-      setLanguage(lang);
-      modal.classList.remove('active');
-    });
-  });
 </script>
 
 </body>
