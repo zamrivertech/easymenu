@@ -608,6 +608,9 @@ section {
   gap: 1rem;
 }
 
+#pages .page:last-child .menu-grid {
+  margin-top: -12px;
+}
 .menu-row {
   display: flex;
   gap: 1rem;
