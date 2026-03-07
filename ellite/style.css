@@ -549,11 +549,15 @@ section {
       margin: 1rem;
     }
 
+    .menu .category-outer-wrapper:first-child {
+      margin-top: 7.5rem;
+    } 
+
     .menu .category-outer-wrapper {
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
       background-color: var(--color-dark);
       padding: 0px;
-      margin: 1.2rem;
+      margin: 1.2rem 1.2rem 1.2rem 1.2rem;
     } 
 
     .menu .category-card .plate .price {
