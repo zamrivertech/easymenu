@@ -221,11 +221,9 @@ section {
 .page {
   width: 210mm;
   height: 297mm;
-  background-color: var(--color-white);
-  background-position: center;
-  background-size: cover;
   margin: 10px auto;
   padding: 5mm;
+  background: #ffffff; /* white base */
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
   box-sizing: border-box;
   overflow: hidden;
@@ -234,6 +232,22 @@ section {
   display: flex;
   flex-direction: column;
   border: 8px dotted var(--color-accent);
+}
+
+.page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('./img/bg_pdf.png');
+  background-position: center;
+  background-size: cover;
+  opacity: 0.11; /* adjust fade here */
+  z-index: 0;
+}
+
+.page > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* ===========================

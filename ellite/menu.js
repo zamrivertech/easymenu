@@ -6,12 +6,12 @@ const API_KEY = "AIzaSyA_88FypaC1s4exlXvKn_x0_28WvZnSLjs";
 
 // language handling
 let CURRENT_LANG = localStorage.getItem('menuLang') || 'pt';
-// ensure html element lang matches
+
 if (typeof document !== 'undefined') document.documentElement.lang = CURRENT_LANG;
 
 function sheetRangeForLang(lang) {
   const tab = lang === 'en' ? 'Menu-en' : 'Menu-pt';
-  return `${tab}!A:E`; // assume extra column for Image
+  return `${tab}!A:E`;
 }
 
 // ---------- Shared Helpers ----------
@@ -33,14 +33,19 @@ function groupBy(arr, key) {
 }
 
 async function fetchMenuData() {
+
   const range = sheetRangeForLang(CURRENT_LANG);
+
   const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${encodeURIComponent(range)}?key=${API_KEY}&t=${Date.now()}`;
+
   const res = await fetch(url, { cache: "no-store" });
+
   const data = await res.json();
+
   if (!data.values) throw new Error("No values found");
 
-  // Convert rows into objects with headers
   const [headers, ...rows] = data.values;
+
   return rows.map(row => {
     const obj = {};
     headers.forEach((h, i) => {
@@ -48,259 +53,344 @@ async function fetchMenuData() {
     });
     return obj;
   });
+
 }
 
-// ---------- Digital Menu (menu.html) ----------
+// ---------- Digital Menu ----------
 async function renderDigitalMenu() {
+
   try {
+
     const items = await fetchMenuData();
+
     const categories = [...new Set(items.map(i => i["Category"]))];
+
     const menuContainer = document.querySelector(".menu");
+
     const navPills = document.querySelector(".nav-pills");
 
     menuContainer.innerHTML = "";
     navPills.innerHTML = "";
 
     categories.forEach(category => {
+
       const safeId = slugify(category);
+
       const categoryItems = items.filter(i => i["Category"] === category);
 
-      // Nav pill
       const pill = document.createElement("a");
       pill.href = `#${safeId}`;
       pill.textContent = category;
       navPills.appendChild(pill);
 
-    // Category card
-    const card = document.createElement("div");
-    card.className = "category-card";
-    card.id = safeId;
-    card.innerHTML = `
+      const card = document.createElement("div");
+      card.className = "category-card";
+      card.id = safeId;
+
+      card.innerHTML = `
       <div class="menu-header"><h2>${category}</h2></div>
-      ${categoryItems
-        .map(
-          item => `
+
+      ${categoryItems.map(item => `
         <div class="plate">
-         ${item["Image"] ? `<img style="display:none" src="${item["Image"]}" alt="${item["Name"]}" class="plate-img" />` : ""}
+
+          ${item["Image"] ? `<img style="display:none" src="${item["Image"]}" alt="${item["Name"]}" class="plate-img"/>` : ""}
+
           <strong>${item["Name"]}</strong>
+
           <small class="description">${item["Description"] || ""}</small>
-          <span class='price'>${item["Price (MT)"]} MT</span>
-          </div>
-      `
-        )
-        .join("")}
-    `;
 
-    // First wrapper
-    const wrapper1 = document.createElement("div");
-    wrapper1.className = "category-wrapper";
+          <span class="price">${item["Price (MT)"]} MT</span>
 
-    // Second wrapper
-    const wrapper2 = document.createElement("div");
-    wrapper2.className = "category-outer-wrapper";
+        </div>
+      `).join("")}
+      `;
 
-    // Nest them
-    wrapper1.appendChild(card);
-    wrapper2.appendChild(wrapper1);
+      const wrapper1 = document.createElement("div");
+      wrapper1.className = "category-wrapper";
 
-    // Append outer wrapper to menu
-    menuContainer.appendChild(wrapper2);
+      const wrapper2 = document.createElement("div");
+      wrapper2.className = "category-outer-wrapper";
 
+      wrapper1.appendChild(card);
+      wrapper2.appendChild(wrapper1);
 
-      
+      menuContainer.appendChild(wrapper2);
+
     });
+
   } catch (err) {
+
     console.error("Digital menu error:", err);
+
   }
+
 }
 
+// ---------- Language ----------
 function setLanguage(lang) {
+
   if (lang !== 'en' && lang !== 'pt') return;
+
   CURRENT_LANG = lang;
+
   localStorage.setItem('menuLang', lang);
-  renderDigitalMenu();
-  // reflect attribute on html element
+
   document.documentElement.lang = lang;
-  // if pdf page present
+
+  renderDigitalMenu();
+
   if (typeof renderPdfMenu === 'function') renderPdfMenu();
 
-  // update active state on any language buttons
   document.querySelectorAll('.menu-controls .lang-btn, .modal .lang-btn').forEach(btn => {
+
     btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+
   });
+
 }
 
-// wire up buttons when DOM ready
+// buttons
 if (typeof window !== 'undefined') {
+
   document.addEventListener('DOMContentLoaded', () => {
+
     const btnEn = document.getElementById('lang-en');
     const btnPt = document.getElementById('lang-pt');
+
     if (btnEn) {
       btnEn.addEventListener('click', () => setLanguage('en'));
       if (CURRENT_LANG === 'en') btnEn.classList.add('active');
     }
+
     if (btnPt) {
       btnPt.addEventListener('click', () => setLanguage('pt'));
       if (CURRENT_LANG === 'pt') btnPt.classList.add('active');
     }
+
   });
+
 }
 
-// ---------- PDF Menu (pdf.html) ----------
 
-// ---------- PDF Menu (pdf.html) ----------
-const CATEGORY_ORDER = [
-  ["Entradas","Pizzas", "Sobremesas", "Extras"],  
+// ---------- Category Order ----------
 
-  ["Sanduíches", "Pratos Principais", "Bebidas"]
+const CATEGORY_ORDER_PT = [
+
+  ["Entradas","Pizzas","Sobremesas","Extras"],
+
+  ["Sanduíches","Pratos Principais","Bebidas"]
+
 ];
 
-function createCategoryBlock(category, items) {
-  if (category === "") {
-    const block = document.createElement("div");
-    block.className = "category-block";
-    block.innerHTML = `<h2>${category}</h2>
-      <table style="width:100%; border-collapse:collapse; font-size:0.98em; color:#C6A75E;">
-        <tbody>
-          ${items
-            .map(
-              item => `
-            <tr>
-              <td>${item["Name"]}</td>
-              <td style='text-align:right;'>${item["Price (MT)"]}</td>
-            </tr>
-          `
-            )
-            .join("")}
-        </tbody>
-      </table>`;
-    return block;
-  }
+const CATEGORY_ORDER_EN = [
 
-  const grouped = groupBy(items, "Name");
-  const block = document.createElement("div");
-  block.className = "category-block";
-  block.innerHTML = `
-    <h2>${category}</h2>
-    ${Object.keys(grouped)
-      .map(name => {
-        const group = grouped[name];
-        if (group.length === 1) {
-          const item = group[0];
-          return `
-          ${item["Image"] ? `<img src="${item["Image"]}" alt="${item["Name"]}" class="plate-img"/>` : ""}
-          <div class="plate">
-            <strong>${item["Name"]}</strong>
-            <div class="dashed"></div>
-            <span class="price">${item["Price (MT)"]} MT</span>
-          </div>
-          <small>${item["Description"]}</small>
-          `;
-        } else {
-          return `<div class="plate">
-            <strong>${name}</strong>
-            <table style='width:100%; font-size:0.97em;'>
-              ${group
-                .map(
-                  item => `
-                ${item["Image"] ? `<tr><td colspan="2"><img src="${item["Image"]}" alt="${item["Name"]}" style="max-width:80px; display:block; margin:4px auto;"></td></tr>` : ``}
-                <tr>
-                  <td style='text-align:right;'>${item["Price (MT)"]} MT</td>
-                </tr>
-              `
-                )
-                .join("")}
-            </table>
-          </div>`;
-        }
-      })
-      .join("")}
-  `;
-  return block;
+  ["Starters","Pizzas","Desserts","Extras"],
+
+  ["Sandwiches","Main Dishes","Drinks"]
+
+];
+
+function getCategoryOrder() {
+
+  return CURRENT_LANG === "en" ? CATEGORY_ORDER_EN : CATEGORY_ORDER_PT;
+
 }
 
+
+// ---------- Footer Text ----------
+
+function getFooterHTML(pageIndex) {
+
+  if (CURRENT_LANG === "en") {
+
+    if (pageIndex === 0) {
+
+      return `
+      <div class="footer-info-alt">
+
+        <div class="footer-text">
+
+          <p>All dishes are prepared fresh at the moment using carefully selected ingredients. Preparation time may vary depending on the dish and order volume.</p>
+
+          <p>Thank you for your preference and we wish you <strong>Enjoy your meal!</strong></p>
+
+          <p><strong>MPesa:</strong> 843854724 – Walter Clemente Caetano</p>
+
+          <p><strong>Emola:</strong> 879497148 – Paula Cristina Azevedo</p>
+
+        </div>
+
+        <div class="footer-qr">
+
+          <img src="./img/qr-code.png" alt="QR Code">
+
+        </div>
+
+      </div>
+      `;
+
+    }
+
+  } else {
+
+    if (pageIndex === 0) {
+
+      return `
+      <div class="footer-info-alt">
+
+        <div class="footer-text">
+
+          <p>Todos os pratos são preparados no momento com ingredientes frescos e selecionados. O tempo de preparação pode variar conforme o prato e o volume de pedidos.</p>
+
+          <p>Agradecemos a sua preferência e desejamos-lhe <strong>Bom apetite!</strong></p>
+
+          <p><strong>MPesa:</strong> 843854724 – Walter Clemente Caetano</p>
+
+          <p><strong>Emola:</strong> 879497148 – Paula Cristina Azevedo</p>
+
+        </div>
+
+        <div class="footer-qr">
+
+          <img src="./img/qr-code.png" alt="QR Code">
+
+        </div>
+
+      </div>
+      `;
+
+    }
+
+  }
+
+  return "";
+
+}
+
+
+// ---------- PDF Menu ----------
+
+function createCategoryBlock(category, items) {
+
+  const grouped = groupBy(items, "Name");
+
+  const block = document.createElement("div");
+
+  block.className = "category-block";
+
+  block.innerHTML = `
+
+    <h2>${category}</h2>
+
+    ${Object.keys(grouped).map(name => {
+
+      const item = grouped[name][0];
+
+      return `
+
+        ${item["Image"] ? `<img src="${item["Image"]}" class="plate-img"/>` : ""}
+
+        <div class="plate">
+
+          <strong>${item["Name"]}</strong>
+
+          <div class="dashed"></div>
+
+          <span class="price">${item["Price (MT)"]} MT</span>
+
+        </div>
+
+        <small>${item["Description"]}</small>
+
+      `;
+
+    }).join("")}
+
+  `;
+
+  return block;
+
+}
+
+
 async function renderPdfMenu() {
+
   try {
+
     const items = await fetchMenuData();
+
     const categories = [...new Set(items.map(i => i["Category"]))];
+
+    const CATEGORY_ORDER = getCategoryOrder();
+
     const pagesDiv = document.getElementById("pages");
+
     pagesDiv.innerHTML = "";
 
     CATEGORY_ORDER.forEach((catGroup, idx) => {
+
       const page = document.createElement("div");
       page.className = "page";
 
       if (idx === 0) {
-        page.innerHTML += `<div class="header-info">
+
+        page.innerHTML += `
+        <div class="header-info">
           <img src="./img/logo.png" alt="Ellite Logo">
-        </div>`;
+        </div>
+        `;
+
       }
 
       const grid = document.createElement("div");
-      grid.className = "menu-grid"; // should be display:flex; flex-wrap:wrap in CSS
+      grid.className = "menu-grid";
 
-      // Collect blocks for this group
       const blocks = [];
+
       catGroup.forEach(category => {
+
         if (!categories.includes(category)) return;
+
         const catItems = items.filter(i => i["Category"] === category);
+
         if (catItems.length === 0) return;
+
         blocks.push(createCategoryBlock(category, catItems));
+
       });
 
-      // Append blocks in rows of 3
       for (let i = 0; i < blocks.length; i += 3) {
+
         const row = document.createElement("div");
-        row.className = "menu-row"; // flex container for each row
+        row.className = "menu-row";
+
         const rowBlocks = blocks.slice(i, i + 3);
 
         rowBlocks.forEach(block => row.appendChild(block));
 
-        // If row has < 3 blocks, let them flex-grow to fill space
         if (rowBlocks.length < 3) {
-          rowBlocks.forEach(block => {
-            block.style.flex = "1"; // flex-grow:1, flex-basis:auto
-          });
+          rowBlocks.forEach(block => block.style.flex = "1");
         }
 
         grid.appendChild(row);
+
       }
 
       page.appendChild(grid);
 
-if (idx === 0) { 
-  page.innerHTML += `
-    <div class="footer-info-alt">
-      <div class="footer-text">
-        <p>Todos os pratos são preparados no momento com ingredientes frescos e selecionados. O tempo de preparação pode variar conforme o prato e o volume de pedidos.</p>
+      // FOOTER
+      page.innerHTML += getFooterHTML(idx);
 
-        <p>Agradecemos a sua preferência e desejamos-lhe <strong>Bom apetite!</strong></p>
-
-        <p><strong>MPesa:</strong> 843854724 – Walter Clemente Caetano</p>
-        <p><strong>Emola:</strong> 879497148 – Paula Cristina Azevedo</p>
-      </div>
-
-      <div class="footer-qr">
-        <img src="./img/qr-code.png" alt="QR Code">
-      </div>
-    </div>
-  `;
-}
-
-if (idx === 1) { 
-  page.innerHTML += `
-    <div  style="display:none"  class="footer-info-alt">
-      <p><strong>Restauração & Catering</strong></p>
-
-      <p><strong>Reservas:</strong> 📞 843 854 724 / 864 001 763</p>
-    </div>
-  `;
-}
       pagesDiv.appendChild(page);
+
     });
+
   } catch (err) {
+
     console.error("PDF menu error:", err);
+
   }
+
 }
 
 
