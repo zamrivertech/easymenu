@@ -454,7 +454,6 @@ section {
       display: inline-block;
       margin-right: 1rem;
       padding: 0.5rem 1rem;
-      background-color: var(--color-section);
       border: 2px solid var(--color-accent);
       color: var(--color-accent);
       font-size: 0.85rem;
@@ -516,7 +515,7 @@ section {
 
     .category-card .plate strong, .category-card .plate .price {
       flex-basis: 0;
-      color: var(--color-accent);
+      color: var(--color-primary);
       text-align: left;
     }
 
@@ -556,10 +555,12 @@ section {
     }
 
     .menu-header h2 {
-      margin: 0;
+      margin-top: -75px;
+      margin-bottom: -25px;
       font-size: 2rem;
       font-family: "Great Vibes";
-      background-color: var(--color-section);
+      background-color: var(--color-accent);
+      color: var(--color-primary);
       width: 100%;
       padding: 4px 2px;
     }
@@ -593,11 +594,12 @@ section {
     }
 
     .menu > .category-card:first-of-type {
-      margin-top: 45px;
+      margin-top: 65px;
     }
 
     .menu .category-card {
-      margin: 20px;
+      margin: 35px;
+
     }
 
     .price {
