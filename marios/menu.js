@@ -75,9 +75,11 @@ async function renderDigitalMenu() {
           .map(
             item => `
           <div class="plate">
-            <strong>${item["Name"]}</strong><div style="display:block;width:100%;"></div><span class='price'>${item["Price (MT)"]} MT</span>
+            <strong>${item["Name"]}</strong>
+          <small class="description">${item["Description"] || ""}</small>            
+            <span class='price'>${item["Price (MT)"]} MT</span>
           </div>
-          <small class="description">${item["Description"] || ""}</small>
+
         `
           )
           .join("")}
