@@ -5,6 +5,53 @@ const SHEET_ID = "1x7JPQyGkZyvNshZfy4W5MkIIqbiQPP4Lg9HyUYq1rD0";
 const API_KEY = "AIzaSyA_88FypaC1s4exlXvKn_x0_28WvZnSLjs";
 const RANGE = "Menu!A:H"; // adjust columns/range to match your sheet
 
+// ---------- Offline Menu (used when no internet) ----------
+const OFFLINE_MENU = [
+  {
+    "Category": "Entradas",
+    "Name": "Batata Frita",
+    "Description": "Batata frita crocante",
+    "Description2": "Hello",
+    "Price (MT)": "150"
+  },
+  {
+    "Category": "Entradas",
+    "Name": "Chicken Wings",
+    "Description": "Asas de frango picantes",
+    "Description2": "Test",
+    "Price (MT)": "220"
+  },
+  {
+    "Category": "Hamburgers",
+    "Name": "Classic Burger",
+    "Description": "Carne, queijo, tomate",
+    "Description2": "",
+    "Price (MT)": "350"
+  },
+  {
+    "Category": "Aves",
+    "Name": "1/4 Frango",
+    "Description": "",
+    "Description2": "",
+    "Price (MT)": "200"
+  },
+  {
+    "Category": "Aves",
+    "Name": "1/2 Frango",
+    "Description": "",
+    "Description2": "",
+    "Price (MT)": "420"
+  },
+    {
+    "Category": "Aves",
+    "Name": "1 Frango Inteiro",
+    "Description": "",
+    "Description2": "Acompanhado com Batata e Salada Ou Xima com Molho de Tomate",
+    "Price (MT)": "750"
+  }
+
+];
+
 // ---------- Shared Helpers ----------
 function slugify(text) {
   if (typeof text !== "string") return "";
@@ -24,20 +71,38 @@ function groupBy(arr, key) {
 }
 
 async function fetchMenuData() {
-  const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY}&t=${Date.now()}`;
-  const res = await fetch(url, { cache: "no-store" });
-  const data = await res.json();
-  if (!data.values) throw new Error("No values found");
 
-  // Convert rows into objects with headers
-  const [headers, ...rows] = data.values;
-  return rows.map(row => {
-    const obj = {};
-    headers.forEach((h, i) => {
-      obj[h] = row[i] || "";
+  // Detect offline
+  if (!navigator.onLine) {
+    console.warn("⚠️ No internet detected. Using offline menu.");
+    return OFFLINE_MENU;
+  }
+
+  try {
+    const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY}&t=${Date.now()}`;
+
+    const res = await fetch(url, { cache: "no-store" });
+
+    if (!res.ok) throw new Error("Network response error");
+
+    const data = await res.json();
+
+    if (!data.values) throw new Error("No values found");
+
+    const [headers, ...rows] = data.values;
+
+    return rows.map(row => {
+      const obj = {};
+      headers.forEach((h, i) => {
+        obj[h] = row[i] || "";
+      });
+      return obj;
     });
-    return obj;
-  });
+
+  } catch (err) {
+    console.warn("⚠️ API failed. Using offline menu.");
+    return OFFLINE_MENU;
+  }
 }
 
 // ---------- Digital Menu (menu.html) ----------
@@ -76,21 +141,16 @@ async function renderDigitalMenu() {
             item => `
           <div class="plate">
             <strong>${item["Name"]}</strong>
-          <small class="description">${item["Description"] || ""}</small>            
+            <div class="border"></div>
+            ${item["Description"] ? `<small class="description">${item["Description"]}</small>`: ""}        
             <span class='price'>${item["Price (MT)"]} MT</span>
+              ${item["Description2"] ? `<div class='extra-line'>${item["Description2"]}</div>` : ""} 
           </div>
 
         `
           )
           .join("")}
-          <div class="extras">
-            ${hasExtras
-              ? categoryItems
-                  .map(i => i["Description2"])
-                  .filter(Boolean)
-                  .map(text => `<div class="extra-line">${text}</div>`)
-                  .join("")
-              : ""}
+          <div>
           </div>
         </div>  
       `;

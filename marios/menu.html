@@ -31,14 +31,55 @@
 
   <br><br><br><br>
 
-  <div class="menu">
+  <div class="bg" id="dots">
+
+  <div class="overlay">
+
+  <div class="menu" >
     <!-- Menu cards will be injected here -->
   </div>
+
+  </div>  
+
+  </div>
+
+
 
   <script src="./menu.js"></script>
   <script>
     MenuApp.renderDigitalMenu();
   </script>
+
+    <script>
+
+const container = document.getElementById("dots");
+
+/* create lots of dots so screen always filled */
+const totalDots = 1800;
+
+for(let i=0;i<totalDots;i++){
+
+let dot = document.createElement("div");
+dot.className = "dot";
+
+/* random wave delay */
+dot.style.animationDelay = Math.random()*4+"s";
+
+/* random blur depth */
+let r = Math.random();
+
+if(r < 0.25){
+dot.classList.add("blur");
+}
+else if(r < 0.10){
+dot.classList.add("blur2");
+}
+
+container.appendChild(dot);
+
+}
+
+</script>
 
 </body>
 </html>
