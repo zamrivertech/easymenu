@@ -7,7 +7,7 @@
   --color-primary: #F5F5DC;
   --color-accent: #F88E2A;
   --color-accent-dark: #3a210b;
-  --color-bg: #000000ce;
+  --color-bg: #061b15;
   --color-highlight: #414649;
   --color-section: #5C4033;
 }
@@ -477,7 +477,6 @@ section {
     }
 
     .category-card {
-      border-radius: 22px;
       scroll-margin-top: 200px;
       border: var(--color-accent) 4px solid;
       margin: 1rem;
@@ -485,7 +484,7 @@ section {
       max-width: 460px;
       padding: 1.3rem;
       color: var(--color-accent);
-      background-color: var(--color-bg);
+      background-color: transparent;
  }
 
     .category-card .plate * {
@@ -564,12 +563,11 @@ section {
     .menu-header h2 {
       margin-top: -75px;
       margin-bottom: -25px;
-      font-size: 2rem;
-      font-family: "Great Vibes";
+      font-size: 1.45rem;
       background-color: var(--color-accent);
       color: var(--color-primary);
-      border-radius: 22px;
-      width: max-content;
+      width: auto;
+      min-width: min-content;
       padding: 6px 26px;
     }
 
