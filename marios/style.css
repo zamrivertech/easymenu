@@ -179,14 +179,13 @@ section {
    Buttons
 =========================== */
 .menu-button {
-  font-family: "Great Vibes";
   background-color: var(--color-accent-dark);
   color: var(--color-primary);
   border-radius: 32px;
   border: 2px solid var(--color-accent);
   margin-top: 1rem;
   padding: .3rem 2rem;
-  font-size: 1.45rem;
+  font-size: 1rem;
   cursor: pointer;
   text-decoration: none;
   box-shadow: 2px 2px 22px 2px var(--color-accent);
