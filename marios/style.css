@@ -155,7 +155,6 @@ section {
 
 .category-card .plate .extra-line {
   background-color: var(--color-accent);
-  border-radius: 16px;  
   border-color: var(--color-accent);
   padding: 12px;
   margin: 0 0 0px 0;
@@ -510,13 +509,14 @@ section {
     .category-card .plate strong {
       color: var(--color-primary);
       padding-bottom: 2px;
+      margin: 0;
     }
 
     .category-card .plate .border {
-      height: 4px;
       margin: 2px 0;
       width: 100%;
-      background-color: var(--color-accent);
+      border-bottom: dashed var(--color-accent) 4px;
+      border-radius: 0;
     }
 
 

@@ -81,6 +81,14 @@
       Rua 25 de Setembro - Nr 663 <br>
       Tete, Moçambique
     </p>
+<p>
+  <strong>Pagamentos Aceites:</strong><br>
+  💳 POS (Cartão)<br>
+  💵 Dinheiro (Cash)<br>
+  📱 M-Pesa<br>
+  847020530 — Mário Umar<br><br>
+          <img src="./img/mpesa.png" alt="Mpesa Paga Facil" width="200" >
+</p>          
   </div>
 </section>
 
@@ -160,6 +168,18 @@ gsap.from("#about .info-block p", {
   y: 40,
   opacity: 0,
   duration: 0.8,
+  stagger: 0.15,
+  ease: "power3.out"
+});
+
+gsap.from("#about .info-block img", {
+  scrollTrigger: {
+    trigger: "#about .info-block",
+    start: "top 105%"
+  },
+  y: 40,
+  opacity: 0,
+  duration: 1,
   stagger: 0.15,
   ease: "power3.out"
 });

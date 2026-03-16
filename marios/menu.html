@@ -42,46 +42,59 @@
   <div class="menu">
     <!-- Menu cards will be injected here -->
   </div>
-
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="./menu.js"></script>
   <script>
     MenuApp.renderDigitalMenu();
     
-    function animateDigitalMenu() {
 
-  if (typeof gsap === "undefined") return;
+function animateDigitalMenu() {
 
-  // Set initial hidden state BEFORE animation
-  gsap.set(".nav-pills a", { y: -20, autoAlpha: 0 });
-  gsap.set(".category-card", { y: 40, autoAlpha: 0 });
-  gsap.set(".plate", { x: -20, autoAlpha: 0 });
+  gsap.registerPlugin(ScrollTrigger);
 
-  const tl = gsap.timeline();
+  // Initial states
+  gsap.set(".nav-pills a", { autoAlpha: 0, y: -20 });
+  gsap.set(".category-card", { autoAlpha: 0, y: 40 });
+  gsap.set(".plate", { autoAlpha: 0, x: -20 });
 
-  tl.to(".nav-pills a", {
+  // Navbar animation
+  gsap.to(".nav-pills a", {
     y: 0,
     autoAlpha: 1,
     duration: 0.4,
-    stagger: 0.05,
-    ease: "power2.out"
+    stagger: 0.05
   });
 
-  tl.to(".category-card", {
-    y: 0,
-    autoAlpha: 1,
-    duration: 0.6,
-    stagger: 0.15,
-    ease: "power3.out"
-  }, "-=0.2");
+  // Cards
+  gsap.utils.toArray(".category-card").forEach((card) => {
 
-  tl.to(".plate", {
-    x: 0,
-    autoAlpha: 1,
-    duration: 0.35,
-    stagger: 0.04,
-    ease: "power2.out"
-  }, "-=0.5");
+    gsap.to(card, {
+      y: 0,
+      autoAlpha: 1,
+      duration: 0.6,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: card,
+        start: "top 85%",
+        once: true
+      }
+    });
+
+    gsap.to(card.querySelectorAll(".plate"), {
+      x: 0,
+      autoAlpha: 1,
+      duration: 0.35,
+      stagger: 0.05,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: card,
+        start: "top 85%",
+        once: true
+      }
+    });
+
+  });
 
 }
   </script>
