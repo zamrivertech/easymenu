@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Restaurante Ellite | Menu A4 PDF</title>
+
+<link rel="stylesheet" href="./style.css">
+<link rel="icon" type="image/png" href="./img/favicon.png">
+
+<style>
+/* Ensure correct A4 layout for rendering */
+.page{
+  width:794px;
+  height:1123px;
+}
+</style>
+
+</head>
+<body>
+
+<script>
+const pref = localStorage.getItem('menuLang');
+if(pref){
+  document.documentElement.lang = pref;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const h1 = document.querySelector('.pdf-header h1');
+  if (h1) {
+    h1.textContent = pref === 'en'
+      ? 'Ellite Restaurant Menu'
+      : 'Menu Restaurante Ellite';
+  }
+});
+</script>
+
+<button id="downloadBtn"
+style="color:var(--color-dark);"
+class="menu-button explore-btn">
+Baixar PDF </button>
+
+<div id="menu">
+  <div id="pages"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script src="./menu.js"></script>
+
+<script>
+
+MenuApp.renderPdfMenu().then(() => {
+
+  const btn = document.getElementById("downloadBtn");
+
+  btn.addEventListener("click", async () => {
+
+    const { jsPDF } = window.jspdf;
+
+    const pagesContainer = document.getElementById("pages");
+    const pageElements = Array.from(
+      pagesContainer.querySelectorAll(".page")
+    );
+
+    if(pageElements.length === 0){
+      console.error("No .page elements found to export");
+      return;
+    }
+
+    /* wait for images to fully load */
+    const imgs = document.querySelectorAll("img");
+    await Promise.all(Array.from(imgs).map(img=>{
+      if(img.complete) return Promise.resolve();
+      return new Promise(res=>{
+        img.onload = img.onerror = res;
+      });
+    }));
+
+    /* lock rendered image dimensions to avoid compression */
+    document.querySelectorAll("img").forEach(img=>{
+      const h = img.offsetHeight;
+      img.style.height = h + "px";
+      img.style.maxWidth = "100%";
+    });
+
+    const pdf = new jsPDF({
+      orientation:"p",
+      unit:"pt",
+      format:"a4",
+      compress:false
+    });
+
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = pdf.internal.pageSize.getHeight();
+
+    for(let i=0;i<pageElements.length;i++){
+
+      const pageEl = pageElements[i];
+
+      const canvas = await html2canvas(pageEl,{
+        scale:4,
+        useCORS:true,
+        backgroundColor:"#ffffff",
+        imageTimeout:0
+      });
+
+      const imgData = canvas.toDataURL("image/png",1.0);
+
+      if(i>0) pdf.addPage();
+
+      pdf.addImage(
+        imgData,
+        "PNG",
+        0,
+        0,
+        pdfWidth,
+        pdfHeight
+      );
+
+    }
+
+    pdf.save("menu-restaurante-ellite.pdf");
+
+  });
+
+});
+
+</script>
+
+</body>
+</html>

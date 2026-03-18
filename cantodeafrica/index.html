@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Restaurante Ellite | Moatize</title>
+
+<meta name="description" content="Descubra a excelência gastronómica no Ellite. Oferecemos pratos variados e sabores autênticos de Moatize."/>
+<meta name="author" content="Zambezi River Services"/>
+
+<meta property="og:title" content="Restaurante Ellite | Moatize"/>
+<meta property="og:type" content="website"/>
+<meta property="og:locale" content="pt_MZ"/>
+
+<meta name="theme-color" content="#C6A75E"/>
+
+<link rel="stylesheet" href="./style.css"/>
+<link rel="icon" href="./img/favicon.png"/>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<style>
+nav{
+box-shadow:0 2px 4px rgba(0,0,0,0.1);
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<ul>
+<li><a href="#home" data-i18n="navHome"></a></li>
+<li></li>
+<li><a href="#about" data-i18n="navAbout"></a></li>
+</ul>
+</nav>
+
+<button class="contact-btn btn-neon" id="openModal">💬</button>
+
+<div class="modal" id="contactModal">
+<div class="modal-content">
+
+<button id="closeContactModal">✕</button>
+
+<div class="modal-actions">
+
+<h2 data-i18n="contactTitle"></h2>
+
+<button style="display:none;" class="call-btn" id="callBtn"></button>
+
+<div class="languages">
+<button class="lang-btn" data-lang="en">English</button>
+<button class="lang-btn" data-lang="pt">Português</button>
+</div>
+
+</div>
+</div>
+</div>
+
+<section id="home">
+
+<div class="hero-text">
+
+<img src="./img/logo.png" alt="Canto de Africa"/>
+
+<h1 style="display:none" data-i18n="heroTitle"></h1>
+
+<p data-i18n="heroText"></p>
+
+</div>
+
+<a href="./menu.html" class="menu-button explore-btn" data-i18n="menuButton"></a>
+
+</section>
+
+<section id="about">
+
+<h2 data-i18n="aboutTitle"></h2>
+
+<div class="info-block">
+
+<div class="card">
+
+<div class="map-wrapper" id="interact-area">
+
+<div class="badge">📍</div>
+
+<img class="map-overlay-img" src="./img/restaurant.jpg"/>
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3833.0007459306867!2d33.727229799999996!3d-16.1172623!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19264bf06e200f57%3A0x6535e04936b8a4b6!2sEllite!5e0!3m2!1sen!2smz!4v1773254320725!5m2!1sen!2smz" loading="lazy"></iframe>
+
+</div>
+
+<div class="content">
+
+<h2>Restaurante Ellite</h2>
+
+<p data-i18n="location"></p>
+
+<div class="meta">
+<div class="meta-item" data-i18n="tagline"></div>
+</div>
+
+</div>
+
+</div>
+
+<p data-i18n="hours"></p>
+
+<p data-i18n="phone"></p>
+
+<p>
+<span class="highlight" data-i18n="socialLabel"></span>
+<a href="https://www.instagram.com/ellitecateringeservicoslda?igsh=MXV6cXdyYXFjenk0bQ%3D%3D&utm_source=qr" target="_blank">Instagram</a>
+</p>
+
+<p data-i18n="services"></p>
+
+<p style="margin-top:20px;font-size:.9rem;opacity:.7;">
+© 2026 Restaurante Ellite
+</p>
+
+</div>
+</section>
+
+<script>
+
+const TEXT = {
+
+pt:{
+
+navHome:"Início",
+navAbout:"Sobre",
+
+contactTitle:"Idiomas",
+callBtn:"Ligue e Encomende Agora!",
+
+heroTitle:"Bem-vindo <span>ao Ellite!</span>",
+heroText:"Sabores autênticos de Moatize, logo ao lado da Casa Bota.<br>Venha provar a fusão perfeita entre tradição e modernidade!",
+
+menuButton:"Confira o Nosso Menu!",
+
+aboutTitle:"Sobre Nós",
+
+location:"Casa Bota, Cidade de Moatize<br>Tete, Moçambique",
+
+tagline:"O ponto de encontro para quem não abdica de uma refeição de qualidade em Tete.",
+
+hours:"<span class='highlight'>Horário:</span> Segunda a Domingo, das 08h às 22h",
+
+phone:"<span class='highlight'>Telefone:</span> <a href='tel:+258844965609'>+258 84 496 5609</a> • <a href='tel:+258879497148'>+258 87 949 7148</a>",
+
+socialLabel:"Redes Sociais:",
+
+services:"<span class='highlight'>Serviços:</span> Catering, Takeaway & Refeições no Local"
+
+},
+
+en:{
+
+navHome:"Home",
+navAbout:"About",
+
+contactTitle:"Languages",
+callBtn:"Call & Order Now!",
+
+heroTitle:"Welcome <span>to Ellite!</span>",
+heroText:"Authentic flavors from Moatize next to Casa Bota.<br>Come taste the perfect fusion of tradition and modernity!",
+
+menuButton:"Check Our Menu!",
+
+aboutTitle:"About Us",
+
+location:"Casa Bota, Moatize City<br>Tete, Mozambique",
+
+tagline:"The meeting place for those who appreciate quality dining in Tete.",
+
+hours:"<span class='highlight'>Hours:</span> Monday to Sunday, 08:00 – 22:00",
+
+phone:"<span class='highlight'>Phone:</span> <a href='tel:+258844965609'>+258 84 496 5609</a> • <a href='tel:+258879497148'>+258 87 949 7148</a>",
+
+socialLabel:"Social:",
+
+services:"<span class='highlight'>Services:</span> Catering, Takeaway & Dine-In"
+
+}
+
+};
+
+function translate(lang){
+
+document.documentElement.lang=lang;
+
+document.querySelectorAll("[data-i18n]").forEach(el=>{
+const key=el.dataset.i18n;
+if(TEXT[lang][key]){
+el.innerHTML=TEXT[lang][key];
+}
+});
+
+document.getElementById("callBtn").innerText=TEXT[lang].callBtn;
+
+localStorage.setItem("menuLang",lang);
+
+}
+
+const savedLang=localStorage.getItem("menuLang")||"pt";
+translate(savedLang);
+
+document.querySelectorAll(".lang-btn").forEach(btn=>{
+btn.onclick=()=>translate(btn.dataset.lang);
+});
+
+const modal=document.getElementById("contactModal");
+
+document.getElementById("openModal").onclick=()=>modal.classList.add("active");
+document.getElementById("closeContactModal").onclick=()=>modal.classList.remove("active");
+
+document.getElementById("callBtn").onclick=()=>{
+window.location.href="tel:+258844965609";
+};
+
+const badge=document.querySelector(".badge");
+
+badge.addEventListener("click",()=>{
+document.querySelector(".map-wrapper").classList.toggle("is-active");
+});
+
+gsap.registerPlugin(ScrollTrigger);
+
+/* GSAP ANIMATIONS */
+
+const tl = gsap.timeline({ defaults:{ ease:"power3.out" } });
+
+tl.from("nav",{y:-80,opacity:0,duration:.8})
+.from("nav li",{y:-20,opacity:0,stagger:.15,duration:.6},"-=0.4")
+
+.from(".hero-text img",{scale:.9,opacity:0,duration:1})
+.from(".hero-text h1",{y:30,opacity:0,duration:.7},"-=0.6")
+.from(".hero-text p",{y:20,opacity:0,duration:.7},"-=0.5")
+
+.from(".contact-btn",{scale:0,opacity:0,duration:.5},"-=0.3");
+
+gsap.from("#about h2",{
+scrollTrigger:"#about",
+y:40,
+opacity:0,
+duration:.8
+});
+
+gsap.from(".map-wrapper",{
+scrollTrigger:"#about",
+scale:.95,
+opacity:0,
+duration:1,
+delay:.1
+});
+
+gsap.from(".badge",{
+scrollTrigger:"#about",
+scale:0,
+duration:.6,
+delay:.3
+});
+
+gsap.from(".content h2",{
+scrollTrigger:"#about",
+scale:1,
+duration:.6,
+delay:.3
+});
+
+gsap.from(".content p",{
+scrollTrigger:"#about",
+y:20,
+opacity:0,
+duration:.8
+});
+
+gsap.from(".meta-item",{
+scrollTrigger:"#about",
+y:20,
+opacity:0,
+duration:.8
+});
+
+gsap.from("#about .info-block > p",{
+scrollTrigger:"#about",
+y:20,
+opacity:0,
+stagger:.15,
+duration:.6
+});
+
+</script>
+
+</body>
+</html>
