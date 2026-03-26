@@ -86,12 +86,11 @@ section {
   justify-content: center;
   align-items: center;
   text-align: center;
-  gap: 1rem;
 }
 
 #home {
   background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.25)),
-    url('./img/hero.jpeg');
+    url('./img/hero.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -121,7 +120,7 @@ section {
 }
 
 .hero-text p {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   margin-bottom: 0;
   color: var(--color-white);
   text-shadow: 2px 2px 6px var(--color-dark);
