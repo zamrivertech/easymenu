@@ -5,10 +5,10 @@
 =========================== */
 :root {
   --color-primary-dark: rgb(128, 98, 42);  
-  --color-primary: #8B6B2E;
-  --color-accent: #C6A75E;
+  --color-primary: #5f0a13;
+  --color-accent: #BC1122;
   --color-bg: #F5F1E8;
-  --color-trust: #C6A75E;
+  --color-trust: #C8A76F;
   --color-white: #FFFFFF;
   --color-dark: #1a1a1a;
   --color-dark-light: #575757;
@@ -91,7 +91,7 @@ section {
 
 #home {
   background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.25)),
-    url('./img/ellitebg.jpg');
+    url('./img/hero.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -528,8 +528,8 @@ section {
       display: flex;
       flex-direction: column;
       align-items: center;
-      background-image: url('./img/vector.jpg');
-      background-size: 55%;
+      background-image: url('./img/bgmenu.jpg');
+      background-size: 35%;
       background-attachment: fixed;
     }
 

@@ -1,7 +1,7 @@
 // menu.js
 
 // Use official Google Sheets API
-const SHEET_ID = "1GNZQ2jyNs8tENfcGjF_jnY2j7kXbYJtTpk39iDrK68s";
+const SHEET_ID = "1m_V01h0JhDC6FrfWvRVh9ENQB99KIPjnzkVd3Ttlrew";
 const API_KEY = "AIzaSyA_88FypaC1s4exlXvKn_x0_28WvZnSLjs";
 
 // language handling
