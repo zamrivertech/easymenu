@@ -97,11 +97,13 @@ async function renderDigitalMenu() {
 
           <strong>${item["Name"]}</strong>
 
-          <small class="description">${item["Description"] || ""}</small>
+
 
           <span class="price">${item["Price (MT)"]} MT</span>
 
         </div>
+
+                  <small class="description">${item["Description"] || ""}</small>
       `).join("")}
       `;
 

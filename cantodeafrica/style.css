@@ -470,7 +470,7 @@ section {
       gap: 1rem;
       margin: .75rem auto;
       padding-bottom: .65rem;
-      border-bottom:  dotted var(--color-primary-dark) 6px;
+      border-bottom:  dotted var(--color-primary) 4px;
       
     }
 
@@ -490,9 +490,9 @@ section {
 .plate {
       width: 100%;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      flex-direction: column;
+      flex-direction: row;
       padding-right: 6rem;
       text-align: center;
       margin: 1rem auto;
@@ -502,9 +502,9 @@ section {
 
 
 .category-card .plate strong, .category-card .plate .price {
-      text-transform: uppercase;
+      text-align: left;
       color: var(--color-primary-dark);
-      font-size: .95rem;
+      font-size: .85rem;
       font-weight: bolder;
 }
 
@@ -539,23 +539,19 @@ section {
     }
 
     .menu .category-wrapper {
-      background-color: var(--color-bg);
+      background-color: transparent;
       border: solid var(--color-accent) 8px;
       padding: 8px;
       width: min-content;
       margin: 1rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.65);
     }
 
-    .menu .category-outer-wrapper:first-child {
-      margin-top: 7.5rem;
-    } 
+      .menu .category-wrapper:first-of-type {
+      margin-top: 150px;
+    }
 
-    .menu .category-outer-wrapper {
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-      background-color: var(--color-dark);
-      padding: 0px;
-      margin: 1.2rem 1.2rem 1.2rem 1.2rem;
-    } 
+
 
     .menu .category-card .plate .price {
       display: inline-block;
