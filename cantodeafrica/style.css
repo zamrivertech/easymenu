@@ -78,7 +78,7 @@ nav a:hover {
    Sections
 =========================== */
 section {
-  height: 100vh;
+  height: 88vh;
   padding: 6rem 2rem 2rem;
   display: flex;
   flex-direction: column;
@@ -391,17 +391,18 @@ section {
       margin-right: 1rem;
       padding: 0.5rem 1rem;
       background-color: transparent;
-      border: 2px solid var(--color-trust);
-      color: var(--color-trust);
+      border: 2px solid var(--color-accent);
+      color: var(--color-accent);
       font-weight: 600;
       font-size: .85rem;
       text-decoration: none;
       transition: 0.3s;
+      border-radius: 22px;
     }
 
     .nav-pills a:hover {
-      background-color: var(--color-trust);
-      color: var(--color-primary);
+      background-color: var(--color-accent);
+      color: var(--color-bg);
       text-decoration: none;
     }
 
@@ -848,7 +849,8 @@ section {
   padding: 2rem;
   border-radius: 12px;
   position: relative;
-  max-width: 400px;
+  max-width: 200px;
+  height: 100px;
   width: 50%;
   text-align: center;
 }
@@ -891,19 +893,35 @@ section {
 
 .modal-actions .languages {
   display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  margin-top: 0.5rem; /* extra breathing room */
+  margin-top: -1rem; /* extra breathing room */
   width: 100%;
 }
 
+.modal-actions h2 {
+  margin: 0 0 28px 0;
+}
+
 .modal-actions .lang-btn {
-  background: var(--color-accent);
+  font-family: 'Playfair Display', serif;
+  background: transparent;
   color: var(--color-dark);
-  border: none;
+  border: solid var(--color-accent) 3px;
+  border-radius: 22px;
   padding: 0.4rem 0.8rem;
-  border-radius: 5px;
   cursor: pointer;
+  margin-left: -.65rem;
+  margin-right: 1.15rem;
+  transition: ease-in-out .35s;
+}
+
+.modal-actions .lang-btn:hover {
+  font-family: 'Playfair Display', serif;
+  background: var(--color-accent);
+  color: var(--color-white);
+  border-radius: 22px;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  margin-left: -.65rem;
+  margin-right: 1.15rem;
 }
 
