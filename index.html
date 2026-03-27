@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -7,164 +8,7 @@
   <link rel="icon" href="./img/favicon.png" type="image/png" />
   <meta name="theme-color" content="#ffffff" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@300;400;600;700&display=swap">
-  
-  <style>
-:root {
-  --color-bg: #ffffff;
-  --color-text: #1a1a1a;
-  --color-accent: #00487D;
-  --font-family: 'Spectral', serif;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html, body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden; /* 🔴 critical fix */
-}
-
-body {
-  font-family: var(--font-family);
-  background: var(--color-bg);
-  color: var(--color-text);
-  line-height: 1.6;
-}
-
-/* ---------- Header ---------- */
-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(5px);
-  padding: 0.8rem 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  max-width: 44px;
-}
-
-/* ---------- Main / Hero ---------- */
-#home {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 2rem 1rem;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.qr-icon {
-  width: clamp(60px, 20vw, 80px);
-  margin-bottom: 1rem;
-}
-
-h2 {
-  font-size: clamp(1.4rem, 6vw, 2.4rem);
-  color: var(--color-accent);
-  margin: 1rem 0;
-}
-
-#home p {
-  font-size: clamp(1rem, 3.8vw, 1.15rem);
-  max-width: 640px;
-}
-
-/* ---------- Button ---------- */
-.btn-container {
-  margin: 2rem 0;
-}
-
-.btn-primary {
-  background: var(--color-accent);
-  color: #fff;
-  padding: 0.75rem 2rem;
-  border-radius: 999px;
-  text-decoration: none;
-  font-weight: 600;
-  display: inline-block;
-}
-
-/* ---------- Marquee ---------- */
-.marquee {
-  width: 100%;
-  overflow: hidden;
-  background: #fafafa;
-  padding: 1.5rem 0;
-}
-
-.marquee-track {
-  display: flex;
-  width: max-content;
-  gap: 1.5rem;
-  animation: marquee 35s linear infinite;
-}
-
-.snap img {
-  width: clamp(70px, 18vw, 100px);
-  height: clamp(70px, 18vw, 100px);
-  border-radius: 50%;
-  object-fit: contain;
-  background: #fff;
-  padding: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-/* ---------- About Section ---------- */
-.about-section {
-  padding: 3rem 1rem;
-  background: #f4f4f4;
-}
-
-.about-content {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-/* ---------- Footer ---------- */
-footer {
-  padding: 1.5rem 1rem;
-  text-align: center;
-  font-size: 0.9rem;
-}
-
-/* ---------- Language Select ---------- */
-.lang-select {
-  padding: 0.4rem 0.8rem;
-  border-radius: 20px;
-  border: 1px solid var(--color-accent);
-  background: #fff;
-  color: var(--color-accent);
-}
-
-/* ---------- Animations ---------- */
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); } /* 🔴 correct infinite loop */
-}
-
-/* ---------- Small Screens ---------- */
-@media (max-width: 480px) {
-  header {
-    gap: 0.5rem;
-  }
-
-  .btn-primary {
-    width: 100%;
-    text-align: center;
-  }
-}
-
-  </style>
+  <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
@@ -174,113 +18,38 @@ footer {
     <select id="languageSelect" class="lang-select">
       <option value="pt">PT</option>
       <option value="en">EN</option>
-      <option value="nhu">NHU</option>
     </select>
   </header>
 
   <main id="home">
-    <img src="./img/qrcode.gif" alt="QR Code" class="qr-icon">
 
-    <h2 data-i18n="title">Menu Digitalizado com QR Code!</h2>
+    <div class="pill" data-i18n="toppilltext"></div>  
 
-    <p data-i18n="description">
-      Gerencie seus menus de forma prática e moderna e atualize conteúdos em tempo real!
-    </p>
+    <h2 data-i18n="title"></h2>
 
     <div class="btn-container">
-      <a class="btn-primary" href="https://wa.me/258871838719" target="_blank" rel="noopener" data-i18n="whatsapp">
-        WhatsApp!
-      </a>
+      <a class="btn-primary" href="https://wa.me/258871838719" target="_blank" rel="noopener" data-i18n="mainbutton"></a>
+      <a class="btn-secondary" href="#" data-i18n="clientbutton"></a>
     </div>
 
+    <img src="./img/qrcode.gif" alt="QR Code" class="qr-icon">
+
     <div class="marquee">
-      <div class="marquee-track" id="marqueeTrack">
-        </div>
+      <div class="marquee-track" id="marqueeTrack"></div>
     </div>
 
     <section class="about-section" id="about">
         <div class="about-content">
-            <h2 data-i18n="about_title">Zambezi River Technologies</h2>
-            <p data-i18n="about_text">
-                A Zambezi River Technologies é uma empresa inovadora focada em transformar a experiência gastronómica através da tecnologia.
-            </p>
+            <h2 data-i18n="about_title"></h2>
+            <p data-i18n="about_text"></p>
         </div>
     </section>
   </main>
 
   <footer>
-    <small data-i18n="footer">
-      © 2025 Zambezi River Technologies. Todos os direitos reservados.
-    </small>
+    <small data-i18n="footer"></small>
   </footer>
 
-  <script>
-    const menus = [
-     { "name": "Chicken Express", "folder": "expresschicken", "path": "expresschicken/index.html" },
-     { "name": "Flames", "folder": "flames", "path": "flames/index.html" },
-     { "name": "No Zavala", "folder": "nozavala", "path": "nozavala/index.html" },
-     { "name": "Shak's Coffee", "folder": "shakscoffee", "path": "shakscoffee/index.html" },
-               { "name": "Ellite Catering & Services", "folder": "ellite", "path": "ellite/index.html" }
-    ];
-
-    function buildMarquee() {
-        const track = document.getElementById('marqueeTrack');
-        const items = menus.map(menu => `
-            <div class="snap">
-              <a href="${menu.path}">
-                <img src="${menu.folder}/img/logo.png" alt="${menu.name}" onerror="this.src='./img/favicon.png'">
-              </a>
-            </div>
-        `).join('');
-        // Tripled for seamless infinite loop
-        track.innerHTML = items + items + items;
-    }
-
-    const translations = {
-      pt: {
-        title: "Menu Digitalizado com QR Code!",
-        description: "Gerencie seus menus de forma prática e moderna e atualize conteúdos em tempo real!",
-        whatsapp: "WhatsApp!",
-        about_title: "Zambezi River Technologies",
-        about_text: "A Zambezi River Technologies é uma empresa inovadora focada em transformar a experiência gastronómica através da tecnologia. Com o EasyMenu, oferecemos soluções práticas para que restaurantes e clientes se conectem de forma rápida e eficiente através de QR Codes.",
-        footer: "© 2026 Zambezi River Technologies. Todos os direitos reservados."
-      },
-      en: {
-        title: "Digital Menu with QR Code!",
-        description: "Manage your menus in a practical and modern way and update content in real time!",
-        whatsapp: "WhatsApp!",
-        about_title: "Zambezi River Technologies",
-        about_text: "Zambezi River Technologies is an innovative company focused on transforming the gastronomic experience through technology.",
-        footer: "© 2026 Zambezi River Technologies. All rights reserved."
-      },
-      nhu: {
-        title: "Menu ya Dijitali na QR Code!",
-        description: "Sungani menu zanu munjira iri nyore na yemazuva ano!",
-        whatsapp: "WhatsApp!",
-        about_title: "Zambezi River Technologies",
-        about_text: "Zambezi River Technologies ni kampani ya mazuva ano inozvipira kuvandudza mabasa ekubika.",
-        footer: "© 2026 Zambezi River Technologies. Kodzero dzose dzakachengetedzwa."
-      }
-    };
-
-    function setLanguage(lang) {
-      document.querySelectorAll("[data-i18n]").forEach(el => {
-        const key = el.getAttribute("data-i18n");
-        if (translations[lang] && translations[lang][key]) {
-          el.innerHTML = translations[lang][key];
-        }
-      });
-      localStorage.setItem("lang", lang);
-    }
-
-    document.getElementById("languageSelect").addEventListener("change", e => setLanguage(e.target.value));
-
-    document.addEventListener('DOMContentLoaded', () => {
-        buildMarquee();
-        const savedLang = localStorage.getItem("lang") || "pt";
-        document.getElementById("languageSelect").value = savedLang;
-        setLanguage(savedLang);
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
