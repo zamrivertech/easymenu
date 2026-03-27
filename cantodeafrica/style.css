@@ -24,7 +24,6 @@ html {
 body {
   margin: 0;
   font-family: 'Playfair Display';
-  background-color: var(--color-bg);
   color: var(--color-dark);
 }
 
@@ -527,9 +526,7 @@ section {
       display: flex;
       flex-direction: column;
       align-items: center;
-      background-image: url('./img/bgmenu.jpg');
-      background-size: 35%;
-      background-attachment: fixed;
+      background: transparent;
     }
 
     .menu > .category-card:first-of-type {
