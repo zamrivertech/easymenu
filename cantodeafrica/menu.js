@@ -178,17 +178,19 @@ if (typeof window !== 'undefined') {
 
 const CATEGORY_ORDER_PT = [
 
-  ["Entradas","Pizzas","Sobremesas","Extras"],
-
-  ["Sanduíches","Pratos Principais","Bebidas"]
+  ["Petiscos","Burgers & Sandes","Saladas","Mutxutxu","Extras","Pratos / Mariscos"],
+  ["Pratos Principais","Refrescos","Água"],
+  ["Outros","Cigarros"],
+  ["Cervejas","Cidras","Espumantes","Energéticos","Sumos","Gin","Vinhos"]
 
 ];
 
 const CATEGORY_ORDER_EN = [
 
-  ["Starters","Pizzas","Desserts","Extras"],
-
-  ["Sandwiches","Main Dishes","Drinks"]
+  ["Snacks","Burgers & Sandwiches","Salads","Mutxutxu","Extras","Dishes / Seafood"],
+  ["Main Dishes","Refreshments","Water"],
+  ["Others","Cigarettes"],
+  ["Beers","Citrons","Sparkling wines","Energy drinks","Juices","Gin","Wines"]
 
 ];
 
