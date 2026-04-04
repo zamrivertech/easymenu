@@ -178,20 +178,15 @@ if (typeof window !== 'undefined') {
 
 const CATEGORY_ORDER_PT = [
 
-  ["Petiscos","Burgers & Sandes","Saladas","Mutxutxu","Extras","Pratos / Mariscos"],
-  ["Pratos Principais","Refrescos","Água"],
-  ["Outros","Cigarros"],
-  ["Cervejas","Cidras","Espumantes","Energéticos","Sumos","Gin","Vinhos"]
+  ["Petiscos","Delícias no Pão","Saladas","Mutxutxu","Extras","Pratos Mariscos", "Pratos Principais", "Bebidas", "Outras Bebidas"],
+  ["Garrafeira & Bar", "Tabacaria"]
 
 ];
 
 const CATEGORY_ORDER_EN = [
 
-  ["Snacks","Burgers & Sandwiches","Salads","Mutxutxu","Extras","Dishes / Seafood"],
-  ["Main Dishes","Refreshments","Water"],
-  ["Others","Cigarettes"],
-  ["Beers","Citrons","Sparkling wines","Energy drinks","Juices","Gin","Wines"]
-
+  ["Snacks","Delicious Bread","Salads","Mutxutxu","Extras","Seafood Dishes", "Main Dishes", "Drinks", "Other Drinks"],
+  ["Wine Cellar & Bar", "Tobacco shop"]
 ];
 
 function getCategoryOrder() {
@@ -210,27 +205,22 @@ function getFooterHTML(pageIndex) {
     if (pageIndex === 0) {
 
       return `
-      <div class="footer-info-alt">
+        <div class="footer-info-alt">
 
-        <div class="footer-text">
+          <div class="footer-text">
 
-          <p>All dishes are prepared fresh at the moment using carefully selected ingredients. Preparation time may vary depending on the dish and order volume.</p>
+            <p>At <strong>Canto de África</strong>, we serve freshly prepared dishes with authentic flavors in a welcoming space.</p>
 
-          <p>Thank you for your preference and we wish you <strong>Enjoy your meal!</strong></p>
+            <p>Thank you for your choice — <strong>enjoy your meal!</strong></p>
 
-          <p><strong>MPesa:</strong> 843854724 – Walter Clemente Caetano</p>
+            <p>
+              <strong>MPesa: </strong> 84 779 6666 • <strong>Emola:</strong> 86 021  8992
+              <br>Telma Elisio da Silva
+            </p>
 
-          <p><strong>Emola:</strong> 879497148 – Paula Cristina Azevedo</p>
-
-        </div>
-
-        <div class="footer-qr">
-
-          <img src="./img/qr-code.png" alt="QR Code">
+          </div>
 
         </div>
-
-      </div>
       `;
 
     }
@@ -240,27 +230,34 @@ function getFooterHTML(pageIndex) {
     if (pageIndex === 0) {
 
       return `
-      <div class="footer-info-alt">
+        <div class="footer-info-alt">
 
-        <div class="footer-text">
+          <div class="footer-text">
 
-          <p>Todos os pratos são preparados no momento com ingredientes frescos e selecionados. O tempo de preparação pode variar conforme o prato e o volume de pedidos.</p>
+            <p>No <strong>Canto de África</strong>, servimos pratos frescos com sabores autênticos num ambiente acolhedor.</p>
 
-          <p>Agradecemos a sua preferência e desejamos-lhe <strong>Bom apetite!</strong></p>
+            <p>Obrigado pela preferência — <strong>bom apetite!</strong></p>
 
-          <p><strong>MPesa:</strong> 843854724 – Walter Clemente Caetano</p>
+            <p>
+              <strong>MPesa: </strong> 84 779 6666 • <strong>Emola:</strong> 86 021  8992
+              <br>Telma Elisio da Silva
+            </p>
 
-          <p><strong>Emola:</strong> 879497148 – Paula Cristina Azevedo</p>
-
-        </div>
-
-        <div class="footer-qr">
-
-          <img src="./img/qr-code.png" alt="QR Code">
+          </div>
 
         </div>
+      `;
 
-      </div>
+    }
+
+        if (pageIndex === 1) {
+
+      return `
+        <div class="footer">
+
+
+
+        </div>
       `;
 
     }

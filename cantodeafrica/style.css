@@ -88,7 +88,7 @@ section {
 }
 
 #home {
-  background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.25)),
+  background-image: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,.35)),
     url('./img/hero2.png');
   background-repeat: no-repeat;
   background-size: cover;
@@ -181,20 +181,25 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 15px;
-  height: 30px;
+  margin-top: 0px;
   font-size: 1rem;
   font-weight: 600;
   margin-right: 0rem;
   text-align: right;
-  padding: 4px 10px 4px 10px;
+  padding: 4px 0;
   margin-bottom: 1.4rem;
+  background-image: url('./img/pattern.jpg');
+  background-size: 24.35%;
+  height: 120px;
 }
 
 .header-info img {
   display: block;
-  margin-top: 1rem;
-  width: 140px;
+  margin-top: 0rem;
+  width: 200px;
+  height: auto;
+  padding: auto 0;
+  background-color: white;
 }
 
 .footer-info {
@@ -229,7 +234,7 @@ section {
   page-break-after: always;
   display: flex;
   flex-direction: column;
-  border: 8px dotted var(--color-accent);
+  border: 8px solid var(--color-accent);
 }
 
 .page::before {
@@ -255,7 +260,7 @@ section {
    Menu Grid (Flex Version)
 =========================== */
 .menu-grid {
-  margin-top: 20px;
+  margin-top: -20px;
   display: flex;             /* use flex for wrapping */
   flex-wrap: wrap;           /* allow categories to wrap */
   gap: 20px;                 /* more comfortable spacing */
@@ -289,11 +294,11 @@ section {
 }
 
 .category-block h2 {
-  border-bottom: solid 2px var(--color-primary);
+  border-bottom: dotted 4.5px var(--color-primary);
   margin: 0 0 10px 0;
   color: var(--color-primary);
   width: 100%;
-  text-align: left;
+  text-align: center;
   font-weight: 700;
   letter-spacing: 4px;
   font-size: 1.25rem;
@@ -585,7 +590,6 @@ section {
     line-height: 1.6;
     padding: .5rem 0;
     max-width: 100%;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -594,7 +598,7 @@ section {
 
 .footer-text {
     flex: 1;
-    text-align: left;
+    text-align: center;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -919,5 +923,12 @@ section {
   cursor: pointer;
   margin-left: -.65rem;
   margin-right: 1.15rem;
+}
+
+.footer {
+  background-image: url('./img/pattern2.jpg');
+  background-size: 38%;
+  margin: 5px 0px;
+  height: 100%;
 }
 
