@@ -336,7 +336,7 @@ async function renderPdfMenu() {
 
         page.innerHTML += `
         <div class="header-info">
-          <img src="./img/logo.png" alt="Ellite Logo">
+          <img src="./img/logo2.png" alt="Ellite Logo">
         </div>
         `;
 

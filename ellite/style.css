@@ -609,7 +609,7 @@ section {
 
 .footer-info-alt p {
     margin: auto 0;
-    color: var(--color-primary);
+    color: var(--color-dark-light);
 }
 
 .footer-qr {
